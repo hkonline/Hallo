@@ -1,0 +1,8 @@
+# git ignore file
+Hallo/Images/articleImages/
+Hallo/bin
+Hallo/Content/kendo
+Hallo/Content/themes
+Hallo/Scripts/kendo
+packages/
+Hallo/obj

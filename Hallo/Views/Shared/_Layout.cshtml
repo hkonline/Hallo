@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Hallo København, Den Kristne Menighed i København's interne websted";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("http://widgets.brunstadworld.org/widgets.css") 
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/Hallo.js")
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-35607073-1']);
+        _gaq.push(['_trackPageview']);
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</head>
+<body>
+    <script src="http://widgets.brunstad.org/TopBar/js?mode=public" type="text/javascript" ></script>
+    <a id="top"></a>
+    <div id="containerDiv">
+        <div id="bannerDiv">
+            <img src="~/Images/banner2012.png" />
+        </div>
+        @if (ViewBag.ShowLeft == true) {
+            <div style="float: left;" class="bglightblue">
+                @Html.Partial("_BKMAccount")
+                <div class="fpBox">
+                    menu
+                </div>
+                @Html.Partial("_Links")
+                @Html.Partial("_Contacts")                
+            </div>
+        }
+        <div style="padding: 20px 0px 0px 0px; float: left;" class="bglightblue">
+            <div id="frontpageContentDiv">
+                <div style="text-align: center;"><p class="htitel">@ViewBag.Headline</p></div>
+                @RenderBody()
+                <br />
+                <br />
+                <img alt="spacer" src="~/Images/ar_rup.gif" />&nbsp;<a href="#top" class="smalltext">Tilbage til toppen </a>
+                <div class="smalltext" style="text-align: center;">
+                    © Udviklet af Comedia Internet, K&oslash;benhavn. <a href='mailto:<% Response.Write(Constant.webmasterMail); %>'>Kontakt Webmaster</a>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.ShowRight == true) {
+            <div style="float: right;" class="bglightblue">
+                @Html.Action("CurrentInfo", "InfoBox")
+                <div class="fpBox">
+                    Ugeprogram
+                </div>
+                <div class="fpBox">
+                    Dagens jubilanter
+                </div>
+                <div class="fpBox">
+                    Næste fest
+                </div>
+            </div>
+        }
+    </div>
+    <a id="bottom"></a>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+

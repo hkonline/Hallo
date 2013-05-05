@@ -1,0 +1,12 @@
+﻿@model List<Hallo.Models.InfoBox>
+@using Hallo.Models
+
+<div class="fpBox" style="text-align: center; margin-bottom: 0px;">- Sidste Nyt -</div>
+
+@foreach (InfoBox info in Model) { 
+    <div class="menupkt" 
+        style="border-bottom: solid thin;" 
+        onmouseover=ev_hov(this); 
+        onmouseout=ev_out(this);>@info.overskrift</div>
+}
+
