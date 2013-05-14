@@ -283,15 +283,32 @@ textarea {
     border-top-style: none;
 }
 
-#frontpageContentDiv {
-    width: 604px;
-    top: 0px;
+#frontpageLeft {
+    margin-top: 20px;
+    float: left;
+    border-style: none;
+    border-right-style: solid;
+    border-right-width: thin;
+}
+
+#frontpageRight {
+    margin-top: 20px;
+    float: right;
+    border-style: none;
+    border-left-style: solid;
+    border-left-width: thin;
+    height: 100%;
+}
+
+#frontpageContent {
+    margin-top: 20px;
+    float: left;
     padding: 0px 20px 0px 20px;
     text-align: left;
-    border-style: solid;
-    border-width: thin;
+    border-top-style: solid;
+    border-top-width: thin;
     background-color: White;
-    border-bottom-style: none;
+    border-bottom-style: none; 
 }
 
 #contentDiv {

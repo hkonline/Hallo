@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Rules xmlns="Sherwood.SignOn.Client.UrlFilter" defaultDenyRedirectUrl="http://www.brunstad.org/PublicLogin.htm">	
+	<Rule>
+    <users>content.brunstad.org</users>
+	<roles>(PMO:StronglyMapped)</roles>
+  </Rule>
+</Rules> 

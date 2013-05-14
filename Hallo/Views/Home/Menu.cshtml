@@ -1,0 +1,14 @@
+﻿@using Hallo.ViewModels;
+@model List<HKMenuItem>
+
+<div class="fpBox" style="padding: 0px 0px 0px 0px; width: 134px;">
+    @(Html.Kendo().PanelBar()
+    .Name("HKMenu")
+    .BindTo(Model, mappings => {
+        mappings.For<HKMenuItem>(binding => binding
+            .ItemDataBound((item, menuItem) => {
+                item.Text = menuItem.Text;
+                item.Url = menuItem.Url;
+            }));
+    }))
+</div>

@@ -1,5 +1,8 @@
 ﻿@{
     ViewBag.Title = "Hallo København, Den Kristne Menighed i København's interne websted";
+    ViewBag.ContentWidth = 604;
+    if (ViewBag.ShowLeft != true) { ViewBag.ContentWidth += 177; }
+    if (ViewBag.ShowRight != true) { ViewBag.ContentWidth += 177; }
 }
 <!DOCTYPE html>
 <html>
@@ -7,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("http://widgets.brunstadworld.org/widgets.css") 
+    @Styles.Render("http://widgets.brunstadworld.org/widgets.css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/Hallo.js")
@@ -21,40 +24,53 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
+    <!--This bundle was moved by the Kendo UI VS Extensions for compatibility reasons-->
+    @Scripts.Render("~/bundles/jquery")
+    <link href="@Url.Content("~/Content/kendo/2013.1.319/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.1.319/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.1.319/kendo.metro.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.1.319/kendo.dataviz.metro.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2013.1.319/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2013.1.319/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2013.1.319/kendo.aspnetmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
 </head>
 <body>
-    <script src="http://widgets.brunstad.org/TopBar/js?mode=public" type="text/javascript" ></script>
+    <script src="http://widgets.brunstad.org/TopBar/js?mode=public" type="text/javascript"></script>
     <a id="top"></a>
     <div id="containerDiv">
         <div id="bannerDiv">
             <img src="~/Images/banner2012.png" />
         </div>
         @if (ViewBag.ShowLeft == true) {
-            <div style="float: left;" class="bglightblue">
+            <div id="frontpageLeft">
                 @Html.Partial("_BKMAccount")
-                <div class="fpBox">
-                    menu
-                </div>
+                @Html.Action("Menu", "Home")
                 @Html.Partial("_Links")
-                @Html.Partial("_Contacts")                
+                @Html.Partial("_Contacts")
             </div>
         }
-        <div style="padding: 20px 0px 0px 0px; float: left;" class="bglightblue">
-            <div id="frontpageContentDiv">
-                <div style="text-align: center;"><p class="htitel">@ViewBag.Headline</p></div>
-                @RenderBody()
-                <br />
-                <br />
+
+        <div id="frontpageContent" style="width: @(ViewBag.ContentWidth)px;">
+            <div style="text-align: center;">
+                <p class="htitel">@ViewBag.Headline</p>
+            </div>
+            @RenderBody()
+            <br />
+            <div style="text-align: center;">
                 <img alt="spacer" src="~/Images/ar_rup.gif" />&nbsp;<a href="#top" class="smalltext">Tilbage til toppen </a>
-                <div class="smalltext" style="text-align: center;">
-                    © Udviklet af Comedia Internet, K&oslash;benhavn. <a href='mailto:<% Response.Write(Constant.webmasterMail); %>'>Kontakt Webmaster</a>
-                    <br />
-                    <br />
-                </div>
+            </div>
+            <br />
+            <br />
+            <div class="smalltext" style="text-align: center;">
+                © Udviklet af Comedia Internet, K&oslash;benhavn. <a href='mailto:<% Response.Write(Constant.webmasterMail); %>'>Kontakt Webmaster</a>
+                <br />
+                <br />
             </div>
         </div>
+
         @if (ViewBag.ShowRight == true) {
-            <div style="float: right;" class="bglightblue">
+            <div id="frontpageRight">
                 @Html.Action("CurrentInfo", "InfoBox")
                 <div class="fpBox">
                     Ugeprogram
@@ -69,11 +85,15 @@
         }
     </div>
     <a id="bottom"></a>
-    @Scripts.Render("~/bundles/jquery")
+
     @RenderSection("scripts", required: false)
+
+    <script>
+        $(window).load(function () {
+            var h = $('#frontpageContent').height();
+            $('#frontpageLeft').height(h);
+            $('#frontpageRight').height(h);
+        });
+    </script>
 </body>
 </html>
-
-
-
-

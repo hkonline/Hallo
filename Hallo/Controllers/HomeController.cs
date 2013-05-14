@@ -1,4 +1,5 @@
-﻿using Hallo.Models;
+﻿using Hallo.Infrastructure;
+using Hallo.Models;
 using Hallo.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -36,5 +37,13 @@ namespace Hallo.Controllers {
             ViewBag.ShowRight = true;
             return View(model);
         }
+
+
+        public PartialViewResult Menu() {
+            MenuBuilder menuBuilder = new MenuBuilder(); 
+
+            return PartialView(menuBuilder.FrontpageMenu());
+        }
+
     }
 }
