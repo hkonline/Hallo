@@ -90,9 +90,13 @@
 
     <script>
         $(window).load(function () {
-            var h = $('#frontpageContent').height();
-            $('#frontpageLeft').height(h);
-            $('#frontpageRight').height(h);
+            var contentHeight = $('#frontpageContent').height();
+            var leftHeight = $('#frontpageLeft').height();
+            var rightHeight = $('#frontpageRight').height();
+            var height = max(contentHeight, leftHeight, rightHeight);
+
+            $('#frontpageLeft').height(height);
+            $('#frontpageRight').height(height);
         });
     </script>
 </body>

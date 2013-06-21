@@ -1,9 +1,12 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Hallo.Models.Mapping {
-    public class InfoBoxMap : EntityTypeConfiguration<InfoBox> {
-        public InfoBoxMap() {
+namespace Hallo.Models.Mapping
+{
+    public class InfoBoxMap : EntityTypeConfiguration<InfoBox>
+    {
+        public InfoBoxMap()
+        {
             // Primary Key
             this.HasKey(t => new { t.id, t.isPublic });
 

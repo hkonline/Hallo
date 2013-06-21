@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Rules xmlns="Sherwood.SignOn.Client.UrlFilter" defaultDenyRedirectUrl="http://www.brunstad.org/PublicLogin.htm">	
-	<Rule>
-    <users>content.brunstad.org</users>
-	<roles>(PMO:StronglyMapped)</roles>
+<Rules xmlns="Sherwood.SignOn.Client.UrlFilter" defaultDenyRedirectUrl="http://www.brunstad.org/PublicLogin.htm">
+  <Rule>
+    <url>localhost:58945</url>
+    <roles>(PMO:StronglyMapped)</roles>
+    <requireSession>true</requireSession>
   </Rule>
-</Rules> 
+  <Rule>
+    <url>kobenhavn.brunstad.org</url>
+    <roles>(PMO:StronglyMapped)</roles>
+    <requireSession>true</requireSession>
+  </Rule>
+  <Rule>
+    <url>kobenhavn.brunstad.local</url>
+    <roles>(PMO:StronglyMapped)</roles>
+    <requireSession>true</requireSession>
+  </Rule>
+</Rules>

@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "SignOnTest";
+}
+
+<h2>SignOnTest</h2>
+
+@foreach (String s in Session.Keys) {
+    @(s + "=" + Session[s])<br />
+}

@@ -37,6 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabases>false</PublishDatabases>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Kendo.Mvc">
@@ -166,10 +167,14 @@
     </Compile>
     <Compile Include="Infrastructure\MenuBuilder.cs" />
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\InfoBox.cs" />
     <Compile Include="Models\kobenhavnContext.cs" />
     <Compile Include="Models\Mapping\ArticleMap.cs" />
+    <Compile Include="Models\Mapping\ImageMap.cs" />
     <Compile Include="Models\Mapping\InfoBoxMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FrontPageArticle.cs" />
     <Compile Include="ViewModels\HKMenuItem.cs" />
@@ -374,8 +379,9 @@
     <Content Include="Images\banner2012.png" />
     <Content Include="Images\VFKClogo128.png" />
     <Content Include="Scripts\Hallo.js" />
-    <None Include="Properties\PublishProfiles\HK Online Arvixe.pubxml" />
+    <None Include="Properties\PublishProfiles\Arvixe FTP.pubxml" />
     <None Include="Properties\PublishProfiles\kobenhavn.brunstad.org - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
     <None Include="Scripts\jquery-2.0.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.0.js" />
@@ -470,6 +476,8 @@
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Calender\Index.cshtml" />
+    <Content Include="Views\Home\Article.cshtml" />
+    <Content Include="Views\Home\SignOnTest.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -491,7 +499,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>52386</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:58945/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

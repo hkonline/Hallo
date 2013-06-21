@@ -12,7 +12,7 @@ namespace Hallo.ViewModels {
         public FrontPageArticle(Article a) {
             article = a;
         }
-        
+
         public bool newest = false;
         public bool hasFilm = false;
         public string filmLink {
@@ -23,9 +23,9 @@ namespace Hallo.ViewModels {
 
         public string DatoString {
             get {
-                return ((DateTime)article.Dato).Day + ". " +
-                    Constant.months[((DateTime)article.Dato).Month - 1].Substring(0, 3) + " " +
-                    ((DateTime)article.Dato).Year;
+                return ((DateTime)article.Date).Day + ". " +
+                    Constant.months[((DateTime)article.Date).Month - 1].Substring(0, 3) + " " +
+                    ((DateTime)article.Date).Year;
             }
         }
 
@@ -34,33 +34,33 @@ namespace Hallo.ViewModels {
             get {
                 if (imageURL != null && imageURL.Length > 0) return imageURL;
 
-                if (article.ForsideBilledeID == 0) return "";
+                if (article.FrontpageImageId == 0) return "";
 
-                return "/images/articleImages/thumbnails/img" + article.ForsideBilledeID + ".jpg";
+                return "/images/articleImages/thumbnails/img" + article.FrontpageImageId + ".jpg";
             }
             set { imageURL = value; }
         }
 
         public string ImageLink {
             get {
-                if (article.ForsideBilledeID == 0)
+                if (article.FrontpageImageId == 0)
                     if (String.IsNullOrEmpty(ImageURL))
                         return "";
                     else
                         return "<img class=aimg src='" + ImageURL + "' hspace=3 width=200>";
 
-                return "<img class=aimg src='/images/articleImages/thumbnails/img" + article.ForsideBilledeID + ".jpg' hspace=3 width=200>";
+                return "<img class=aimg src='/images/articleImages/thumbnails/img" + article.FrontpageImageId + ".jpg' hspace=3 width=200>";
             }
         }
         public string ArticleLink {
             get {
-                return "/articles/Article.aspx?ArticleID=" + article.ArtikelID;
+                return "/Home/Article/" + article.ArticleId;
             }
         }
 
         public string ArticleLinkMobile {
             get {
-                return "'Article.aspx?articleID=" + article.ArtikelID + "'";
+                return "'Article.aspx?articleID=" + article.ArticleId + "'";
             }
         }
 
@@ -68,8 +68,8 @@ namespace Hallo.ViewModels {
             get {
                 string headline = "<a class=titel href=";
                 if (newest) headline = "<a class=htitel href=";
-                headline += ArticleLink + ">" + article.Overskrift + "</a>";
-                if (!article.PublicArticle) headline += "<br /><div style=color:#FF0000; class=text>(Vises kun for venner med login)</div>";
+                headline += ArticleLink + ">" + article.Headline + "</a>";
+                if (article.IsPublic == false) headline += "<br /><div style=color:#FF0000; class=text>(Vises kun for venner med login)</div>";
                 return headline;
             }
         }
@@ -77,8 +77,8 @@ namespace Hallo.ViewModels {
         public string FrontpageHeadlineMobile {
             get {
                 string headline = "<a href=";
-                headline += ArticleLinkMobile + ">" + article.Overskrift + "</a>";
-                if (!article.PublicArticle)
+                headline += ArticleLinkMobile + ">" + article.Headline + "</a>";
+                if (article.IsPublic == false)
                     headline += "<br /><div style=color:#FF0000; class=text>(Vises kun for venner med login)</div>";
                 return headline;
             }
