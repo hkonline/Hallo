@@ -1,79 +1,70 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<clientSettings logging="DEBUG" xmlns="Sherwood.SignOn.Client">
-  <client>
-    <!-- SSO client's unique identifier -->
-    <code>kobenhavn-brunstad-org</code>
+<clientSettings xmlns="Sherwood.SignOn.Client" logging="DEBUG">
+    <client>      
+	
+<code>kobenhavn-brunstad-org</code>     
+          
+       <rsaPrivateKey>
+-----BEGIN RSA PRIVATE KEY-----
+MIICXAIBAAKBgQDIfFRntnGpTmBzYjG6sCmBwHh+m/H4VbksePOFycWWO57h7g14
+rJ53g1/fZgM/KPVL9dXPreSaww70r/Bua3ipks+ImLrcJzBWwXTziVac4wWJM6ct
+VPeV/DAiTb/98eDBa804lPcVxpLEAGDa/P0b7huHzIjPheO1GuDieovW4QIBAwKB
+gQCFqDhFJEvGNEBM7CEnIBur1aWpvUv649DIUKJZMS5kJ79BSV5QcxRPrOqU7qzU
+xfjdTo6Kc+28ggn4dUr0R6XFMm65o45obvYaZkGVaK+F9NOXTM1VwwUG6bfpHVrc
+D26aEhRHITWGoEy2U/whT/qLGNM7LuzK9UQmVrZqsqwOAwJBAPk7Vh6u+JMzCr/c
+ULA3PBAdvBc9ZScU+41QSG9BNY64QioczZnXblk6Q1J7JylEkq4qi8lanSqcgAnY
+qpnW0XcCQQDN7hwEtkbtjCRoNkK8GBfjqmopNceJWxAQS/wydn5MApgmkgBJT118
+5W8v64HbwLiatCM8ywHrYPuO9pfUsvBnAkEApieOvx9QYiIHKpLgdXooCr59ZNOY
+xLins4ra9NYjtHrWxr3eZo+e5ibXjFIaG4MMdBxdMOcTcb2qsTscZo82TwJBAIlJ
+aAMkL0kIGEV5gdK6upfG8XDOhQY8tWAyqCGkVDKsZW8MADDfk6iY9MqdAT0rJbx4
+F33cq/JAp7SkZTh3Su8CQH2W2MbIO+hFzTo9J+k6ndJxPOW8qtu2NMfIeGe3i125
+FgUDzVMgQmzZIpU3BRiz6Yp/C3q6SqTQbMc0e9S+BVw=
+-----END RSA PRIVATE KEY-----
+		</rsaPrivateKey>
 
-    <!--SSO client's public RSA key -->
-    <rsaPublicKey>
-      -----BEGIN PUBLIC KEY-----
-      MIGdMA0GCSqGSIb3DQEBAQUAA4GLADCBhwKBgQDIfFRntnGpTmBzYjG6sCmBwHh+
-      m/H4VbksePOFycWWO57h7g14rJ53g1/fZgM/KPVL9dXPreSaww70r/Bua3ipks+I
-      mLrcJzBWwXTziVac4wWJM6ctVPeV/DAiTb/98eDBa804lPcVxpLEAGDa/P0b7huH
-      zIjPheO1GuDieovW4QIBAw==
-      -----END PUBLIC KEY-----
-    </rsaPublicKey>
-
-    <!--SSO client's private RSA key. This should never be made available to 3rd parties. -->
-    <rsaPrivateKey>
-      -----BEGIN RSA PRIVATE KEY-----
-      MIICXAIBAAKBgQDIfFRntnGpTmBzYjG6sCmBwHh+m/H4VbksePOFycWWO57h7g14
-      rJ53g1/fZgM/KPVL9dXPreSaww70r/Bua3ipks+ImLrcJzBWwXTziVac4wWJM6ct
-      VPeV/DAiTb/98eDBa804lPcVxpLEAGDa/P0b7huHzIjPheO1GuDieovW4QIBAwKB
-      gQCFqDhFJEvGNEBM7CEnIBur1aWpvUv649DIUKJZMS5kJ79BSV5QcxRPrOqU7qzU
-      xfjdTo6Kc+28ggn4dUr0R6XFMm65o45obvYaZkGVaK+F9NOXTM1VwwUG6bfpHVrc
-      D26aEhRHITWGoEy2U/whT/qLGNM7LuzK9UQmVrZqsqwOAwJBAPk7Vh6u+JMzCr/c
-      ULA3PBAdvBc9ZScU+41QSG9BNY64QioczZnXblk6Q1J7JylEkq4qi8lanSqcgAnY
-      qpnW0XcCQQDN7hwEtkbtjCRoNkK8GBfjqmopNceJWxAQS/wydn5MApgmkgBJT118
-      5W8v64HbwLiatCM8ywHrYPuO9pfUsvBnAkEApieOvx9QYiIHKpLgdXooCr59ZNOY
-      xLins4ra9NYjtHrWxr3eZo+e5ibXjFIaG4MMdBxdMOcTcb2qsTscZo82TwJBAIlJ
-      aAMkL0kIGEV5gdK6upfG8XDOhQY8tWAyqCGkVDKsZW8MADDfk6iY9MqdAT0rJbx4
-      F33cq/JAp7SkZTh3Su8CQH2W2MbIO+hFzTo9J+k6ndJxPOW8qtu2NMfIeGe3i125
-      FgUDzVMgQmzZIpU3BRiz6Yp/C3q6SqTQbMc0e9S+BVw=
-      -----END RSA PRIVATE KEY-----
-    </rsaPrivateKey>
-
-    <!--Template of Url that sign on server should call upon successful sign on.
+        <!--Template of Url that sign on server should call upon successful sign on.
         This value may contain the following replacement parameters:
         [Host] - replaced with current host name
         [CurrentUrl] - replaced by the current Url
         [UrlEncodedCurrentUrl] - replaced by a URL encoded version of the current request url.-->
-    <signInUrl>http://[Host]/signon/signon.asmx?ticket={signinticket}&amp;signature={signinsignature}&amp;returnurl=[UrlEncodedCurrentUrl]</signInUrl>
+        <signInUrl>http://[Host]/signon.asmx?ticket={signinticket}&amp;signature={signinsignature}&amp;returnurl=[UrlEncodedCurrentUrl]</signInUrl>
 
-    <!-- Template of Url that sign on server should call upon successful sign on.
+      
+        <!-- Template of Url that sign on server should call upon successful sign on.
         This value may contain the following replacement parameters:
         [Host] - replaced with current host name  -->
-    <signOutUrl>http://[Host]/signon/signoff.asmx?ticket={signoffticket}&amp;signature={signoffsignature}</signOutUrl>
-
-    <!--Gets the domain scope of cookies used to maintain user session locally.
+        <signOutUrl>http://[Host]/signoff.asmx?ticket={signoffticket}&amp;signature={signoffsignature}</signOutUrl>
+      
+      
+        <!--Gets the domain scope of cookies used to maintain user session locally.
          This property can be used to allow clients to provide session management for
          multiple subdomains.-->
-    <cookieDomain>*.sherwood.local</cookieDomain>
-  </client>
+        <cookieDomain>*.sherwood.local</cookieDomain>
+    </client>
 
-  <server>
-    <!--  The number of seconds an sso ticket should be treated as valid when comparing the timestamp
+    <server>
+        <!--  The number of seconds an sso ticket should be treated as valid when comparing the timestamp
         sent with the ticket with the current time.
         This timeout should take the possibility of different times on different servers into account.-->
-    <ticketValidityInSeconds>300</ticketValidityInSeconds>
+        <ticketValidityInSeconds>300</ticketValidityInSeconds>
 
-    <!-- Base URL to SSO Server (e.g. https://login.sherwood.codeplex.com) -->
-    <baseUrl>https://signon.brunstad.org</baseUrl>
+        <!-- Base URL to SSO Server (e.g. https://login.sherwood.codeplex.com) -->
+        <baseUrl>https://signon.brunstad.org/</baseUrl>
 
-    <!-- SSO server's public RSA key -->
-    <rsaPublicKey>
-      ----BEGIN PUBLIC KEY-----
-      MIGdMA0GCSqGSIb3DQEBAQUAA4GLADCBhwKBgQDtM2ZRCnrru0XCaaaIJNWmdmGa
-      obCnMxqGrymDel7nJW6H8TfWbnh9linYvje62b8/tLPdyVJShrshtxKOQKha141F
-      MKNCqb6pqSwnOhn5mv/83QvurbvCJTl/q/CKUKdU2mVsyskA4o1WygrLUjwxYLKX
-      EDO8xuM9SRhwoFfO/QIBAw==
-      -----END PUBLIC KEY-----
-    </rsaPublicKey>
-  </server>
+        <!-- SSO server's public RSA key -->
+        <rsaPublicKey>
+	-----BEGIN PUBLIC KEY-----
+MIGdMA0GCSqGSIb3DQEBAQUAA4GLADCBhwKBgQDtM2ZRCnrru0XCaaaIJNWmdmGa
+obCnMxqGrymDel7nJW6H8TfWbnh9linYvje62b8/tLPdyVJShrshtxKOQKha141F
+MKNCqb6pqSwnOhn5mv/83QvurbvCJTl/q/CKUKdU2mVsyskA4o1WygrLUjwxYLKX
+EDO8xuM9SRhwoFfO/QIBAw==
+-----END PUBLIC KEY-----
+	</rsaPublicKey>
+    </server>
 
-  <sessionRepository>
-    <repositoryType>Sherwood.SignOn.Client.Session.InMemorySessionRepository,Sherwood.SignOn.Client</repositoryType>
-    <connectionString>Data Source=.;Initial Catalog=SessionRepository;Integrated Security=True</connectionString>
-    <sessionTimeoutInMinutes>10080</sessionTimeoutInMinutes>
-  </sessionRepository>
+    <sessionRepository>
+        <repositoryType>Sherwood.SignOn.Client.Session.InMemorySessionRepository,Sherwood.SignOn.Client</repositoryType>
+        <connectionString>Data Source=.;Initial Catalog=SessionRepository;Integrated Security=True</connectionString>
+        <sessionTimeoutInMinutes>10080</sessionTimeoutInMinutes>
+    </sessionRepository>
 </clientSettings>
