@@ -637,3 +637,70 @@ DEBUG 12 [2013-07-01 23:09:13,287] Sherwood.SignOn.Client.UrlFilter.UrlFilterEng
 DEBUG 12 [2013-07-01 23:09:13,288] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - reuss would granted access to http://localhost/home/signontest based on rule: localhost, rule users: , rule roles: (pmo:stronglymapped), rule hosts: , rule referrer: 
 DEBUG 12 [2013-07-01 23:09:13,288] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - reuss granted access to http://localhost/home/signontest after applying final rule.
 DEBUG 12 [2013-07-01 23:09:13,289] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - reuss has access to url: http://localhost/home/signontest
+DEBUG 10 [2013-07-02 18:17:55,471] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Raw url: http://localhost/
+DEBUG 10 [2013-07-02 18:17:55,500] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - User url: http://localhost/
+DEBUG 10 [2013-07-02 18:17:55,510] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Checking if signin url. Comparing 'signon.asmx' to ''
+DEBUG 10 [2013-07-02 18:17:55,512] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Checking if signout url. Comparing 'signoff.asmx' to ''
+DEBUG 10 [2013-07-02 18:17:55,517] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - User not signed in. Checking annonymous access for url: http://localhost/
+DEBUG 10 [2013-07-02 18:17:55,525] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Roles...
+DEBUG 10 [2013-07-02 18:17:55,525] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Starting to check access for . URL: http://localhost/
+DEBUG 10 [2013-07-02 18:17:55,546] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - 3 rules loaded from file.
+DEBUG 10 [2013-07-02 18:17:55,547] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Testing rule with url pattern: kobenhavn.brunstad.local
+DEBUG 10 [2013-07-02 18:17:55,547] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Current url does not match: kobenhavn.brunstad.local
+DEBUG 10 [2013-07-02 18:17:55,548] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Testing rule with url pattern: kobenhavn.brunstad.org
+DEBUG 10 [2013-07-02 18:17:55,548] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Current url does not match: kobenhavn.brunstad.org
+DEBUG 10 [2013-07-02 18:17:55,548] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Testing rule with url pattern: localhost
+DEBUG 10 [2013-07-02 18:17:55,549] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Current url matches: localhost
+DEBUG 10 [2013-07-02 18:17:55,550] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine -  would be denied access to http://localhost/ based on rule: localhost, rule users: , rule roles: (pmo:stronglymapped), rule hosts: 
+DEBUG 10 [2013-07-02 18:17:55,551] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine -  denied access to http://localhost/ after applying final rule.
+DEBUG 10 [2013-07-02 18:17:55,551] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Url doesn't have annonymous access. Redirecting to login. URL: http://localhost/
+DEBUG 21 [2013-07-02 18:17:57,134] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Raw url: http://localhost/signon.asmx?ticket=U0l8OTcwMDk0ZTYtNTMxNC00NDk5LWJkMGUtY2Q5Y2RjMzZjOThifDEzMDE3MjU1NDc1NTYyNDg0MC04ZWUyMmFkNTFjYzg0NGQ3fDIxMi4yNy4yMS4zfDI2NDM5Y2UyLWQ0NDQtNGE4Yi1iODViLThlYmIwNGQ1M2FlMHwyMDEzLTA3LTAyVDE2OjE4OjAzLjQzNVp8VHJ1ZQ%3d%3d&signature=hKhS35tsThkd%2fCA%2bO8YJwNHIbI%2fwEsi%2fde1jh05CelRLT6H5p0BKTDjzWrNCQRamy2jShQTCyYqRqpI69DM%2f7YDKhxB8ZxPjroMZP%2fVLjYo3AfmkGFXGu2vcq5hmzNIlTRszLwyBD4BelnX9YTH%2bl4JxwO6t8HrAY5HDvnSLlvw%3d&returnurl=http%3a%2f%2flocalhost%2f
+DEBUG 21 [2013-07-02 18:17:57,140] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - User url: http://localhost/signon.asmx?ticket=U0l8OTcwMDk0ZTYtNTMxNC00NDk5LWJkMGUtY2Q5Y2RjMzZjOThifDEzMDE3MjU1NDc1NTYyNDg0MC04ZWUyMmFkNTFjYzg0NGQ3fDIxMi4yNy4yMS4zfDI2NDM5Y2UyLWQ0NDQtNGE4Yi1iODViLThlYmIwNGQ1M2FlMHwyMDEzLTA3LTAyVDE2OjE4OjAzLjQzNVp8VHJ1ZQ%3d%3d&signature=hKhS35tsThkd%2fCA%2bO8YJwNHIbI%2fwEsi%2fde1jh05CelRLT6H5p0BKTDjzWrNCQRamy2jShQTCyYqRqpI69DM%2f7YDKhxB8ZxPjroMZP%2fVLjYo3AfmkGFXGu2vcq5hmzNIlTRszLwyBD4BelnX9YTH%2bl4JxwO6t8HrAY5HDvnSLlvw%3d&returnurl=http%3a%2f%2flocalhost%2f
+DEBUG 21 [2013-07-02 18:17:57,140] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Checking if signin url. Comparing 'signon.asmx' to 'signon.asmx'
+DEBUG 21 [2013-07-02 18:17:57,142] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Attempting to sign in user locally.
+DEBUG 21 [2013-07-02 18:17:57,150] Sherwood.Security.Rsa - Public key loaded successfully: True
+DEBUG 21 [2013-07-02 18:17:57,160] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - User successfully signed in locally. Redirecting to http://localhost/
+DEBUG 6 [2013-07-02 18:17:57,163] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Raw url: http://localhost/
+DEBUG 6 [2013-07-02 18:17:57,164] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - User url: http://localhost/
+DEBUG 6 [2013-07-02 18:17:57,164] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Checking if signin url. Comparing 'signon.asmx' to ''
+DEBUG 6 [2013-07-02 18:17:57,164] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Checking if signout url. Comparing 'signoff.asmx' to ''
+DEBUG 6 [2013-07-02 18:17:57,522] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - reuss logged in. Checking access for roles: PMO:StronglyMapped, PMO:PortalAccess, PMO:UserAgreementAccepted, PMO:København, PMO:Denmark, 
+DEBUG 6 [2013-07-02 18:17:57,523] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Roles...
+DEBUG 6 [2013-07-02 18:17:57,524] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:StronglyMapped
+DEBUG 6 [2013-07-02 18:17:57,524] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:PortalAccess
+DEBUG 6 [2013-07-02 18:17:57,524] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:UserAgreementAccepted
+DEBUG 6 [2013-07-02 18:17:57,525] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:København
+DEBUG 6 [2013-07-02 18:17:57,525] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:Denmark
+DEBUG 6 [2013-07-02 18:17:57,525] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Starting to check access for reuss. URL: http://localhost/
+DEBUG 6 [2013-07-02 18:17:57,526] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - 3 rules loaded from cache.
+DEBUG 6 [2013-07-02 18:17:57,526] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Testing rule with url pattern: kobenhavn.brunstad.local
+DEBUG 6 [2013-07-02 18:17:57,526] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Current url does not match: kobenhavn.brunstad.local
+DEBUG 6 [2013-07-02 18:17:57,527] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Testing rule with url pattern: kobenhavn.brunstad.org
+DEBUG 6 [2013-07-02 18:17:57,527] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Current url does not match: kobenhavn.brunstad.org
+DEBUG 6 [2013-07-02 18:17:57,528] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Testing rule with url pattern: localhost
+DEBUG 6 [2013-07-02 18:17:57,528] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Current url matches: localhost
+DEBUG 6 [2013-07-02 18:17:57,528] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - reuss would granted access to http://localhost/ based on rule: localhost, rule users: , rule roles: (pmo:stronglymapped), rule hosts: , rule referrer: 
+DEBUG 6 [2013-07-02 18:17:57,529] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - reuss granted access to http://localhost/ after applying final rule.
+DEBUG 6 [2013-07-02 18:17:57,529] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - reuss has access to url: http://localhost/
+DEBUG 7 [2013-07-02 18:18:08,876] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Raw url: http://localhost/
+DEBUG 7 [2013-07-02 18:18:08,877] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - User url: http://localhost/
+DEBUG 7 [2013-07-02 18:18:08,877] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Checking if signin url. Comparing 'signon.asmx' to ''
+DEBUG 7 [2013-07-02 18:18:08,878] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - Checking if signout url. Comparing 'signoff.asmx' to ''
+DEBUG 7 [2013-07-02 18:18:08,878] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - reuss logged in. Checking access for roles: PMO:StronglyMapped, PMO:PortalAccess, PMO:UserAgreementAccepted, PMO:København, PMO:Denmark, 
+DEBUG 7 [2013-07-02 18:18:08,879] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Roles...
+DEBUG 7 [2013-07-02 18:18:08,879] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:StronglyMapped
+DEBUG 7 [2013-07-02 18:18:08,879] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:PortalAccess
+DEBUG 7 [2013-07-02 18:18:08,880] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:UserAgreementAccepted
+DEBUG 7 [2013-07-02 18:18:08,880] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:København
+DEBUG 7 [2013-07-02 18:18:08,880] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Role: PMO:Denmark
+DEBUG 7 [2013-07-02 18:18:08,881] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Starting to check access for reuss. URL: http://localhost/
+DEBUG 7 [2013-07-02 18:18:08,881] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - 3 rules loaded from cache.
+DEBUG 7 [2013-07-02 18:18:08,881] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Testing rule with url pattern: kobenhavn.brunstad.local
+DEBUG 7 [2013-07-02 18:18:08,882] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Current url does not match: kobenhavn.brunstad.local
+DEBUG 7 [2013-07-02 18:18:08,882] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Testing rule with url pattern: kobenhavn.brunstad.org
+DEBUG 7 [2013-07-02 18:18:08,883] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Current url does not match: kobenhavn.brunstad.org
+DEBUG 7 [2013-07-02 18:18:08,883] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Testing rule with url pattern: localhost
+DEBUG 7 [2013-07-02 18:18:08,883] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - Current url matches: localhost
+DEBUG 7 [2013-07-02 18:18:08,884] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - reuss would granted access to http://localhost/ based on rule: localhost, rule users: , rule roles: (pmo:stronglymapped), rule hosts: , rule referrer: 
+DEBUG 7 [2013-07-02 18:18:08,884] Sherwood.SignOn.Client.UrlFilter.UrlFilterEngine - reuss granted access to http://localhost/ after applying final rule.
+DEBUG 7 [2013-07-02 18:18:08,884] Sherwood.SignOn.Client.UrlFilter.UrlFilterModule - reuss has access to url: http://localhost/
