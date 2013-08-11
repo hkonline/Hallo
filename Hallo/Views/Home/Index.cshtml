@@ -4,20 +4,20 @@
 <table>
     @foreach (FrontPageArticle a in Model) { 
         <tr>
-            <td colspan="2" style="vertical-align: middle;">@Html.Raw(a.FrontpageHeadline)</td>
-            <td rowspan="2">
+            <td colspan="2" style="vertical-align: middle; padding-left: 20px;">@Html.Raw(a.FrontpageHeadline)</td>
+            <td rowspan="2" style="padding-right: 20px;">
                 <a href="@Html.Raw(a.ArticleLink)">
                     @Html.Raw(a.ImageLink)
                 </a>
             </td>
         </tr>
         <tr>
-            <td style="width: 10px;">
+            <td style="width: 10px; padding-left: 20px;">
                 <img src="../images/spacer.gif" style="width: 10px; height: 1px;" alt="">
             </td>
-            <td class="text" style="vertical-align: top; width: 100%;">
+            <td class="text" style="vertical-align: top; width: 100%;" style="padding-right: 20px;">
                 <span class="date">@Html.Raw(a.DatoString):</span>&nbsp; 
-                @Html.Raw(a.article.FrontpageText)
+                @Html.Raw(a.Article.FrontpageText)
                 <a href="@Html.Raw(a.ArticleLink)" class="link">L&aelig;s&nbsp;mere...</a>
             </td>
         </tr>        
@@ -28,3 +28,4 @@
         </tr>
     }
 </table>
+

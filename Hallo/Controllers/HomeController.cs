@@ -26,7 +26,7 @@ namespace Hallo.Controllers {
             foreach (Article a in articleList) {
                 FrontPageArticle fa = new FrontPageArticle(a);
                 if (isFirst) { 
-                    fa.newest = true; 
+                    fa.Newest = true; 
                     isFirst = false; 
                 }                
                 model.Add(fa);
@@ -34,6 +34,7 @@ namespace Hallo.Controllers {
 
             ViewBag.ShowLeft = true;
             ViewBag.ShowRight = true;
+            ViewBag.ContentWidth = 644;
             return View(model);
         }
 

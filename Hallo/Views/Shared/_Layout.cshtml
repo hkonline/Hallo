@@ -1,8 +1,11 @@
 ﻿@{
     ViewBag.Title = "Hallo København, Den Kristne Menighed i København's interne websted";
-    ViewBag.ContentWidth = 604;
-    if (ViewBag.ShowLeft != true) { ViewBag.ContentWidth += 177; }
-    if (ViewBag.ShowRight != true) { ViewBag.ContentWidth += 177; }
+    if (ViewBag.ContentWidth == null) {
+        ViewBag.ContentWidth = 604;
+    }
+    if (ViewBag.ShowLeft != true) { ViewBag.ContentWidth += 197; }
+    if (ViewBag.ShowRight != true) { ViewBag.ContentWidth += 197; }
+        
 }
 <!DOCTYPE html>
 <html>
@@ -26,14 +29,14 @@
     </script>
     <!--This bundle was moved by the Kendo UI VS Extensions for compatibility reasons-->
     @Scripts.Render("~/bundles/jquery")
-    <link href="@Url.Content("~/Content/kendo/2013.1.319/kendo.common.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2013.1.319/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2013.1.319/kendo.metro.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2013.1.319/kendo.dataviz.metro.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.2.716/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.2.716/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.2.716/kendo.metro.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2013.2.716/kendo.dataviz.metro.min.css")" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/kendo/2013.1.319/jquery.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2013.1.319/kendo.all.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2013.1.319/kendo.aspnetmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2013.2.716/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2013.2.716/kendo.all.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2013.2.716/kendo.aspnetmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
 </head>
 <body>
@@ -51,7 +54,6 @@
                 @Html.Partial("_Contacts")
             </div>
         }
-
         <div id="frontpageContent" style="width: @(ViewBag.ContentWidth)px;">
             <div style="text-align: center;">
                 <p class="htitel">@ViewBag.Headline</p>
@@ -88,17 +90,5 @@
     <a id="bottom"></a>
 
     @RenderSection("scripts", required: false)
-
-    <script>
-        $(window).load(function () {
-            var contentHeight = $('#frontpageContent').height();
-            var leftHeight = $('#frontpageLeft').height();
-            var rightHeight = $('#frontpageRight').height();
-            var height = max(contentHeight, leftHeight, rightHeight);
-
-            $('#frontpageLeft').height(height);
-            $('#frontpageRight').height(height);
-        });
-    </script>
 </body>
 </html>
