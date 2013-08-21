@@ -50,6 +50,7 @@
     <Compile Include="Models\Content\Article.cs" />
     <Compile Include="Models\Content\ArticleCategory.cs" />
     <Compile Include="Models\Content\ArticleTypes.cs" />
+    <Compile Include="Models\Content\FrontpageLink.cs" />
     <Compile Include="Models\Content\Image.cs" />
     <Compile Include="Models\Content\Message.cs" />
     <Compile Include="Models\Content\MessageType.cs" />

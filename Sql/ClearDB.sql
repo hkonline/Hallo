@@ -8,3 +8,4 @@ drop table hallo.[dbo].[Images];
 drop table hallo.[dbo].[Articles];
 drop table hallo.[dbo].[Messages];
 drop table hallo.[dbo].[Users];
+DROP TABLE hallo.dbo.FrontpageLinks;

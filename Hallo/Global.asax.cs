@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Globalization;
+using HalloDal.Models;
 
 namespace Hallo {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -20,6 +21,13 @@ namespace Hallo {
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            HalloContext context = new HalloContext();
+            Application["FrontpageLinks"] = context.FrontpageLinks.OrderBy(x => x.Order).ToList();
+        }
+
+        public void Session_Start() {
+            Session["FrontpageLinks"] = Application["FrontpageLinks"];
         }
     }
 }
