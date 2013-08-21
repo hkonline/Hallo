@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
-using Hallo.Models;
+using HalloDal.Models.Content;
 
 namespace Hallo.ViewModels {
     public class FrontPageArticle {
 
         public readonly Article Article;
+        public string ImageDirectoryUrl = "http://kobenhavn.brunstad.org/images";
 
         public FrontPageArticle(Article a) {
             Article = a;
@@ -31,33 +32,34 @@ namespace Hallo.ViewModels {
             get {
                 if (imageUrl != null && imageUrl.Length > 0) return imageUrl;
 
-                if (Article.FrontpageImageId == 0) return "";
+                if (Article.FrontpageImage == null) return "";
 
-                return "/images/articleImages/thumbnails/img" + Article.FrontpageImageId + ".jpg";
+                return ImageDirectoryUrl + "/articleImages/thumbnails/img" + Article.FrontpageImage.OldId + ".jpg";
             }
             set { imageUrl = value; }
         }
 
         public string ImageLink {
             get {
-                if (Article.FrontpageImageId == 0)
+                if (Article.FrontpageImage == null)
                     if (String.IsNullOrEmpty(ImageUrl))
                         return "";
                     else
                         return "<img class=aimg src='" + ImageUrl + "' hspace=3 width=200>";
 
-                return "<img class=aimg src='/images/articleImages/thumbnails/img" + Article.FrontpageImageId + ".jpg' hspace=3 width=200>";
+                return "<img class=aimg src=\"" + ImageDirectoryUrl + "/articleImages/thumbnails/img" + Article.FrontpageImage.OldId + 
+                    ".jpg\" hspace=3 width=200>";
             }
         }
         public string ArticleLink {
             get {
-                return "/Home/Article/" + Article.ArticleId;
+                return "/Home/Article/" + Article.Id;
             }
         }
 
         public string ArticleLinkMobile {
             get {
-                return "'Article.aspx?articleID=" + Article.ArticleId + "'";
+                return "'Article.aspx?articleID=" + Article.Id + "'";
             }
         }
 

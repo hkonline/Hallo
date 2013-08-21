@@ -19,6 +19,7 @@ hidden {
 
 h2 {
     font: bold 18pt Verdana,Tahoma,Arial;
+    display: inline;
 }
 
 a {
@@ -296,7 +297,7 @@ textarea {
     height: 100%;
 }
 
-#frontpageContent {
+#Content {
     margin-top: 20px;
     float: left;
     padding: 0px 0px 0px 0px;

@@ -3,8 +3,8 @@
     if (ViewBag.ContentWidth == null) {
         ViewBag.ContentWidth = 604;
     }
-    if (ViewBag.ShowLeft != true) { ViewBag.ContentWidth += 197; }
-    if (ViewBag.ShowRight != true) { ViewBag.ContentWidth += 197; }
+    if (ViewBag.ShowLeft != true) { ViewBag.ContentWidth += 157; }
+    if (ViewBag.ShowRight != true) { ViewBag.ContentWidth += 157; }
         
 }
 <!DOCTYPE html>
@@ -17,6 +17,11 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/Hallo.js")
+
+    @Styles.Render("~/Content/kendo")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
+
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-35607073-1']);
@@ -27,17 +32,7 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
-    <!--This bundle was moved by the Kendo UI VS Extensions for compatibility reasons-->
-    @Scripts.Render("~/bundles/jquery")
-    <link href="@Url.Content("~/Content/kendo/2013.2.716/kendo.common.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2013.2.716/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2013.2.716/kendo.metro.min.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/kendo/2013.2.716/kendo.dataviz.metro.min.css")" rel="stylesheet" type="text/css" />
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/kendo/2013.2.716/jquery.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2013.2.716/kendo.all.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo/2013.2.716/kendo.aspnetmvc.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    <!--    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />-->
 </head>
 <body>
     <script src="http://widgets.brunstad.org/TopBar/js?mode=public" type="text/javascript"></script>
@@ -54,7 +49,7 @@
                 @Html.Partial("_Contacts")
             </div>
         }
-        <div id="frontpageContent" style="width: @(ViewBag.ContentWidth)px;">
+        <div id="Content" style="width: @(ViewBag.ContentWidth)px;">
             <div style="text-align: center;">
                 <p class="htitel">@ViewBag.Headline</p>
             </div>
@@ -90,5 +85,13 @@
     <a id="bottom"></a>
 
     @RenderSection("scripts", required: false)
+
+    @if (ViewBag.ContentPadding == null) {
+        <script>
+            $(document).ready(function () {
+                $("#Content").css("padding", "20px");
+            });
+        </script>
+    }
 </body>
 </html>

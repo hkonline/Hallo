@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<table>
+    @foreach (String s in Session.Keys) { 
+        <tr>
+            <td>@s</td>
+            <td>@Session[s]</td>
+        </tr>    
+    }
+
+    @foreach (String s in Request.Cookies.AllKeys) { 
+        <tr>
+            <td>@s</td>
+            <td>@Request.Cookies[s].Value</td>
+        </tr>
+    }
+</table>

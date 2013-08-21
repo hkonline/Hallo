@@ -1,6 +1,7 @@
 ﻿using Hallo.Infrastructure;
-using Hallo.Models;
 using Hallo.ViewModels;
+using HalloDal.Models;
+using HalloDal.Models.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,18 @@ using System.Web.Mvc;
 
 namespace Hallo.Controllers {
     public class HomeController : Controller {
+     
         public ActionResult Index() {
             List<Article> articleList;
 
-            using (kobenhavnContext context = new kobenhavnContext()) {
+            using (HalloContext context = new HalloContext()) {
+                ArticleCategory internalSongMission = context.Categories.FirstOrDefault(x => x.Id == 14);
+                
                 // TODO: if not a know kbh-user, show only public articles
-                articleList = context.Articles.Where(x => x.ApprovedByEditor == true)
-                    .Where(x => x.Category != 14)
-                    .Where(x => x.Category2 != 14)
+                articleList = context.Articles.Include("FrontpageImage")
+                    .Where(x => x.ApprovedByEditor == true)
+                    .Where(x => x.Category.Id != internalSongMission.Id)
+                    .Where(x => x.Category2.Id != internalSongMission.Id)
                     .OrderByDescending(x => x.Date)
                     .Take(12)
                     .ToList();
@@ -35,6 +40,7 @@ namespace Hallo.Controllers {
             ViewBag.ShowLeft = true;
             ViewBag.ShowRight = true;
             ViewBag.ContentWidth = 644;
+            ViewBag.ContentPadding = 0;
             return View(model);
         }
 
@@ -45,8 +51,8 @@ namespace Hallo.Controllers {
 
         public ActionResult Article(int id) {
             ViewBag.ShowLeft = true;
-            using (kobenhavnContext context = new kobenhavnContext()) {
-                return View(context.Articles.Where(x => x.ArticleId == id).SingleOrDefault());
+            using (HalloContext context = new HalloContext()) {
+                return View(context.Articles.Where(x => x.Id == id).SingleOrDefault());
             }            
         }
 

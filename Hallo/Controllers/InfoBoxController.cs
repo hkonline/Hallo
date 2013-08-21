@@ -1,8 +1,8 @@
-﻿using Hallo.Models;
+﻿using HalloDal.Models;
+using HalloDal.Models.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Hallo.Controllers {
@@ -10,14 +10,14 @@ namespace Hallo.Controllers {
 
         [ChildActionOnly]
         public PartialViewResult CurrentInfo() {
-            List<InfoBox> model;
+            List<Message> model;
 
             DateTime today = new DateTime(2013, 3, 10);
 
-            using (kobenhavnContext context = new kobenhavnContext()) {
-                model = context.InfoBoxes
-                    .Where(x => x.dato_begynd < today)
-                    .Where(x => x.dato_slut > today).ToList();
+            using (HalloContext context = new HalloContext()) {
+                model = context.Messages
+                    .Where(x => x.StartDate < today)
+                    .Where(x => x.EndDate > today).ToList();
             }
 
             return PartialView(model);

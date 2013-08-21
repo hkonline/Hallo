@@ -4,6 +4,8 @@ Hallo/bin
 Hallo/Content/kendo
 Hallo/Content/themes
 Hallo/Scripts/kendo
+HalloDal/obj
+HalloDal/bin
 packages/
 Hallo/obj
 *.suo
