@@ -6,22 +6,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Hallo.Controllers {
     public class HomeController : Controller {
 
         public ActionResult Index() {
             ViewBag.ShowRight = true;
-            
+
             List<Article> articleList;
 
             using (HalloContext context = new HalloContext()) {
                 ArticleCategory internalSongMission = context.Categories.FirstOrDefault(x => x.Id == 14);
 
                 // TODO: if not a know kbh-user, show only public articles
-                articleList = context.Articles.Include("FrontpageImage")
+                articleList = context.Articles
+                    .Include("FrontpageImage")
                     .Where(x => x.ApprovedByEditor == true)
-                    .Where(x => x.Category.Id != internalSongMission.Id)
+                    .Where(x => x.Category == null || x.Category.Id != internalSongMission.Id)
                     .Where(x => x.Category2 == null || x.Category2.Id != internalSongMission.Id)
                     .OrderByDescending(x => x.Date)
                     .Take(12)

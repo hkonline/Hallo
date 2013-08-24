@@ -49,7 +49,26 @@ namespace Hallo.Controllers {
         public ActionResult Edit(int id) {
             return View(GetArticle(id));
         }
-        
+
+        [HttpGet]
+        public ActionResult Create() {
+            Article newArticle = new Article() { 
+                Date = DateTime.Now,
+            };
+
+            Context.Articles.Add(newArticle);
+            Context.SaveChanges();
+
+            return RedirectToAction("Edit", new { id = newArticle.Id});
+        }
+
+        public ActionResult Delete(int id) {
+            Context.Articles.Remove(GetArticle(id));
+            Context.SaveChanges();
+
+            return RedirectToAction("List");
+        }
+
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Edit(Article article) {
@@ -64,5 +83,21 @@ namespace Hallo.Controllers {
 
             return View(dbArticle);
         }
+
+        public JsonResult SetApproved(int id, bool approved) {
+            Article a = GetArticle(id);
+            a.ApprovedByEditor = approved;
+            a.Date = DateTime.Now;
+            Context.SaveChanges();
+            return Json(null);
+        }
+
+        public JsonResult SetPublic(int id, bool isPublic) {
+            Article a = GetArticle(id);
+            a.IsPublic = isPublic;
+            Context.SaveChanges();
+            return Json(null);
+        }
+
     }
 }

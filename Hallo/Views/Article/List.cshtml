@@ -41,19 +41,26 @@
                 @item.Date.ToShortDateString()
             </td>
             <td style="text-align: center;">
-                @Html.EditorFor(modelItem => item.ApprovedByEditor)
+                <input type="checkbox" 
+                    id ="Approved_@item.Id" 
+                    onclick="setApproved('@item.Id');" 
+                    @(item.ApprovedByEditor ? "checked='checked'" : "")/>
             </td>
             <td style="text-align: center;">
-                @Html.EditorFor(modelItem => item.IsPublic)
+                <input type="checkbox" 
+                    id ="IsPublic_@item.Id" 
+                    onclick="setPublic('@item.Id');" 
+                    @(item.IsPublic ? "checked='checked'" : "")/>
             </td>
             <td>
                 @Html.ActionLink("Ret", "Edit", new { id = item.Id })
-                @*|@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+                @Html.ActionLink("Slet", "Delete", new { id=item.Id })
             </td>
         </tr>
     }
-
 </table>
+<div id="empty"></div>
+
 <style>
     .listTable td {
         padding: 5px;
@@ -63,3 +70,20 @@
         padding: 5px;
     }
 </style>
+<script>
+    function setApproved(id) {
+        $.post(
+            "/Article/SetApproved/" + id,
+            { approved: $("#Approved_"+id).is(':checked') },
+            function (data) { $("#empty").html(data); }
+        );        
+    }
+
+    function setPublic(id) {
+        $.post(
+            "/Article/SetPublic/" + id,
+            { isPublic: $("#IsPublic_"+id).is(':checked') },
+            function (data) { $("#empty").html(data); }
+        );        
+    }
+</script>
