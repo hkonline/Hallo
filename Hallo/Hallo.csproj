@@ -47,11 +47,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Kendo.Mvc, Version=2013.2.716.340, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Program Files (x86)\Telerik\Kendo UI for ASP.NET MVC Q2 2013\wrappers\aspnetmvc\Binaries\Mvc3\Kendo.Mvc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="log4net">
       <HintPath>..\ExternalLibraries\log4net.dll</HintPath>
     </Reference>
@@ -154,6 +149,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Constant.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InfoBoxController.cs" />
@@ -173,52 +169,6 @@
     <Content Include="App_Data\URLFilterRules.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Content\kendo\editor.png" />
-    <Content Include="Content\kendo\imagebrowser.png" />
-    <Content Include="Content\kendo\kendo.black.min.css" />
-    <Content Include="Content\kendo\kendo.blueopal.min.css" />
-    <Content Include="Content\kendo\kendo.bootstrap.min.css" />
-    <Content Include="Content\kendo\kendo.common.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.black.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.blueopal.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.bootstrap.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.default.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.flat.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.highcontrast.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.metro.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.metroblack.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.moonlight.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.silver.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.uniform.min.css" />
-    <Content Include="Content\kendo\kendo.default.min.css" />
-    <Content Include="Content\kendo\kendo.flat.min.css" />
-    <Content Include="Content\kendo\kendo.highcontrast.min.css" />
-    <Content Include="Content\kendo\kendo.icenium.min.css" />
-    <Content Include="Content\kendo\kendo.metro.min.css" />
-    <Content Include="Content\kendo\kendo.metroblack.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.all.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.android4.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.blackberry.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.common.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.flat.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.icenium.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.ios.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.meego.min.css" />
-    <Content Include="Content\kendo\kendo.mobile.wp8.min.css" />
-    <Content Include="Content\kendo\kendo.moonlight.min.css" />
-    <Content Include="Content\kendo\kendo.rtl.min.css" />
-    <Content Include="Content\kendo\kendo.silver.min.css" />
-    <Content Include="Content\kendo\kendo.uniform.min.css" />
-    <Content Include="Content\kendo\Metro\editor.png" />
-    <Content Include="Content\kendo\Metro\imagebrowser.png" />
-    <Content Include="Content\kendo\Metro\loading-image.gif" />
-    <Content Include="Content\kendo\Metro\loading.gif" />
-    <Content Include="Content\kendo\Metro\loading_2x.gif" />
-    <Content Include="Content\kendo\Metro\slider-h.gif" />
-    <Content Include="Content\kendo\Metro\slider-v.gif" />
-    <Content Include="Content\kendo\Metro\sprite.png" />
-    <Content Include="Content\kendo\Metro\sprite_2x.png" />
     <Content Include="Content\themes\base\images\animated-overlay.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -298,104 +248,14 @@
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
-    <Content Include="Scripts\jquery-2.0.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Unslider.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\kendo.modernizr.custom.js" />
-    <Content Include="Scripts\kendo\jquery.min.js" />
-    <Content Include="Scripts\kendo\kendo.all.min.js" />
-    <Content Include="Scripts\kendo\kendo.aspnetmvc.min.js" />
-    <Content Include="Scripts\kendo\kendo.autocomplete.min.js" />
-    <Content Include="Scripts\kendo\kendo.binder.min.js" />
-    <Content Include="Scripts\kendo\kendo.calendar.min.js" />
-    <Content Include="Scripts\kendo\kendo.colorpicker.min.js" />
-    <Content Include="Scripts\kendo\kendo.columnmenu.min.js" />
-    <Content Include="Scripts\kendo\kendo.combobox.min.js" />
-    <Content Include="Scripts\kendo\kendo.core.min.js" />
-    <Content Include="Scripts\kendo\kendo.data.min.js" />
-    <Content Include="Scripts\kendo\kendo.data.odata.min.js" />
-    <Content Include="Scripts\kendo\kendo.data.xml.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.barcode.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.canvas.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.chart.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.chart.polar.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.core.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.gauge.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.qrcode.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.sparkline.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.stock.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.svg.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.themes.min.js" />
-    <Content Include="Scripts\kendo\kendo.dataviz.vml.min.js" />
-    <Content Include="Scripts\kendo\kendo.datepicker.min.js" />
-    <Content Include="Scripts\kendo\kendo.datetimepicker.min.js" />
-    <Content Include="Scripts\kendo\kendo.draganddrop.min.js" />
-    <Content Include="Scripts\kendo\kendo.dropdownlist.min.js" />
-    <Content Include="Scripts\kendo\kendo.editable.min.js" />
-    <Content Include="Scripts\kendo\kendo.editor.min.js" />
-    <Content Include="Scripts\kendo\kendo.filtermenu.min.js" />
-    <Content Include="Scripts\kendo\kendo.fx.min.js" />
-    <Content Include="Scripts\kendo\kendo.grid.min.js" />
-    <Content Include="Scripts\kendo\kendo.groupable.min.js" />
-    <Content Include="Scripts\kendo\kendo.imagebrowser.min.js" />
-    <Content Include="Scripts\kendo\kendo.list.min.js" />
-    <Content Include="Scripts\kendo\kendo.listview.min.js" />
-    <Content Include="Scripts\kendo\kendo.menu.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.actionsheet.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.application.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.button.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.buttongroup.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.drawer.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.listview.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.loader.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.modalview.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.navbar.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.pane.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.popover.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.scroller.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.scrollview.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.shim.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.splitview.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.switch.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.tabstrip.min.js" />
-    <Content Include="Scripts\kendo\kendo.mobile.view.min.js" />
-    <Content Include="Scripts\kendo\kendo.multiselect.min.js" />
-    <Content Include="Scripts\kendo\kendo.numerictextbox.min.js" />
-    <Content Include="Scripts\kendo\kendo.pager.min.js" />
-    <Content Include="Scripts\kendo\kendo.panelbar.min.js" />
-    <Content Include="Scripts\kendo\kendo.popup.min.js" />
-    <Content Include="Scripts\kendo\kendo.reorderable.min.js" />
-    <Content Include="Scripts\kendo\kendo.resizable.min.js" />
-    <Content Include="Scripts\kendo\kendo.router.min.js" />
-    <Content Include="Scripts\kendo\kendo.scheduler.agendaview.min.js" />
-    <Content Include="Scripts\kendo\kendo.scheduler.dayview.min.js" />
-    <Content Include="Scripts\kendo\kendo.scheduler.min.js" />
-    <Content Include="Scripts\kendo\kendo.scheduler.monthview.min.js" />
-    <Content Include="Scripts\kendo\kendo.scheduler.recurrence.min.js" />
-    <Content Include="Scripts\kendo\kendo.scheduler.view.min.js" />
-    <Content Include="Scripts\kendo\kendo.selectable.min.js" />
-    <Content Include="Scripts\kendo\kendo.slider.min.js" />
-    <Content Include="Scripts\kendo\kendo.sortable.min.js" />
-    <Content Include="Scripts\kendo\kendo.splitter.min.js" />
-    <Content Include="Scripts\kendo\kendo.tabstrip.min.js" />
-    <Content Include="Scripts\kendo\kendo.timepicker.min.js" />
-    <Content Include="Scripts\kendo\kendo.timezones.min.js" />
-    <Content Include="Scripts\kendo\kendo.tooltip.min.js" />
-    <Content Include="Scripts\kendo\kendo.touch.min.js" />
-    <Content Include="Scripts\kendo\kendo.treeview.min.js" />
-    <Content Include="Scripts\kendo\kendo.upload.min.js" />
-    <Content Include="Scripts\kendo\kendo.userevents.min.js" />
-    <Content Include="Scripts\kendo\kendo.validator.min.js" />
-    <Content Include="Scripts\kendo\kendo.view.min.js" />
-    <Content Include="Scripts\kendo\kendo.web.min.js" />
-    <Content Include="Scripts\kendo\kendo.window.min.js" />
     <Content Include="Scripts\knockout-2.3.0.debug.js" />
     <Content Include="Scripts\knockout-2.3.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -419,28 +279,22 @@
     <Content Include="Views\Shared\_Links.cshtml" />
     <Content Include="Views\Shared\_Contacts.cshtml" />
     <Content Include="Views\InfoBox\CurrentInfo.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Integer.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Calender\Index.cshtml" />
-    <Content Include="Views\Home\Article.cshtml" />
     <Content Include="Views\Home\SignOnTest.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
+    <Content Include="Views\Article\Article.cshtml" />
+    <Content Include="Views\Article\List.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\FrontPageArticle.cshtml" />
+    <Content Include="Scripts\jquery-2.0.3.min.map" />
+    <Content Include="Views\Article\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\HalloDal\HalloDal.csproj">
       <Project>{ea933c20-dd05-481f-bfde-19e6ccfaa58c}</Project>
@@ -477,7 +331,11 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.8\tools\Microsoft.Bcl.Build.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
   <!--<Import Project="..\packages\Microsoft.Bcl.Build.1.0.7\tools\Microsoft.Bcl.Build.targets" />-->
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

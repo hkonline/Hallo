@@ -2,30 +2,6 @@
 @model List<FrontPageArticle>
 
 <table>
-    @foreach (FrontPageArticle a in Model) { 
-        <tr>
-            <td colspan="2" style="vertical-align: middle; padding-left: 20px;">@Html.Raw(a.FrontpageHeadline)</td>
-            <td rowspan="2" style="padding-right: 20px;">
-                <a href="@Html.Raw(a.ArticleLink)">
-                    @Html.Raw(a.ImageLink)
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 10px; padding-left: 20px;">
-                <img src="../images/spacer.gif" style="width: 10px; height: 1px;" alt="">
-            </td>
-            <td class="text" style="vertical-align: top; width: 100%; padding-right: 20px;">
-                <span class="date">@Html.Raw(a.DatoString):</span>&nbsp; 
-                @Html.Raw(a.Article.FrontpageText)
-                <a href="@Html.Raw(a.ArticleLink)" class="link">L&aelig;s&nbsp;mere...</a>
-            </td>
-        </tr>        
-        <tr>
-            <td colspan="3" style="height: 25px; vertical-align: middle;">
-                <img src="../images/bluespc.gif" height="1" style="width: 100%;" alt="">
-            </td>
-        </tr>
-    }
+    @Html.DisplayForModel()
 </table>
 

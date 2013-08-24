@@ -1,0 +1,79 @@
+﻿@model HalloDal.Models.Content.Article
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Ret artikel</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Headline)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Headline, new { style = "width: 720px;" })
+            @Html.ValidationMessageFor(model => model.Headline)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Author)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Author, new { style = "width: 720px;" })
+            @Html.ValidationMessageFor(model => model.Author)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FrontpageText)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.FrontpageText, new { style = "width: 720px;" })
+            @Html.ValidationMessageFor(model => model.FrontpageText)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Text)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Text, new { style = "width: 720px;" })
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    tinymce.init({
+        selector: '#Text',
+        menubar: false,
+        statusbar: false
+    });
+
+    tinymce.init({
+        selector: '#FrontpageText',
+        menubar: false,
+        statusbar: false
+    });    
+</script>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<HalloDal.Models.Content.Article>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Artikler</h2>
+
+<p>
+    @Html.ActionLink("Ny artikel", "Create")
+</p>
+<table class="listTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Headline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovedByEditor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPublic)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a href="@("/Article/Article/" + item.Id)">@Html.DisplayFor(modelItem => item.Headline)</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @item.Date.ToShortDateString()
+            </td>
+            <td style="text-align: center;">
+                @Html.EditorFor(modelItem => item.ApprovedByEditor)
+            </td>
+            <td style="text-align: center;">
+                @Html.EditorFor(modelItem => item.IsPublic)
+            </td>
+            <td>
+                @Html.ActionLink("Ret", "Edit", new { id = item.Id })
+                @*|@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            </td>
+        </tr>
+    }
+
+</table>
+<style>
+    .listTable td {
+        padding: 5px;
+    }
+
+    .listTable th {
+        padding: 5px;
+    }
+</style>

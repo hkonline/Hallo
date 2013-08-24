@@ -1,10 +1,10 @@
 ﻿@{
     ViewBag.Title = "Hallo København, Den Kristne Menighed i København's interne websted";
     if (ViewBag.ContentWidth == null) {
-        ViewBag.ContentWidth = 604;
+        ViewBag.ContentWidth = 761;
     }
-    if (ViewBag.ShowLeft != true) { ViewBag.ContentWidth += 157; }
-    if (ViewBag.ShowRight != true) { ViewBag.ContentWidth += 157; }
+    if (ViewBag.ShowLeft == false) { ViewBag.ContentWidth += 157; }
+    if (ViewBag.ShowRight == true) { ViewBag.ContentWidth -= 157; }
         
 }
 <!DOCTYPE html>
@@ -15,12 +15,13 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("http://widgets.brunstadworld.org/widgets.css")
     @Styles.Render("~/Content/css")
+
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/Hallo.js")
+    @Scripts.Render("~/bundles/jquery") 
+    @Scripts.Render("~/bundles/plugins") 
 
-    @Styles.Render("~/Content/kendo")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/kendo")
+    <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 
     <script type="text/javascript">
         var _gaq = _gaq || [];
@@ -32,7 +33,6 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
-    <!--    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />-->
 </head>
 <body>
     <script src="http://widgets.brunstad.org/TopBar/js?mode=public" type="text/javascript"></script>
@@ -41,7 +41,7 @@
         <div id="bannerDiv">
             <img src="~/Images/banner2012.png" />
         </div>
-        @if (ViewBag.ShowLeft == true) {
+        @if (ViewBag.ShowLeft != false) {
             <div id="frontpageLeft">
                 @*@Html.Partial("_BKMAccount")*@
                 @*@Html.Action("Menu", "Home")*@

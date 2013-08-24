@@ -1,0 +1,71 @@
+﻿@using HalloDal.Models.Content;
+@using Hallo.ViewModels;
+@model Article
+
+@{
+    ViewBag.Title = "Article";
+}
+
+<h2>@Model.Headline</h2>
+<img src="~/images/bluespc.gif" style="height: 1px; width: 95%;" /><br />
+<span class="bigtext" style="font-style: italic;">Af @Model.Author</span><br />
+<span class="smalltext">@Model.Date.ToShortDateString()</span><br />
+<br />
+<span class="bigtext">@Html.Raw(Model.Text)</span>
+
+<style>
+    .slideShow {
+        position: relative;
+        overflow: auto;
+    }
+
+        .slideShow li {
+            list-style: none;
+        }
+
+        .slideShow ul li {
+            float: left;
+        }
+</style>
+
+@if (Model.Images.Count > 0) {
+    <table>
+        <tr>
+            <td colspan="2">
+                <div class="slideShow">
+                    <ul>
+                        @foreach (Image i in Model.Images) { 
+                            <li>
+                                <img src="@(FrontPageArticle.ImageDirectoryUrl + "/articleImages/images/img" + (i.OldId == null ? i.Id : i.OldId) + ".jpg")" />
+                                <br />@i.Description<br />
+                                <br />
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: left">
+                <a href="#" class="unslider-arrow prev">Tidligere billede</a>
+            </td>
+            <td style="text-align: right;">
+                <a href="#" class="unslider-arrow next">Næste billede</a>
+            </td>
+        </tr>
+    </table>
+}
+<script>
+    $(function () {
+        $('.slideShow').unslider({
+            dots: true
+        });
+    });
+
+    $('.unslider-arrow').click(function () {
+        var fn = this.className.split(' ')[1];
+
+        //  Either do unslider.data('unslider').next() or .prev() depending on the className
+        unslider.data('unslider')[fn]();
+    });
+</script>

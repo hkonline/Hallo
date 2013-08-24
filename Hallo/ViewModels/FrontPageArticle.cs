@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Linq;
+using System.Configuration;
 using HalloDal.Models.Content;
 
 namespace Hallo.ViewModels {
     public class FrontPageArticle {
 
         public readonly Article Article;
-        public string ImageDirectoryUrl = "http://kobenhavn.brunstad.org/images";
-
+        public static string ImageDirectoryUrl = ConfigurationManager.AppSettings["ImageDirectoryUrl"];            
+            
         public FrontPageArticle(Article a) {
             Article = a;
         }
@@ -53,7 +54,7 @@ namespace Hallo.ViewModels {
         }
         public string ArticleLink {
             get {
-                return "/Home/Article/" + Article.Id;
+                return "/Article/Article/" + Article.Id;
             }
         }
 
