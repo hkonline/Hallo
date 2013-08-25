@@ -151,7 +151,9 @@
     <Compile Include="Constant.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
+    <Compile Include="Controllers\HalloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\InfoBoxController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -236,12 +238,15 @@
     <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
     <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
     <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
+    <Content Include="Images\arrow-down-icon.png" />
+    <Content Include="Images\arrow-up-icon.png" />
     <Content Include="Images\ar_rup.gif" />
-    <Content Include="Images\banner2012.png" />
+    <Content Include="Images\banner.jpg" />
     <Content Include="Images\spacer.gif" />
     <Content Include="Images\VFKClogo128.png" />
     <Content Include="Scripts\Hallo.js" />
     <None Include="Properties\PublishProfiles\Arvixe FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Holstebro.pubxml" />
     <None Include="Properties\PublishProfiles\kobenhavn.brunstad.org - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
@@ -288,6 +293,7 @@
     <Content Include="Views\Shared\DisplayTemplates\FrontPageArticle.cshtml" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="Views\Article\Edit.cshtml" />
+    <Content Include="Views\Image\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

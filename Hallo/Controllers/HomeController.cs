@@ -9,26 +9,24 @@ using System.Web.Mvc;
 using System.Data.Entity;
 
 namespace Hallo.Controllers {
-    public class HomeController : Controller {
+    public class HomeController : HalloController {
 
         public ActionResult Index() {
             ViewBag.ShowRight = true;
 
             List<Article> articleList;
 
-            using (HalloContext context = new HalloContext()) {
-                ArticleCategory internalSongMission = context.Categories.FirstOrDefault(x => x.Id == 14);
+            ArticleCategory internalSongMission = Context.Categories.FirstOrDefault(x => x.Id == 14);
 
-                // TODO: if not a know kbh-user, show only public articles
-                articleList = context.Articles
-                    .Include("FrontpageImage")
-                    .Where(x => x.ApprovedByEditor == true)
-                    .Where(x => x.Category == null || x.Category.Id != internalSongMission.Id)
-                    .Where(x => x.Category2 == null || x.Category2.Id != internalSongMission.Id)
-                    .OrderByDescending(x => x.Date)
-                    .Take(12)
-                    .ToList();
-            }
+            // TODO: if not a know kbh-user, show only public articles
+            articleList = Context.Articles
+                .Where(x => x.ApprovedByEditor == true)
+                .Where(x => x.Category == null || x.Category.Id != internalSongMission.Id)
+                .Where(x => x.Category2 == null || x.Category2.Id != internalSongMission.Id)
+                .OrderByDescending(x => x.Date)
+                .Include(x => x.FrontpageImage)
+                .Take(12)
+                .ToList();
 
             List<FrontPageArticle> model = new List<FrontPageArticle>();
             bool isFirst = true;

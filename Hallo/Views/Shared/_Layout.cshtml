@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Hallo København, Den Kristne Menighed i København's interne websted";
+﻿@using System.Configuration
+@{
+    ViewBag.Title = ConfigurationManager.AppSettings["Title"];        
     if (ViewBag.ContentWidth == null) {
         ViewBag.ContentWidth = 761;
     }
@@ -39,7 +40,7 @@
     <a id="top"></a>
     <div id="containerDiv">
         <div id="bannerDiv">
-            <a href="/"><img src="~/Images/banner2012.png" /></a>
+            <a href="/"><img src="~/Images/banner.jpg" /></a>
         </div>
         @if (ViewBag.ShowLeft != false) {
             <div id="frontpageLeft">
@@ -68,8 +69,8 @@
         </div>
 
         @if (ViewBag.ShowRight == true) {
-            <div id="frontpageRight">
-                @Html.Action("CurrentInfo", "InfoBox")
+            <!--<div id="frontpageRight">
+                @*@Html.Action("CurrentInfo", "InfoBox")*@
                 <div class="fpBox">
                     Ugeprogram
                 </div>
@@ -79,7 +80,7 @@
                 <div class="fpBox">
                     Næste fest
                 </div>
-            </div>
+            </div>-->
         }
     </div>
     <a id="bottom"></a>

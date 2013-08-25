@@ -6,15 +6,7 @@ using System.Data.Entity;
 using HalloDal.Models.Content;
 
 namespace Hallo.Controllers {
-    public class ArticleController : Controller {
-
-        private HalloContext context;
-        public HalloContext Context {
-            get {
-                if (context == null) context = new HalloContext();
-                return context;
-            }
-        }
+    public class ArticleController : HalloController {
 
         public ActionResult Index(int id) {
             return View();

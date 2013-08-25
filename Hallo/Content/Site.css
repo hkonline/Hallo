@@ -36,7 +36,7 @@ a {
         }
 
 .boxColor {
-    background-color: #64BC46;
+    background-color: #A3DEFE;
 }
 
 .text {
@@ -78,16 +78,25 @@ a.vsmltext {
 
 .date {
     font: italic 8pt Verdana,Tahoma,Arial;
-    color: #64BC46;
+    color: #A3DEFE;
 }
 
 .btext {
+    border-spacing: 3px;
     color: #000000;
     vertical-align: top;
     margin: 2pt;
     padding: 2pt;
     font: italic 8pt Verdana, Tahoma, Arial;
     background-color: #E0E0E0;
+}
+
+.taimg
+{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #000000;
+    cursor: pointer;
 }
 
 .bdate {
@@ -143,7 +152,7 @@ a.note {
 
 /*adtext*/
 .fpBox {
-    background-color: #64BC46;
+    background-color: #A3DEFE;
     font: 8pt Verdana,Tahoma,Arial;
     color: #FFFFFF;
     text-align: left;
@@ -265,7 +274,7 @@ textarea {
     width: 998px;
     margin: 0 auto;
     vertical-align: top;
-    background-color: #DCD3CE;
+    background-color: #1B94E0;
     text-align: center;
     border-style: solid;
     border-width: 2px;
