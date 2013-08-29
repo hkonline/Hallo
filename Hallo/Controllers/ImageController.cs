@@ -23,7 +23,7 @@ namespace Hallo.Controllers {
         Article CurrentArticle {
             get {
                 if (ArticleId == 0) return null;
-                return Context.Articles.FirstOrDefault(x => x.Id == ArticleId);
+                return Context.Articles.Include(x=>x.FrontpageImage).FirstOrDefault(x => x.Id == ArticleId);
             }
         }
 
@@ -76,7 +76,8 @@ namespace Hallo.Controllers {
         }
 
         public ActionResult DeleteFrontpageImage() {
-            CurrentArticle.FrontpageImage = null;
+            Article a = CurrentArticle;
+            a.FrontpageImage = null;
             Context.SaveChanges();
             return RedirectToAction("FrontpageImage", new { id = ArticleId });
         }
@@ -95,7 +96,8 @@ namespace Hallo.Controllers {
         }
 
         public ActionResult SaveDescription(string description) {
-            CurrentArticle.FrontpageImage.Description = description;
+            Article a = CurrentArticle;
+            a.FrontpageImage.Description = description;
             Context.SaveChanges();
             return RedirectToAction("FrontpageImage", new { id = ArticleId });
         }
