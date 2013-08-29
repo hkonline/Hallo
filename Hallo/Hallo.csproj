@@ -306,7 +306,10 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\articelImages\images\" />
+    <Folder Include="Images\articelImages\thumbnails\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hallo.Core\Hallo.Core.csproj">
       <Project>{0d505019-0934-4334-bd11-7972c353d115}</Project>

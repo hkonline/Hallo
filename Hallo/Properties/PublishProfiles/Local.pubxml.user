@@ -21,37 +21,43 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/11/2013 12:29:06</publishTime>
     </File>
     <File Include="bin/bg-BG/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/da-DK/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/de-DE/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>08/17/2013 11:06:14</publishTime>
     </File>
     <File Include="bin/es-ES/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/fr-FR/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
+    </File>
+    <File Include="bin/Hallo.Core.dll">
+      <publishTime>08/29/2013 22:47:14</publishTime>
+    </File>
+    <File Include="bin/Hallo.Core.pdb">
+      <publishTime>08/29/2013 22:47:14</publishTime>
     </File>
     <File Include="bin/Hallo.dll">
-      <publishTime>08/25/2013 22:55:59</publishTime>
+      <publishTime>08/29/2013 22:47:15</publishTime>
     </File>
     <File Include="bin/Hallo.pdb">
-      <publishTime>08/25/2013 22:55:59</publishTime>
+      <publishTime>08/29/2013 22:47:15</publishTime>
     </File>
     <File Include="bin/HalloDal.dll">
-      <publishTime>08/25/2013 22:10:36</publishTime>
+      <publishTime>08/29/2013 22:47:15</publishTime>
     </File>
     <File Include="bin/HalloDal.pdb">
-      <publishTime>08/25/2013 22:10:36</publishTime>
+      <publishTime>08/29/2013 22:47:14</publishTime>
     </File>
     <File Include="bin/Kendo.Mvc.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>07/02/2013 22:46:53</publishTime>
@@ -72,19 +78,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/11/2013 12:27:57</publishTime>
     </File>
     <File Include="bin/nl-NL/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/pl-PL/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/pt-BR/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/pt-PT/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
+    </File>
+    <File Include="bin/ro-RO/Kendo.Mvc.resources.dll">
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/ru-RU/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/Sherwood.dll">
       <publishTime>05/09/2013 23:08:37</publishTime>
@@ -96,7 +105,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/09/2013 23:08:37</publishTime>
     </File>
     <File Include="bin/sv-SE/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Extensions.dll">
       <publishTime>08/11/2013 12:28:52</publishTime>
@@ -138,7 +147,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/11/2013 12:27:49</publishTime>
     </File>
     <File Include="bin/uk-UA/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>08/11/2013 12:29:06</publishTime>
@@ -147,7 +156,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/02/2013 23:12:21</publishTime>
     </File>
     <File Include="bin/zh-CN/Kendo.Mvc.resources.dll">
-      <publishTime>03/19/2013 17:01:18</publishTime>
+      <publishTime>07/16/2013 21:15:24</publishTime>
     </File>
     <File Include="Content/kendo/2013.1.319/Black/editor.png">
       <publishTime>04/25/2013 22:49:52</publishTime>
@@ -516,7 +525,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/25/2013 22:49:51</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>08/25/2013 19:31:57</publishTime>
+      <publishTime>08/29/2013 18:56:06</publishTime>
     </File>
     <File Include="Content/themes/base/images/animated-overlay.gif">
       <publishTime>08/23/2013 22:06:37</publishTime>
@@ -722,6 +731,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Images/banner2012.png">
       <publishTime>04/11/2013 19:27:01</publishTime>
     </File>
+    <File Include="Images/delete-icon.png">
+      <publishTime>08/26/2013 22:07:54</publishTime>
+    </File>
     <File Include="Images/spacer.gif">
       <publishTime>08/11/2013 12:37:00</publishTime>
     </File>
@@ -732,7 +744,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/24/2013 11:40:28</publishTime>
     </File>
     <File Include="Scripts/Hallo.js">
-      <publishTime>07/02/2013 08:12:20</publishTime>
+      <publishTime>08/26/2013 00:41:24</publishTime>
     </File>
     <File Include="Scripts/jquery-2.0.0.js">
       <publishTime>04/25/2013 22:47:35</publishTime>
@@ -951,10 +963,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/11/2013 11:07:58</publishTime>
     </File>
     <File Include="Views/Article/Article.cshtml">
-      <publishTime>08/23/2013 21:08:31</publishTime>
+      <publishTime>08/29/2013 22:05:15</publishTime>
     </File>
     <File Include="Views/Article/Edit.cshtml">
-      <publishTime>08/24/2013 14:23:16</publishTime>
+      <publishTime>08/29/2013 19:33:51</publishTime>
     </File>
     <File Include="Views/Article/List.cshtml">
       <publishTime>08/24/2013 14:24:06</publishTime>
@@ -974,14 +986,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Home/SignOnTest.cshtml">
       <publishTime>07/02/2013 08:15:19</publishTime>
     </File>
+    <File Include="Views/Image/FrontpageImage.cshtml">
+      <publishTime>08/29/2013 22:20:28</publishTime>
+    </File>
     <File Include="Views/Image/List.cshtml">
-      <publishTime>08/24/2013 21:39:38</publishTime>
+      <publishTime>08/26/2013 22:24:42</publishTime>
     </File>
     <File Include="Views/InfoBox/CurrentInfo.cshtml">
       <publishTime>08/18/2013 08:47:27</publishTime>
     </File>
     <File Include="Views/Shared/DisplayTemplates/FrontPageArticle.cshtml">
-      <publishTime>08/23/2013 07:42:33</publishTime>
+      <publishTime>08/29/2013 22:06:54</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/Currency.cshtml">
       <publishTime>03/19/2013 17:01:18</publishTime>
@@ -1014,25 +1029,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/02/2013 08:12:20</publishTime>
     </File>
     <File Include="Views/Shared/_Contacts.cshtml">
-      <publishTime>08/25/2013 21:57:29</publishTime>
+      <publishTime>08/26/2013 00:40:14</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>08/25/2013 21:08:51</publishTime>
+      <publishTime>08/26/2013 21:47:09</publishTime>
     </File>
     <File Include="Views/Shared/_Links.cshtml">
       <publishTime>08/23/2013 07:57:00</publishTime>
     </File>
     <File Include="Views/Test/Index.cshtml">
-      <publishTime>08/11/2013 20:34:58</publishTime>
+      <publishTime>08/26/2013 21:43:44</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>08/23/2013 21:51:12</publishTime>
+      <publishTime>08/26/2013 19:47:43</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>07/02/2013 08:12:20</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/25/2013 22:58:35</publishTime>
+      <publishTime>08/29/2013 22:47:16</publishTime>
     </File>
   </ItemGroup>
 </Project>
