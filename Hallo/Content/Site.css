@@ -9,6 +9,10 @@ input {
     font: 10pt Verdana,Tahoma,Arial;
 }
 
+    input[type=text] {
+        class: k-
+    }
+
 textarea {
     font: 10pt Verdana,Tahoma,Arial;
 }

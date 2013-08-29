@@ -1,0 +1,46 @@
+﻿@model Hallo.ViewModels.ImageViewModel
+
+<h2>Forsidebillede</h2>
+
+<p>Forsidebilledet vises også i starten af artiklen.</p>
+
+@if (Model.Images[0] != null) {
+    using (Html.BeginForm("DeleteFrontpageImage", "Image")) {
+    <table>
+        <tr>
+            <td style="padding: 10px 10px 10px 10px;">
+                <img src="@Model.GetThumbUrl(Model.Images[0])" />
+            </td>
+            <td style="padding: 10px 10px 10px 10px;">
+                <input type="submit" value="Slet billede" class="k-button" />
+            </td>
+        </tr>
+    </table>
+    }
+    using (Html.BeginForm("SaveDescription", "Image")) {
+    <table>
+        <tr>
+            <td style="padding: 10px 10px 10px 10px;">
+                @Html.LabelFor(m => m.Images[0].Description)
+            </td>
+            <td style="padding: 10px 10px 10px 10px;">
+                <input id="Description" name="Description" type="text" style="width: 600px;" class="k-textbox" value="@Model.Images[0].Description" />
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 10px 10px 10px 10px; text-align: right;" colspan="2">
+                <input type="submit" value="Gem billed-tekst" class="k-button" />
+            </td>
+        </tr>
+    </table>
+    }
+} else {
+    <form enctype="multipart/form-data" method="post">
+        <input type="file" id="file" name="file" class="k-input" />
+        <input type="submit" value="Upload" class="k-button" />
+    </form>
+}
+
+<div>
+    @Html.ActionLink("Tilbage til artiklen", "Edit", "Article", new { id = Model.ArticleId }, null)
+</div>

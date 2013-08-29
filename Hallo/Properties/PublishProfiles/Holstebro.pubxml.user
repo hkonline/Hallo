@@ -25,10 +25,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/17/2013 11:06:14</publishTime>
     </File>
     <File Include="bin/Hallo.dll">
-      <publishTime>08/25/2013 22:11:41</publishTime>
+      <publishTime>08/25/2013 23:41:01</publishTime>
     </File>
     <File Include="bin/Hallo.pdb">
-      <publishTime>08/25/2013 22:11:41</publishTime>
+      <publishTime>08/25/2013 23:41:01</publishTime>
     </File>
     <File Include="bin/HalloDal.dll">
       <publishTime>08/25/2013 22:10:36</publishTime>
@@ -382,7 +382,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/18/2013 08:47:27</publishTime>
     </File>
     <File Include="Views/Shared/DisplayTemplates/FrontPageArticle.cshtml">
-      <publishTime>08/23/2013 07:42:33</publishTime>
+      <publishTime>08/25/2013 23:34:10</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>07/02/2013 08:12:20</publishTime>
@@ -409,7 +409,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/02/2013 08:12:20</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/25/2013 22:10:45</publishTime>
+      <publishTime>08/25/2013 23:41:11</publishTime>
     </File>
   </ItemGroup>
 </Project>

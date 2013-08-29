@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalloDal", "HalloDal\HalloD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HalloDalTest", "HalloDalTest\HalloDalTest.csproj", "{C6B40F35-085A-45EF-BDDB-032C7A4B75F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hallo.Core", "Hallo.Core\Hallo.Core.csproj", "{0D505019-0934-4334-BD11-7972C353D115}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{C6B40F35-085A-45EF-BDDB-032C7A4B75F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6B40F35-085A-45EF-BDDB-032C7A4B75F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6B40F35-085A-45EF-BDDB-032C7A4B75F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D505019-0934-4334-BD11-7972C353D115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D505019-0934-4334-BD11-7972C353D115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D505019-0934-4334-BD11-7972C353D115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D505019-0934-4334-BD11-7972C353D115}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

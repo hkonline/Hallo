@@ -47,6 +47,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\..\Program Files (x86)\Telerik\Kendo UI for ASP.NET MVC Q2 2013\wrappers\aspnetmvc\Binaries\Mvc3\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\ExternalLibraries\log4net.dll</HintPath>
     </Reference>
@@ -163,6 +166,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FrontPageArticle.cs" />
     <Compile Include="ViewModels\HKMenuItem.cs" />
+    <Compile Include="ViewModels\ImageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ClientSettings.xml">
@@ -242,6 +246,7 @@
     <Content Include="Images\arrow-up-icon.png" />
     <Content Include="Images\ar_rup.gif" />
     <Content Include="Images\banner.jpg" />
+    <Content Include="Images\delete-icon.png" />
     <Content Include="Images\spacer.gif" />
     <Content Include="Images\VFKClogo128.png" />
     <Content Include="Scripts\Hallo.js" />
@@ -294,6 +299,7 @@
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Views\Image\List.cshtml" />
+    <Content Include="Views\Image\FrontpageImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -302,6 +308,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Hallo.Core\Hallo.Core.csproj">
+      <Project>{0d505019-0934-4334-bd11-7972c353d115}</Project>
+      <Name>Hallo.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HalloDal\HalloDal.csproj">
       <Project>{ea933c20-dd05-481f-bfde-19e6ccfaa58c}</Project>
       <Name>HalloDal</Name>

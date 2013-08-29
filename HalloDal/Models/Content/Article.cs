@@ -1,7 +1,5 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.ComponentModel;
 
 namespace HalloDal.Models.Content {
@@ -20,6 +18,7 @@ namespace HalloDal.Models.Content {
         [DisplayName("Forsidetekst")]
         public string FrontpageText { get; set; }
 
+        [DisplayName("Forsidebillede")]
         public virtual Image FrontpageImage { get; set; }
         public string Text { get; set; }
         

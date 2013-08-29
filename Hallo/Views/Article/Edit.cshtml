@@ -50,8 +50,12 @@
             @Html.ValidationMessageFor(model => model.Text)
         </div>
 
+        <div>
+            <br />
+            @Html.ActionLink("Vælg forsidebillede", "FrontpageImage", "Image", new { id = @Model.Id }, null)
+        </div>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Gem" class="k-button" />
         </p>
     </fieldset>
 }
@@ -75,5 +79,5 @@
         selector: '#FrontpageText',
         menubar: false,
         statusbar: false
-    });    
+    });
 </script>
