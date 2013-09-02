@@ -45,10 +45,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/29/2013 22:47:14</publishTime>
     </File>
     <File Include="bin/Hallo.dll">
-      <publishTime>09/02/2013 07:25:52</publishTime>
+      <publishTime>09/02/2013 07:32:06</publishTime>
     </File>
     <File Include="bin/Hallo.pdb">
-      <publishTime>09/02/2013 07:25:52</publishTime>
+      <publishTime>09/02/2013 07:32:06</publishTime>
     </File>
     <File Include="bin/HalloDal.dll">
       <publishTime>08/29/2013 22:47:15</publishTime>
@@ -721,6 +721,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Images/arrow-up-icon.png">
       <publishTime>08/24/2013 20:15:04</publishTime>
+    </File>
+    <File Include="Images/articelImages/images/images.txt">
+      <publishTime>09/02/2013 07:31:02</publishTime>
+    </File>
+    <File Include="Images/articelImages/thumbnails/Thumbs.txt">
+      <publishTime>09/02/2013 07:31:21</publishTime>
     </File>
     <File Include="Images/ar_rup.gif">
       <publishTime>07/02/2013 08:12:20</publishTime>

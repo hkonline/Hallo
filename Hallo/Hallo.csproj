@@ -245,8 +245,8 @@
     <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
     <Content Include="Images\arrow-down-icon.png" />
     <Content Include="Images\arrow-up-icon.png" />
-    <Content Include="Images\articelImages\images\images.txt" />
-    <Content Include="Images\articelImages\thumbnails\Thumbs.txt" />
+    <Content Include="Images\articleImages\images\images.txt" />
+    <Content Include="Images\articleImages\thumbnails\Thumbs.txt" />
     <Content Include="Images\ar_rup.gif" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\delete-icon.png" />
