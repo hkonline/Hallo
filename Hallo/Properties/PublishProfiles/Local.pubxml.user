@@ -45,10 +45,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/29/2013 22:47:14</publishTime>
     </File>
     <File Include="bin/Hallo.dll">
-      <publishTime>08/29/2013 22:59:49</publishTime>
+      <publishTime>09/02/2013 07:25:52</publishTime>
     </File>
     <File Include="bin/Hallo.pdb">
-      <publishTime>08/29/2013 22:59:49</publishTime>
+      <publishTime>09/02/2013 07:25:52</publishTime>
     </File>
     <File Include="bin/HalloDal.dll">
       <publishTime>08/29/2013 22:47:15</publishTime>
@@ -963,10 +963,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/11/2013 11:07:58</publishTime>
     </File>
     <File Include="Views/Article/Article.cshtml">
-      <publishTime>08/29/2013 22:05:15</publishTime>
+      <publishTime>09/02/2013 07:20:47</publishTime>
     </File>
     <File Include="Views/Article/Edit.cshtml">
-      <publishTime>08/29/2013 19:33:51</publishTime>
+      <publishTime>09/02/2013 07:25:39</publishTime>
     </File>
     <File Include="Views/Article/List.cshtml">
       <publishTime>08/24/2013 14:24:06</publishTime>
@@ -987,10 +987,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/02/2013 08:15:19</publishTime>
     </File>
     <File Include="Views/Image/FrontpageImage.cshtml">
-      <publishTime>08/29/2013 22:20:28</publishTime>
+      <publishTime>08/31/2013 14:29:25</publishTime>
     </File>
     <File Include="Views/Image/List.cshtml">
-      <publishTime>08/26/2013 22:24:42</publishTime>
+      <publishTime>09/02/2013 07:24:20</publishTime>
+    </File>
+    <File Include="Views/Image/Slideshow.cshtml">
+      <publishTime>09/02/2013 07:06:01</publishTime>
     </File>
     <File Include="Views/InfoBox/CurrentInfo.cshtml">
       <publishTime>08/18/2013 08:47:27</publishTime>
@@ -1009,6 +1012,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Shared/EditorTemplates/GridForeignKey.cshtml">
       <publishTime>03/19/2013 17:01:18</publishTime>
+    </File>
+    <File Include="Views/Shared/EditorTemplates/ImageViewModel.cshtml">
+      <publishTime>09/01/2013 23:16:09</publishTime>
     </File>
     <File Include="Views/Shared/EditorTemplates/Integer.cshtml">
       <publishTime>03/19/2013 17:01:18</publishTime>

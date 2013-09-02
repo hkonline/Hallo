@@ -245,6 +245,8 @@
     <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Mapping.tt" />
     <Content Include="Images\arrow-down-icon.png" />
     <Content Include="Images\arrow-up-icon.png" />
+    <Content Include="Images\articelImages\images\images.txt" />
+    <Content Include="Images\articelImages\thumbnails\Thumbs.txt" />
     <Content Include="Images\ar_rup.gif" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\delete-icon.png" />
@@ -309,10 +311,7 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\articelImages\images\" />
-    <Folder Include="Images\articelImages\thumbnails\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Hallo.Core\Hallo.Core.csproj">
       <Project>{0d505019-0934-4334-bd11-7972c353d115}</Project>
