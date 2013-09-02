@@ -4,12 +4,12 @@
 
 <p>Forsidebilledet vises også i starten af artiklen.</p>
 
-@if (Model.Images[0] != null) {
+@if (Model.Image != null) {
     using (Html.BeginForm("DeleteFrontpageImage", "Image")) {
     <table>
         <tr>
             <td style="padding: 10px 10px 10px 10px;">
-                <img src="@Model.GetThumbUrl(Model.Images[0])" />
+                <img src="@Model.GetThumbUrl()" />
             </td>
             <td style="padding: 10px 10px 10px 10px;">
                 <input type="submit" value="Slet billede" class="k-button" />
@@ -21,10 +21,10 @@
     <table>
         <tr>
             <td style="padding: 10px 10px 10px 10px;">
-                @Html.LabelFor(m => m.Images[0].Description)
+                @Html.LabelFor(m => m.Image.Description)
             </td>
             <td style="padding: 10px 10px 10px 10px;">
-                <input id="Description" name="Description" type="text" style="width: 600px;" class="k-textbox" value="@Model.Images[0].Description" />
+                <input id="Description" name="Description" type="text" style="width: 600px;" class="k-textbox" value="@Model.Image.Description" />
             </td>
         </tr>
         <tr>

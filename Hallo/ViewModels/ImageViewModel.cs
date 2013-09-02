@@ -1,38 +1,51 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Configuration;
 using HalloDal.Models.Content;
-using System.Web;
+using Hallo.Images;
 
 namespace Hallo.ViewModels {
     public class ImageViewModel {
-        public ImageViewModel(int id) {
-            ArticleId = id;
+
+        public int Id {
+            get { return Image.Id; }
+            set { Image.Id = value; }
         }
 
-        public int ArticleId { get; private set; }
-        public List<Image> Images { get; set; }
+        public string Description {
+            get { return Image.Description; }
+            set { Image.Description = value; }
+        }
 
-        private static string imageDirectoryUrl;
-        private string ImageDirectoryUrl {
+        public int OrderNr {
             get {
-                if (imageDirectoryUrl == null)
-                    imageDirectoryUrl =
-                        HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
-                        HttpRuntime.AppDomainAppVirtualPath +
-                        ConfigurationManager.AppSettings["ImageDirectoryUrl"];
-
-                return imageDirectoryUrl;
+                if (Image.OrderNr == null) return 0;
+                return (int) Image.OrderNr; 
             }
+            set { Image.OrderNr = value; }
         }
 
-        public string GetImageUrl(Image image) {
-            return ImageDirectoryUrl + "/images/img" + image.Id + ".jpg";
+        public ImageViewModel(int articleId, Image image) {
+            ArticleId = articleId;
+            Image = image;
         }
 
-        public string GetThumbUrl(Image image) {
-            return ImageDirectoryUrl + "/thumbnails/img" + image.Id + ".jpg";
+        public ImageViewModel() {
+            Image = new Image();
         }
+
+        public int ArticleId { get; set; }
+
+        public Image Image { get; set; }
+
+        public string GetImageUrl() {
+            return ImageFinder.GetImageUrl(Image);
+        }
+
+        public string GetThumbUrl() {
+            return ImageFinder.GetThumbUrl(Image);
+        }
+
+        public bool IsFirst;
+        public bool IsLast;
     }
 }

@@ -1,0 +1,29 @@
+﻿@model Hallo.ViewModels.ImageViewModel
+
+<td class="btext" style="width: 200px; text-align: left;">
+    <img class="taimg" src="@Model.GetThumbUrl()" id="img@(Model.OrderNr)" /><br />
+    <div style="vertical-align: bottom;">
+        Billedtekst:
+        <br />
+        @Html.TextAreaFor(m => m.Description, new { cols = "25", rows = "2", id = "description" + Model.OrderNr })
+        @Html.HiddenFor(m => m.OrderNr)
+        @Html.HiddenFor(m => m.Id, new { id = "hiddenId" + Model.OrderNr })
+    </div>
+</td>
+<td>
+    @if (!Model.IsFirst) {
+@*<a href="/Image/OrderUp/@Model.Image.Id">*@
+        <img src="~/Images/arrow-up-icon.png" title="Flyt én plads op" onclick="toggleUp(@Model.OrderNr)" />
+    }
+    <br />
+    <a href="/Image/Delete/@Model.Image.Id">
+        <img src="~/Images/delete-icon.png" title="Slet billed" />
+    </a>
+    <br />
+    @if (!Model.IsLast) {
+@*<a href="/Image/OrderDown/@Model.Image.Id">*@
+        <img src="~/Images/arrow-down-icon.png" title="Flyt én plads ned" onclick="toggleDown(@Model.OrderNr)" />
+    }
+</td>
+@Html.Raw((Model.OrderNr + 1) % 3 == 0 ? "</tr><tr>" : "")
+
