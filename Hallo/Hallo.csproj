@@ -247,6 +247,17 @@
     <Content Include="Images\arrow-up-icon.png" />
     <Content Include="Images\ar_rup.gif" />
     <Content Include="Images\banner.jpg" />
+    <Content Include="Images\banner\1.jpg" />
+    <Content Include="Images\banner\10.jpg" />
+    <Content Include="Images\banner\2.jpg" />
+    <Content Include="Images\banner\3.jpg" />
+    <Content Include="Images\banner\4.jpg" />
+    <Content Include="Images\banner\5.jpg" />
+    <Content Include="Images\banner\6.jpg" />
+    <Content Include="Images\banner\7.jpg" />
+    <Content Include="Images\banner\8.jpg" />
+    <Content Include="Images\banner\9.jpg" />
+    <Content Include="Images\banner\kbh2012.png" />
     <Content Include="Images\delete-icon.png" />
     <Content Include="Images\spacer.gif" />
     <Content Include="Images\VFKClogo128.png" />
