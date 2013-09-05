@@ -5,10 +5,7 @@ namespace Hallo {
     public class BundleConfig {
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles) {
-            bundles.Add(new ScriptBundle("~/bundles/plugins").Include(
-                "~/Scripts/Unslider.js"                 // Slideshow
-            ));
-
+            
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"
             ));
@@ -20,6 +17,10 @@ namespace Hallo {
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                 "~/Scripts/jquery.unobtrusive*",
                 "~/Scripts/jquery.validate*"
+            ));
+
+            bundles.Add(new ScriptBundle("~/bundles/plugins").Include(
+                "~/Scripts/jquery.slides.min.js"  // Slideshow
             ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

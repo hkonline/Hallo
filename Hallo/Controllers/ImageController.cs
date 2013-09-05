@@ -23,26 +23,22 @@ namespace Hallo.Controllers {
         Article CurrentArticle {
             get {
                 if (ArticleId == 0) return null;
-                return Context.Articles.Include(x => x.FrontpageImage).Include(x=>x.Images).FirstOrDefault(x => x.Id == ArticleId);
+                return Context.Articles.Include(x => x.FrontpageImage).Include(x => x.Images).FirstOrDefault(x => x.Id == ArticleId);
             }
         }
 
         #region Imagelist
+        [HttpGet]
         public ActionResult List(int id) {
-            Session["CurrentArticleId"] = id;
-
+            List<Image> list = GetImages(id);
             List<ImageViewModel> model = new List<ImageViewModel>();
-            List<Image> list = Context.Articles
-                .First(x => x.Id == id)
-                .Images
-                .OrderBy(x => x.OrderNr)
-                .ToList();
+            ViewBag.ArticleId = id;
 
             foreach (Image i in list) {
                 i.OrderNr = list.IndexOf(i);
-                model.Add(new ImageViewModel(ArticleId, i) { 
+                model.Add(new ImageViewModel(ArticleId, i) {
                     IsFirst = list.IndexOf(i) == 0,
-                    IsLast = list.IndexOf(i) == list.Count()-1
+                    IsLast = list.IndexOf(i) == list.Count() - 1
                 });
             }
             Context.SaveChanges();
@@ -55,7 +51,7 @@ namespace Hallo.Controllers {
             foreach (ImageViewModel m in list) {
                 m.IsFirst = m.OrderNr == 0;
                 m.IsLast = m.OrderNr == list.Count - 1;
-                Image image = CurrentArticle.Images.FirstOrDefault(x=>x.Id == m.Id);
+                Image image = CurrentArticle.Images.FirstOrDefault(x => x.Id == m.Id);
                 image.OrderNr = m.OrderNr;
                 image.Description = m.Description;
             }
@@ -63,32 +59,6 @@ namespace Hallo.Controllers {
             ViewBag.ArticleId = ArticleId;
             return View(list);
         }
-
-        /*public ActionResult OrderUp(int id) {
-            Image image = Context.Images.FirstOrDefault(x => x.Id == id);
-            int orderNr = (int)image.OrderNr;
-            Image imageAbove = Context.Articles.FirstOrDefault(x => x.Id == ArticleId)
-                .Images.FirstOrDefault(x => x.OrderNr == orderNr - 1);
-            if (image != null && imageAbove != null) {
-                image.OrderNr -= 1;
-                imageAbove.OrderNr += 1;
-                Context.SaveChanges();
-            }
-            return RedirectToAction("List", new { id = ArticleId });
-        }
-
-        public ActionResult OrderDown(int id) {
-            Image image = Context.Images.FirstOrDefault(x => x.Id == id);
-            int orderNr = (int)image.OrderNr;
-            Image imageBelow = Context.Articles.FirstOrDefault(x => x.Id == ArticleId)
-                .Images.FirstOrDefault(x => x.OrderNr == orderNr + 1);
-            if (image != null && imageBelow != null) {
-                image.OrderNr += 1;
-                imageBelow.OrderNr -= 1;
-                Context.SaveChanges();
-            }
-            return RedirectToAction("List", new { id = ArticleId });
-        }*/
 
         public ActionResult UploadImages(IEnumerable<HttpPostedFileBase> files) {
             if (files != null) {
@@ -121,7 +91,7 @@ namespace Hallo.Controllers {
         public ActionResult FrontpageImage(int id) {
             Session["CurrentArticleId"] = id;
             Image image = Context.Articles.Include(x => x.FrontpageImage).FirstOrDefault(x => x.Id == id).FrontpageImage;
-            ImageViewModel model = new ImageViewModel( ArticleId, image);
+            ImageViewModel model = new ImageViewModel(ArticleId, image);
             return View(model);
         }
 
@@ -182,8 +152,21 @@ namespace Hallo.Controllers {
             );
         }
 
-        public void Slideshow(int articleId) { 
-        
+        private List<Image> GetImages(int articleId) {
+            Session["CurrentArticleId"] = articleId;
+
+            return Context.Articles.Include(m=>m.Images)
+                .First(x => x.Id == articleId)
+                .Images
+                .OrderBy(x => x.OrderNr)
+                .ToList();
+        }
+
+        public ActionResult Slideshow(int articleId) {
+            List<Image> list = GetImages(articleId);
+            List<ImageViewModel> model = new List<ImageViewModel>();
+            foreach (Image i in list) model.Add(new ImageViewModel(ArticleId, i));
+            return View(model);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@using System.Configuration
 @{
-    ViewBag.Title = ConfigurationManager.AppSettings["Title"];        
+    ViewBag.Title = ConfigurationManager.AppSettings["Title"];
     if (ViewBag.ContentWidth == null) {
         ViewBag.ContentWidth = 761;
     }
@@ -19,15 +19,16 @@
 
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/Hallo.js")
-    @Scripts.Render("~/bundles/jquery") 
-    @Scripts.Render("~/bundles/plugins") 
-    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/plugins")
+
     <link href="http://cdn.kendostatic.com/2013.2.716/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
     <link href="http://cdn.kendostatic.com/2013.2.716/styles/kendo.blueopal.min.css" rel="stylesheet" type="text/css" />
     <script src="http://cdn.kendostatic.com/2013.2.716/js/kendo.web.min.js"></script>
     <script src="http://cdn.kendostatic.com/2013.2.716/js/kendo.aspnetmvc.min.js"></script>
     <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 
+    <!--
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-35607073-1']);
@@ -37,15 +38,48 @@
             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
-    </script>
+    </script>-->
+
+    <style>
+        #bannerDiv {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <script src="http://widgets.brunstad.org/TopBar/js?mode=public" type="text/javascript"></script>
     <a id="top"></a>
     <div id="containerDiv">
         <div id="bannerDiv">
-            <a href="/"><img src="~/Images/banner.jpg" /></a>
+            <img src="/Images/banner/1.jpg" />
+            <img src="/Images/banner/2.jpg" />
+            <img src="/Images/banner/3.jpg" />
+            <img src="/Images/banner/4.jpg" />
+            <img src="/Images/banner/5.jpg" />
+            <img src="/Images/banner/6.jpg" />
+            <img src="/Images/banner/7.jpg" />
+            <img src="/Images/banner/8.jpg" />
+            <img src="/Images/banner/9.jpg" />
+            <img src="/Images/banner/10.jpg" />
         </div>
+        <script>
+            $(function () {
+                $("#bannerDiv").slidesjs({
+                    width: 998,
+                    height: 190,
+                    play: {
+                        auto: true,
+                        interval: 5000,
+                        effect: "fade"
+                    },
+                    effect: {
+                        fade: {
+                            speed: 2000
+                        }
+                    }
+                });
+            });
+        </script>
         @if (ViewBag.ShowLeft != false) {
             <div id="frontpageLeft">
                 @*@Html.Partial("_BKMAccount")*@

@@ -1,29 +1,30 @@
-﻿@using HalloDal.Models.Content
-@using Hallo.ViewModels
+﻿@using Hallo.ViewModels
 @model List<ImageViewModel>
 
 <h2>Artikelbilleder</h2>
-@using (Html.BeginForm()) {
-    <table style="text-align: center;">
-        <tr>
-            @Html.EditorFor(m => m)
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td colspan="5" style="text-align: right;">
-                <input type="submit" value="Gem rækkefølge og tekster" class="k-button" />
-            </td>
-        </tr>
-    </table>   
+@if (Model.Count() > 0) {
+    using (Html.BeginForm()) {
+        <table style="text-align: center;">
+            <tr>
+                @Html.EditorFor(m => m)
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="5" style="text-align: right;">
+                    <input type="submit" value="Gem rækkefølge og tekster" class="k-button" />
+                </td>
+            </tr>
+        </table>   
+    }
 }
 
 <form method="post" action="@Url.Action("UploadImages")">
     Vælg filer: @Html.Kendo().Upload().Name("files")
     <input type="submit" class="k-button" value="Upload billeder" />
 </form>
-
+<br />
 <div>
     @Html.ActionLink("Tilbage til artiklen", "Edit", "Article", new { id = ViewBag.ArticleId }, null)
 </div>
@@ -37,7 +38,7 @@
         toggle(index, index + 1);
     }
 
-    function toggle( index1, index2 ) {
+    function toggle(index1, index2) {
         var Id1 = $("#hiddenId" + index1);
         var Id2 = $("#hiddenId" + index2);
         var tempId = Id1.val();

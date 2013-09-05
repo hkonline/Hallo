@@ -9,10 +9,6 @@ input {
     font: 10pt Verdana,Tahoma,Arial;
 }
 
-    input[type=text] {
-        class: k-
-    }
-
 textarea {
     font: 10pt Verdana,Tahoma,Arial;
 }
@@ -278,7 +274,7 @@ textarea {
     width: 998px;
     margin: 0 auto;
     vertical-align: top;
-    background-color: #1B94E0;
+    background-color: white;
     text-align: center;
     border-style: solid;
     border-width: 2px;
@@ -289,11 +285,9 @@ textarea {
 
 #bannerDiv {
     width: 100%;
-    height: 180px;
+    height: 190px;
     border-style: none;
     border-width: thin;
-    border-bottom-style: solid;
-    border-bottom-width: 3px;
     border-top-style: none;
 }
 
