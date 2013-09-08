@@ -13,7 +13,7 @@
     <style type="text/css">
         A.link {
             color: #0040B0;
-            font: 10pt Verdana,Tahoma,Arial;
+            font: 10pt Georgia, Verdana,Tahoma,Arial;
             text-decoration: none;
         }
 
@@ -45,53 +45,57 @@
     </script>
 </head>
 <body style="background-color: white; margin: 2px;" onload="autoresize();">
-    @using (Html.BeginForm()) {
-        @Html.HiddenFor(m => m.ArticleId)
-        <table>
-            <tr>
-                <td style="width: 50px;">
-                    @if (!Model.IsFirst) {
-                        <a id="previous" href="/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr - 1)">
-                            <img src="~/Images/previous.jpg" />
-                        </a>
-                    }
-                </td>
-                <td style="text-align: center;">
-                    <span class="text" id="div1">
-                        <br />
-                        <br />
-                        <b>Henter billede...</b><br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                    </span>
-                    <img id="TheImage" src="@Model.GetImageUrl()" /><br />
-                    <span id="LblText" class="text">@Model.Description</span>
-                </td>
-                <td style="width: 50px;">
-                    @if (!Model.IsLast) {
-                        <a id="next" href="/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr + 1)">
-                            <img src="~/Images/next.jpg" />
-                        </a>
-                    }
-                </td>
-            </tr>
-        </table>
-        <div style="text-align: right;">
-            <input type="button" value="Luk vindue" onclick="self.close()" />
-        </div>
-    }
+    <table>
+        <tr>
+            <td style="width: 50px;">
+                @if (!Model.IsFirst) {
+                    <a id="previous" href="/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr - 1)">
+                        <img src="~/Images/previous.jpg" />
+                    </a>
+                }
+            </td>
+            <td style="text-align: center;">
+                <span class="text" id="div1">
+                    <br />
+                    <br />
+                    <b>Henter billede...</b><br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </span>
+                <img id="TheImage" src="@Model.GetImageUrl()" /><br />
+                <span id="LblText" class="text">@Model.Description</span>
+            </td>
+            <td style="width: 50px;">
+                @if (!Model.IsLast) {
+                    <a id="next" href="/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr + 1)">
+                        <img src="~/Images/next.jpg" />
+                    </a>
+                }
+            </td>
+        </tr>
+    </table>
+    <div style="text-align: right;">
+        <input type="button" value="Luk vindue" onclick="self.close()" />
+    </div>
+
     <script>
         autoresize();
+
+        var isLast = @(Model.IsLast.ToString().ToLower());
+        var isFirst = @(Model.IsFirst.ToString().ToLower());
+
         $("body").keydown(function (e) {
             if (e.keyCode == 37) { // left
-                window.location.href = '/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr - 1)';
+                if (!isFirst)
+                    window.location.href = '/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr - 1)';
             }
             else if (e.keyCode == 39) { // right
-                window.location.href = '/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr + 1)';
+                if(!isLast)
+                    window.location.href = '/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr + 1)';
             }
             else if (e.keyCode == 27) {
                 window.close();

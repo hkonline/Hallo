@@ -16,7 +16,7 @@ namespace Hallo.Controllers {
         int ArticleId {
             get {
                 object o = Session["CurrentArticleId"];
-                return o == null ? 0 : (int) o;
+                return o == null ? 0 : (int)o;
             }
         }
 
@@ -158,7 +158,7 @@ namespace Hallo.Controllers {
         public List<Image> GetImages(int articleId) {
             Session["CurrentArticleId"] = articleId;
 
-            return Context.Articles.Include(m=>m.Images)
+            return Context.Articles.Include(m => m.Images)
                 .First(x => x.Id == articleId)
                 .Images
                 .OrderBy(x => x.OrderNr)
@@ -166,9 +166,18 @@ namespace Hallo.Controllers {
         }
 
         public ActionResult Slideshow(int id, int orderNr) {
-            Image image = Context.Articles.First(x => x.Id == id).Images.First(i => i.OrderNr == orderNr);
-            ImageViewModel model = new ImageViewModel(id, image);
-            return View(model);
+            ArticleViewModel m = (ArticleViewModel)Session["CurrentArticleViewModel"];
+            
+            ImageViewModel image;
+            if (orderNr >= 0) {
+                image = m.Images.First(i => i.OrderNr == orderNr);
+            } else
+                image = new ImageViewModel(id, m.Article.FrontpageImage);
+
+            image.IsFirst = orderNr == -1;
+            image.IsLast = orderNr == (m.Images.Count() - 1);
+            
+            return View(image);
         }
     }
 }

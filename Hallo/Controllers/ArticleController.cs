@@ -26,6 +26,8 @@ namespace Hallo.Controllers {
                 Images = GetImages(id)
             };
 
+            Session["CurrentArticleViewModel"] = model;
+
             model.FrontPageImage = new ImageViewModel(id, model.Article.FrontpageImage);
 
             return View(model);
