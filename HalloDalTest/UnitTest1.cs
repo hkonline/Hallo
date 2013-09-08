@@ -2,15 +2,25 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Data;
 using System.Linq;
 using HalloDal.Models.Content;
+using HalloDal.Migrations;
 using System.Collections.Generic;
 using HalloDal.Models;
+using System.Data.Entity;
 
 namespace HalloDalTest {
     [TestClass]
     public class UnitTest1 {
+
+        public static void init() {            
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HalloContext, HalloDal.Migrations.Configuration>());
+            HalloContext c = new HalloContext();
+        }
+
+        public UnitTest1() {
+            init();
+        }
 
         public SqlConnection GetSourceConnection() {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["kobenhavn"].ConnectionString);
@@ -18,6 +28,7 @@ namespace HalloDalTest {
             return con;
         }
 
+        // This method can load old articles from HK-online to a new Hallo-DB
         public void GetOldArticles(HalloContext context) {
             SqlConnection sourceConnection = GetSourceConnection();
             SqlCommand articleCmd = new SqlCommand(
@@ -53,6 +64,7 @@ namespace HalloDalTest {
             sourceConnection.Close();
         }
 
+        // This method can load old images from HK-online to a new Hallo-DB
         public ICollection<Image> GetOldImages(int articleId) {
             SqlConnection sourceConnection = GetSourceConnection();
             SqlCommand imageCmd = new SqlCommand(
@@ -74,6 +86,7 @@ namespace HalloDalTest {
             return images;
         }
 
+        // This method can load old images from HK-online to a new Hallo-DB
         public Image GetOldFrontPageImage(int articleId) {
             Image i = null;
             SqlConnection sourceConnection = GetSourceConnection();
@@ -94,6 +107,7 @@ namespace HalloDalTest {
             return i;
         }
 
+        // This method loads ArticleCategories from HK-online to a new Hallo-DB
         public void InitArticleCategories(HalloContext context) {
             if (context.Categories.Count() > 0) return;
 
@@ -120,5 +134,22 @@ namespace HalloDalTest {
             //GetOldArticles(context);
             //Assert.IsTrue(context.Categories.Count() > 5);
         }
+
+        [TestMethod]
+        public void ReadImageDimensions() {
+            HalloContext context = new HalloContext();
+            List<Image> list = context.Images.ToList();
+
+            foreach (Image i in list) {
+                System.Drawing.Image jpgImage = System.Drawing.Image.FromFile(@"c:\Hallo\Hallo\Images\articleImages\images\img" + i.Id + ".jpg");
+                i.Width = jpgImage.Width;
+                i.Height = jpgImage.Height;
+            }
+
+            context.SaveChanges();
+        }
+     
     }
+
+
 }

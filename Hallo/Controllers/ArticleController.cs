@@ -1,26 +1,34 @@
-﻿using HalloDal.Models;
-using System;
+﻿using System;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Collections.Generic;
 using HalloDal.Models.Content;
+using Hallo.ViewModels;
 
 namespace Hallo.Controllers {
     public class ArticleController : HalloController {
 
-        public ActionResult Index(int id) {
-            return View();
+        private List<ImageViewModel> GetImages(int articleId) {
+            List<Image> list = Context.Articles.Include(m => m.Images).First(x => x.Id == articleId).Images.OrderBy(x => x.OrderNr).ToList();
+
+            List<ImageViewModel> imageViewModels = new List<ImageViewModel>();
+            foreach (Image i in list) imageViewModels.Add(new ImageViewModel(articleId, i));
+
+            return imageViewModels;
         }
 
         public ActionResult Article(int id) {
             ViewBag.ShowLeft = true;
 
-            return View(Context.Articles
-                .Where(x => x.Id == id)
-                .Include(x => x.Images)
-                .Include(x => x.FrontpageImage)
-                .SingleOrDefault()
-            );
+            ArticleViewModel model = new ArticleViewModel() {
+                Article = Context.Articles.Where(x => x.Id == id).Include(x => x.FrontpageImage).SingleOrDefault(),
+                Images = GetImages(id)
+            };
+
+            model.FrontPageImage = new ImageViewModel(id, model.Article.FrontpageImage);
+
+            return View(model);
         }
 
         public ActionResult List() {
@@ -44,14 +52,14 @@ namespace Hallo.Controllers {
 
         [HttpGet]
         public ActionResult Create() {
-            Article newArticle = new Article() { 
+            Article newArticle = new Article() {
                 Date = DateTime.Now,
             };
 
             Context.Articles.Add(newArticle);
             Context.SaveChanges();
 
-            return RedirectToAction("Edit", new { id = newArticle.Id});
+            return RedirectToAction("Edit", new { id = newArticle.Id });
         }
 
         public ActionResult Delete(int id) {
@@ -90,6 +98,5 @@ namespace Hallo.Controllers {
             Context.SaveChanges();
             return Json(null);
         }
-
     }
 }

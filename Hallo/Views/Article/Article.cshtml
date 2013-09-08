@@ -1,50 +1,51 @@
-﻿@using HalloDal.Models.Content;
-@using Hallo.ViewModels;
-@using Hallo.Images;
-@model Article
+﻿@using Hallo.ViewModels;
+@model ArticleViewModel
 
 @{
     ViewBag.Title = "Article";
 }
 
-<h2>@Model.Headline</h2>
+<h2>@Model.Article.Headline</h2>
 <img src="~/images/bluespc.gif" style="height: 1px; width: 95%;" /><br />
-<span class="bigtext" style="font-style: italic;">Af @Model.Author</span><br />
-<span class="smalltext">@Model.Date.ToShortDateString()</span><br />
+<span class="bigtext" style="font-style: italic;">Af @Model.Article.Author</span><br />
+<span class="smalltext">@Model.Article.Date.ToShortDateString()</span><br />
 
 <div class="bigtext">
     <table border="0" style="float: right;">
         <tr>
-            @if (Model.FrontpageImage != null) {
+            @if (Model.Article.FrontpageImage != null) {
                 <td class="btext" style="width: 200px;">
-                    <img class="taimg" src="@(FrontPageArticle.ImageDirectoryUrl + "/thumbnails/img" +
-                        (Model.FrontpageImage.OldId == null ? Model.FrontpageImage.Id : Model.FrontpageImage.OldId) +
-                        ".jpg")" />
+                    <img class="taimg" src="@Model.FrontPageImage.GetThumbUrl()" />
                     <br />
-                    @Model.FrontpageImage.Description
+                    @Model.Article.FrontpageImage.Description
                 </td>
             }
         </tr>
     </table>
     <div>
-        @Html.Raw(Model.Text)
+        @Html.Raw(Model.Article.Text)
     </div>
 </div>
 <table style="text-align: center; margin: 0 auto;">
     <tr>
-        @{
-            List<Image> iList = Model.Images.OrderBy(i => i.OrderNr).ToList();    
-        }
-        @foreach (Image i in iList) {
+        @foreach (ImageViewModel i in Model.Images) {
             <td class="btext" style="width: 200px; text-align: left;">
-                <img class="taimg" src="@ImageFinder.GetThumbUrl(i)" id="img@(i.OrderNr)" /><br />
+                <img class="taimg" src="@i.GetThumbUrl()" id="img@(i.OrderNr)" onclick="imgbyid(@Model.Article.Id, @i.OrderNr)" /><br />
                 @i.Description
             </td>
             @Html.Raw((i.OrderNr + 1) % 3 == 0 ? "</tr><tr>" : "")
         }
-        @{
-            iList.Add(Model.FrontpageImage);
-        }
     </tr>
 </table>
+<script>
+    function imgbyid(ID, ordernr) {
+        popup_win = window.open(
+            '/image/Slideshow/?Id=' + ID + "&OrderNr=" + ordernr,
+            'imgwin',
+            'status=no,scrollbars=yes,width=200,height=40,left,100,top=10,resizable=yes'
+        );
+        popup_win.opener.name = 'opener';
+        popup_win.focus();
+    }
+</script>
 

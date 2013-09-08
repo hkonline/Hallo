@@ -29,7 +29,6 @@ namespace Hallo.Images {
 
         public static string GetThumbUrl(Image i) {
             return ImageDirectoryUrl + "/thumbnails/img" + FileId(i) + ".jpg";
-        }
-
+        }        
     }
 }

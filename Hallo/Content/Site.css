@@ -3,22 +3,23 @@
 body {
     text-align: center;
     margin: 0 0 0 0;
+    font: Georgia, Verdana, Tahoma, Arial;
 }
 
 input {
-    font: 10pt Verdana,Tahoma,Arial;
+    font: 10pt Georgia, Verdana,Tahoma,Arial;
 }
 
 textarea {
-    font: 10pt Verdana,Tahoma,Arial;
+    font: 10pt Georgia, Verdana,Tahoma,Arial;
 }
 
 hidden {
-    font: 10pt Verdana,Tahoma,Arial;
+    font: 10pt Georgia, Verdana,Tahoma,Arial;
 }
 
 h2 {
-    font: bold 18pt Verdana,Tahoma,Arial;
+    font: bold 18pt Georgia, Verdana,Tahoma,Arial;
     display: inline;
 }
 
@@ -27,7 +28,7 @@ a {
 }
 
     a.link {
-        font: 10pt Verdana,Tahoma,Arial;
+        font: 10pt Georgia, Verdana,Tahoma,Arial;
         text-decoration: underline;
     }
 
@@ -40,20 +41,20 @@ a {
 }
 
 .text {
-    font: 10pt Verdana,Tahoma,Arial;
+    font: 10pt Georgia, Verdana,Tahoma,Arial;
 }
 
 .textred {
-    font: 10pt Verdana,Tahoma,Arial;
+    font: 10pt Georgia, Verdana,Tahoma,Arial;
     color: #E92D0C;
 }
 
 .bigtext {
-    font: 11pt Verdana,Tahoma,Arial;
+    font: 11pt Georgia, Verdana,Tahoma,Arial;
 }
 
 .smalltext {
-    font: 8pt Verdana,Tahoma,Arial;
+    font: 8pt Georgia, Verdana,Tahoma,Arial;
 }
 
 a.smalltext {
@@ -65,7 +66,7 @@ a.smalltext {
     }
 
 .vsmltext {
-    font: 7pt Verdana,Tahoma,Arial;
+    font: 7pt Georgia, Verdana,Tahoma,Arial;
 }
 
 a.vsmltext {
@@ -77,7 +78,7 @@ a.vsmltext {
     }
 
 .date {
-    font: italic 8pt Verdana,Tahoma,Arial;
+    font: italic 8pt Georgia, Verdana,Tahoma,Arial;
     color: #A3DEFE;
 }
 
@@ -87,12 +88,11 @@ a.vsmltext {
     vertical-align: top;
     margin: 2pt;
     padding: 2pt;
-    font: italic 8pt Verdana, Tahoma, Arial;
+    font: italic 8pt Georgia, Verdana, Tahoma, Arial;
     background-color: #E0E0E0;
 }
 
-.taimg
-{
+.taimg {
     border-width: 1px;
     border-style: solid;
     border-color: #000000;
@@ -100,7 +100,7 @@ a.vsmltext {
 }
 
 .bdate {
-    font: italic Verdana, Tahoma, Arial;
+    font: italic Georgia, Verdana, Tahoma, Arial;
     font-size: 7pt;
     color: #7A7A7A;
 }
@@ -132,12 +132,12 @@ a.titel {
     }
 
 .utitel {
-    font: bold 10pt Verdana,Tahoma,Arial;
+    font: bold 10pt Georgia, Verdana,Tahoma,Arial;
     color: #000000;
 }
 
 .note {
-    font: bold 10pt Verdana,Tahoma,Arial;
+    font: bold 10pt Georgia, Verdana,Tahoma,Arial;
     color: #0040B0;
 }
 
@@ -153,7 +153,7 @@ a.note {
 /*adtext*/
 .fpBox {
     background-color: #A3DEFE;
-    font: 8pt Verdana,Tahoma,Arial;
+    font: 8pt Georgia, Verdana,Tahoma,Arial;
     color: #FFFFFF;
     text-align: left;
     border-color: Black;
@@ -166,7 +166,7 @@ a.note {
 
 .menupkt {
     cursor: pointer;
-    font: 7pt Verdana,Tahoma,Arial;
+    font: 7pt Georgia, Verdana,Tahoma,Arial;
     color: #000000;
     text-decoration: none;
     background-color: White;
@@ -180,7 +180,7 @@ a.note {
 
 body {
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-family: Georgia, Verdana, Helvetica, Sans-Serif;
     color: #232323;
     background-color: #fff;
     text-align: center;

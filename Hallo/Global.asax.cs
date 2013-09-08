@@ -4,8 +4,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Globalization;
 using HalloDal.Models;
+using HalloDal.Migrations;
+using System.Data.Entity;
 
 namespace Hallo {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -14,15 +15,15 @@ namespace Hallo {
     public class MvcApplication : System.Web.HttpApplication {
         protected void Application_Start() {
             log4net.Config.XmlConfigurator.Configure();
-            
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
             HalloContext context = new HalloContext();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HalloContext, Configuration>());
             Application["FrontpageLinks"] = context.FrontpageLinks.OrderBy(x => x.Order).ToList();
         }
 

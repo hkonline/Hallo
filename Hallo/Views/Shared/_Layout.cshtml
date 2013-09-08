@@ -51,16 +51,9 @@
     <a id="top"></a>
     <div id="containerDiv">
         <div id="bannerDiv">
-            <img src="/Images/banner/1.jpg" />
-            <img src="/Images/banner/2.jpg" />
-            <img src="/Images/banner/3.jpg" />
-            <img src="/Images/banner/4.jpg" />
-            <img src="/Images/banner/5.jpg" />
-            <img src="/Images/banner/6.jpg" />
-            <img src="/Images/banner/7.jpg" />
-            <img src="/Images/banner/8.jpg" />
-            <img src="/Images/banner/9.jpg" />
-            <img src="/Images/banner/10.jpg" />
+            @for (int i = 1; i <= 10; i++) {
+                <a href="/Home"><img src="/Images/banner/@(i).jpg" /></a>             
+            }
         </div>
         <script>
             $(function () {

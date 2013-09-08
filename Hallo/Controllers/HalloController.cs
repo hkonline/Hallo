@@ -10,6 +10,7 @@ namespace Hallo.Controllers {
         protected HalloContext Context {
             get {
                 if (context == null) context = new HalloContext();
+                
                 return context;
             }
         }

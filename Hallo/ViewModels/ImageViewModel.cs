@@ -19,9 +19,25 @@ namespace Hallo.ViewModels {
         public int OrderNr {
             get {
                 if (Image.OrderNr == null) return 0;
-                return (int) Image.OrderNr; 
+                return (int)Image.OrderNr;
             }
             set { Image.OrderNr = value; }
+        }
+
+        public int Height {
+            get {
+                if (Image.Height == null) return 0;
+                return (int)Image.Height;
+            }
+            set { Image.Height = value; }
+        }
+
+        public int Width {
+            get {
+                if (Image.Width == null) return 0;
+                return (int)Image.Width;
+            }
+            set { Image.Width = value; }
         }
 
         public ImageViewModel(int articleId, Image image) {
@@ -43,6 +59,13 @@ namespace Hallo.ViewModels {
 
         public string GetThumbUrl() {
             return ImageFinder.GetThumbUrl(Image);
+        }
+
+        public int CalculatedWidth(int maxHeight) {
+            if (Height != maxHeight)
+                return Convert.ToInt32(Convert.ToDouble(maxHeight) / Convert.ToDouble(Height) * Convert.ToDouble(Width));
+            else
+                return Height;
         }
 
         public bool IsFirst;

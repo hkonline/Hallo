@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Content\Article.cs" />
     <Compile Include="Models\Content\ArticleCategory.cs" />
     <Compile Include="Models\Content\ArticleTypes.cs" />

@@ -16,7 +16,7 @@ namespace Hallo.Controllers {
         int ArticleId {
             get {
                 object o = Session["CurrentArticleId"];
-                return o == null ? 0 : (int)o;
+                return o == null ? 0 : (int) o;
             }
         }
 
@@ -66,7 +66,7 @@ namespace Hallo.Controllers {
                     Image i = new Image();
                     CurrentArticle.Images.Add(i);
                     Context.SaveChanges();
-                    SaveToDisk(file, i.Id);
+                    SaveToDisk(file, i);
                 }
             }
             return RedirectToAction("List", new { id = ArticleId });
@@ -114,12 +114,11 @@ namespace Hallo.Controllers {
             Article a = Context.Articles.FirstOrDefault(x => x.Id == ArticleId);
             a.FrontpageImage = new Image();
             Context.SaveChanges();
-            int imageId = a.FrontpageImage.Id;
-            SaveToDisk(file, imageId);
+            SaveToDisk(file, a.FrontpageImage);
         }
         #endregion
 
-        private void SaveToDisk(HttpPostedFileBase file, int imageId) {
+        private void SaveToDisk(HttpPostedFileBase file, Image image) {
             ImageHelper helper = new ImageHelper(file.InputStream);
 
             System.Drawing.Image thumb = helper.GetResizedImage(200);
@@ -130,29 +129,33 @@ namespace Hallo.Controllers {
             System.IO.File.WriteAllBytes(
                 Server.MapPath("~/") +
                 ConfigurationManager.AppSettings["ImageDirectoryUrl"].Substring(1) +
-                "/thumbnails/img" + imageId + ".jpg",
+                "/thumbnails/img" + image.Id + ".jpg",
                 ms.ToArray()
             );
 
-            System.Drawing.Image image;
+            System.Drawing.Image jpgImage;
             if (thumb.Width > thumb.Height) {
-                image = helper.GetResizedImage(720);
+                jpgImage = helper.GetResizedImage(720);
             } else {
-                image = helper.GetResizedImage(480);
+                jpgImage = helper.GetResizedImage(480);
             }
 
             ms = new MemoryStream();
-            image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            jpgImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
 
             System.IO.File.WriteAllBytes(
                 Server.MapPath("~/") +
                 ConfigurationManager.AppSettings["ImageDirectoryUrl"].Substring(1) +
-                "/images/img" + imageId + ".jpg",
+                "/images/img" + image.Id + ".jpg",
                 ms.ToArray()
             );
+
+            image.Height = jpgImage.Height;
+            image.Width = jpgImage.Width;
+            Context.SaveChanges();
         }
 
-        private List<Image> GetImages(int articleId) {
+        public List<Image> GetImages(int articleId) {
             Session["CurrentArticleId"] = articleId;
 
             return Context.Articles.Include(m=>m.Images)
@@ -162,10 +165,9 @@ namespace Hallo.Controllers {
                 .ToList();
         }
 
-        public ActionResult Slideshow(int articleId) {
-            List<Image> list = GetImages(articleId);
-            List<ImageViewModel> model = new List<ImageViewModel>();
-            foreach (Image i in list) model.Add(new ImageViewModel(ArticleId, i));
+        public ActionResult Slideshow(int id, int orderNr) {
+            Image image = Context.Articles.First(x => x.Id == id).Images.First(i => i.OrderNr == orderNr);
+            ImageViewModel model = new ImageViewModel(id, image);
             return View(model);
         }
     }

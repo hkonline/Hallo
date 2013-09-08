@@ -1,53 +1,99 @@
-﻿
+﻿@using Hallo.ViewModels
+@model ImageViewModel
 
-<style>
-    .slideShow {
-        position: relative;
-        overflow: auto;
-    }
-
-        .slideShow li {
-            list-style: none;
-        }
-
-        .slideShow ul li {
-            float: left;
-        }
-</style>
-
-
-
-@if (Model.Images.Count > 0) {
-    <div class="slideShow">
-        <ul>
-            @foreach (Image i in iList) { 
-                <li>
-                    <img src="@ImageFinder.GetImageUrl(i)" />
-                    <br />@i.Description<br />
-                </li>
-            }
-        </ul>
-    </div>
-    <a href="#slideShow" class="unslider-arrow prev">Tidligere billede</a>
-    <a href="#slideShow" class="unslider-arrow next">Næste billede</a>
+@{
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billeder til artikel</title>
+    @Scripts.Render("~/bundles/jquery")
 
-<script>
-    $(function () {
-        $('.slideShow').unslider();
-    });
+    <style type="text/css">
+        A.link {
+            color: #0040B0;
+            font: 10pt Verdana,Tahoma,Arial;
+            text-decoration: none;
+        }
 
-    $('.unslider-arrow').click(function () {
-        var unslider = $(".slideShow").unslider();
+            A.link:hover {
+                text-decoration: underline;
+            }
 
-        var fn = this.className.split(' ')[1];
-        unslider.data('unslider').stop();
+        .text {
+            font: 10pt Verdana,Tahoma,Arial;
+        }
 
-        //  Either do unslider.data('unslider').next() or .prev() depending on the className
-        if (fn == 'next')
-            unslider.data('unslider').next();
-        else
-            unslider.data('unslider').prev();
-    });
-</script>
+        .aimg {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #000000;
+            margin: 0px;
+        }
 
+        .bdate {
+            font: italic 10pt Verdana, Tahoma, Arial;
+            color: #000000;
+        }
+    </style>
+    <script>
+        function autoresize() {
+            div1.innerHTML = "";
+            window.resizeTo(@Model.Width +150, @Model.Height +150);
+        }
+    </script>
+</head>
+<body style="background-color: white; margin: 2px;" onload="autoresize();">
+    @using (Html.BeginForm()) {
+        @Html.HiddenFor(m => m.ArticleId)
+        <table>
+            <tr>
+                <td style="width: 50px;">
+                    @if (!Model.IsFirst) {
+                        <a id="previous" href="/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr - 1)">
+                            <img src="~/Images/previous.jpg" />
+                        </a>
+                    }
+                </td>
+                <td style="text-align: center;">
+                    <span class="text" id="div1">
+                        <br />
+                        <br />
+                        <b>Henter billede...</b><br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                    </span>
+                    <img id="TheImage" src="@Model.GetImageUrl()" /><br />
+                    <span id="LblText" class="text">@Model.Description</span>
+                </td>
+                <td style="width: 50px;">
+                    @if (!Model.IsLast) {
+                        <a id="next" href="/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr + 1)">
+                            <img src="~/Images/next.jpg" />
+                        </a>
+                    }
+                </td>
+            </tr>
+        </table>
+        <div style="text-align: right;">
+            <input type="button" value="Luk vindue" onclick="self.close()" />
+        </div>
+    }
+    <script>
+        autoresize();
+        $("body").keydown(function (e) {
+            if (e.keyCode == 37) { // left
+                window.location.href = '/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr - 1)';
+            }
+            else if (e.keyCode == 39) { // right
+                window.location.href = '/Image/SlideShow?id=@(Model.ArticleId)&OrderNr=@(Model.OrderNr + 1)';
+            }
+        });
+    </script>
+</body>
+</html>
