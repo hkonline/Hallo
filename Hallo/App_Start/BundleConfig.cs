@@ -20,7 +20,7 @@ namespace Hallo {
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/plugins").Include(
-                "~/Scripts/jquery.slides.min.js", "~/Scripts/jquery.nivo.slider.pack.js"  // Slideshow
+                "~/Scripts/jquery.slides.min.js"  // Slideshow
             ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
