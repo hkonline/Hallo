@@ -7,15 +7,15 @@ body {
 }
 
 input {
-    font: 12pt Georgia, Verdana,Tahoma,Arial;
+    font: 11pt Georgia, Verdana,Tahoma,Arial;
 }
 
 textarea {
-    font: 12pt Georgia, Verdana,Tahoma,Arial;
+    font: 11pt Georgia, Verdana,Tahoma,Arial;
 }
 
 hidden {
-    font: 12pt Georgia, Verdana,Tahoma,Arial;
+    font: 11pt Georgia, Verdana,Tahoma,Arial;
 }
 
 h2 {
@@ -29,7 +29,7 @@ a {
 }
 
     a.link {
-        font: 12pt Georgia, Verdana,Tahoma,Arial;
+        font: 11pt Georgia, Verdana,Tahoma,Arial;
         text-decoration: underline;
     }
 
@@ -42,11 +42,11 @@ a {
 }
 
 .text {
-    font: 12pt Georgia, Verdana,Tahoma,Arial;
+    font: 11pt Georgia, Verdana,Tahoma,Arial;
 }
 
 .textred {
-    font: 12pt Georgia, Verdana,Tahoma,Arial;
+    font: 11pt Georgia, Verdana,Tahoma,Arial;
     color: #E92D0C;
 }
 
@@ -133,12 +133,12 @@ a.titel {
     }
 
 .utitel {
-    font: bold 12pt Georgia, Verdana,Tahoma,Arial;
+    font: bold 11pt Georgia, Verdana,Tahoma,Arial;
     color: #000000;
 }
 
 .note {
-    font: bold 12pt Georgia, Verdana,Tahoma,Arial;
+    font: bold 11pt Georgia, Verdana,Tahoma,Arial;
     color: #0040B0;
 }
 
@@ -202,7 +202,7 @@ a {
 }
 
     a.link {
-        font: 12pt Georgia, Verdana,Tahoma,Arial;
+        font: 11pt Georgia, Verdana,Tahoma,Arial;
         text-decoration: underline;
     }
 
