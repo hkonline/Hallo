@@ -1,0 +1,101 @@
+﻿<div id="weekcalendar"></div>
+<style>
+    #weekcalendar {
+        margin: 0px 20px 0px 20px;
+        width: 134px;
+        text-align: left;
+        padding: 0px;
+        border-spacing: 0px;
+    }
+
+        #weekcalendar h4 {
+            font: 8pt Georgia, Verdana,Tahoma,Arial;
+            font-weight: bold;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 0.0em;
+        }
+
+        #weekcalendar ul li ul li:last-child {
+            -webkit-margin-after: 1em;
+        }
+
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        border-spacing: 0;
+    }
+
+    li {
+        font: 8pt Georgia, Verdana,Tahoma,Arial;
+    }
+
+        li:last-child {
+            border: none;
+        }
+
+
+    .brunstad_title {
+        background-color: #A3DEFE;
+        font: 8pt Georgia, Verdana,Tahoma,Arial;
+        color: #FFFFFF;
+        text-align: left;
+        border-color: Black;
+        border-width: thin;
+        border-style: solid;
+        width: 124px;
+        padding: 5px 5px 5px 5px;
+        margin: 0px 0px 0px 0px;
+    }
+
+        .brunstad_title a {
+            font: 8pt Georgia, Verdana,Tahoma,Arial;
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+    .Hallocontent {
+        width: 130px;
+        padding: 2px 2px 2px 2px;
+        list-style: none;
+        list-style-type: none;
+        border-color: Black;
+        border-width: thin;
+        border-style: solid;
+        border-top: none;
+    }
+
+        .Hallocontent.ul {
+            list-style: none;
+            list-style-type: none;
+        }
+
+        .Hallocontent.li {
+            list-style-type: none;
+        }
+
+    .icon-calendar {
+        background-image: url('/images/icon-calendar.png');
+        background-repeat: no-repeat;
+        display: inline-block;
+        height: 15px;
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 16px;
+    }
+
+    .timestart {
+        font-weight: bold;
+        padding-right: 5px;
+    }
+</style>
+<script type="text/javascript"
+    src="http://widgets.brunstad.org/calendar/WeekJs?Culture=nb-NO&ContainerId=weekcalendar&Calendars=brunstad_calendar_no,holstebro_calendar&FullCalendarURL=/kalendar.aspx&Days=7&CSSNameSpace=Hallo">
+</script>
+
+<script>
+    $(".timeend").hide();
+    $(".timedash").hide();
+    $(".Hallobutton").hide();
+</script>

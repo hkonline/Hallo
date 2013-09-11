@@ -317,6 +317,7 @@
     <Content Include="Views\Image\FrontpageImage.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ImageViewModel.cshtml" />
     <Content Include="Views\Image\SlideShow.cshtml" />
+    <Content Include="Views\Shared\_WeekCalender.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

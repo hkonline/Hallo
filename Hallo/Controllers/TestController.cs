@@ -8,6 +8,10 @@ namespace Hallo.Controllers {
     public class TestController : Controller {
 
         public ActionResult Index() {
+            ViewBag.ShowLeft = true;
+            ViewBag.ShowRight = true;
+            ViewBag.ContentWidth = 801;
+            ViewBag.ContentPadding = 0;
             return View();
         }
 
