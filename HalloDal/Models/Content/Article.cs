@@ -29,8 +29,9 @@ namespace HalloDal.Models.Content {
         public bool IsPublic { get; set; }
 
         public ArticleTypes ArticleType { get; set; }
-        public virtual ArticleCategory Category { get; set; }
-        public virtual ArticleCategory Category2 { get; set; }
+
+        [DisplayName("Artikel-kategorier")]
+        public virtual ICollection<ArticleCategory> Categories { get; set; }
         
         public virtual ICollection<Image> Images { get; set; }
         public long OldId { get; set; }

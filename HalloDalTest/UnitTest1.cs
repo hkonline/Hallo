@@ -29,7 +29,7 @@ namespace HalloDalTest {
         }
 
         // This method can load old articles from HK-online to a new Hallo-DB
-        public void GetOldArticles(HalloContext context) {
+        /*public void GetOldArticles(HalloContext context) {
             SqlConnection sourceConnection = GetSourceConnection();
             SqlCommand articleCmd = new SqlCommand(
                 "select top 10 * from hk_artikler oa where oa.artikelID not in (select OldId from hallo.dbo.articles) order by dato desc, ArtikelID desc",
@@ -43,6 +43,9 @@ namespace HalloDalTest {
                 Nullable<int> cat1 = articleReader.GetInt32(articleReader.GetOrdinal("Category"));
                 Nullable<int> cat2 = articleReader.GetInt32(articleReader.GetOrdinal("Category2"));
 
+                List<ArticleCategory> categories = new List<ArticleCategory>();
+                if (cat1 != null) categories.Add(cat1);
+
                 context.Articles.Add(new Article {
                     Headline = articleReader["overskrift"].ToString(),
                     Author = articleReader["forfatter"].ToString(),
@@ -52,17 +55,19 @@ namespace HalloDalTest {
                     Text = articleReader["Tekst"].ToString(),
                     ApprovedByEditor = (bool)articleReader["IsCheckedByJens"],
                     IsPublic = (bool)articleReader["PublicArticle"],
-                    ArticleType = articleReader["ArticleType"].ToString().Equals("INFO") ? ArticleTypes.Info : ArticleTypes.Article,
-                    Category = context.Categories.FirstOrDefault(x => x.Id == cat1),
+                    ArticleType = articleReader["ArticleType"].ToString().Equals("INFO") ? ArticleTypes.Information : ArticleTypes.News,
+                    Categories = context.Categories.FirstOrDefault(x => x.Id == cat1),
                     Category2 = context.Categories.FirstOrDefault(x => x.Id == cat2),
                     Images = GetOldImages(oldId),
                     OldId = oldId
                 });
+
+
             }
             context.SaveChanges();
             articleReader.Close();
             sourceConnection.Close();
-        }
+        }*/
 
         // This method can load old images from HK-online to a new Hallo-DB
         public ICollection<Image> GetOldImages(int articleId) {

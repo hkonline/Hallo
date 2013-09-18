@@ -42,14 +42,29 @@ namespace Hallo.Controllers {
                 .Where(x => x.Id == id)
                 .Include(x => x.Images)
                 .Include(x => x.FrontpageImage)
-                .Include(x => x.Category)
-                .Include(x => x.Category2)
+                .Include(x => x.Categories)
                 .SingleOrDefault();
+        }
+
+        private void PopulateCategories(Article article) {
+            List<ArticleCategory> allCategories = Context.Categories.ToList();
+            List<AssignedArticleCategory> viewModel = new List<AssignedArticleCategory>();
+            List<ArticleCategory> selectedCategories = article.Categories.ToList();
+            foreach (ArticleCategory c in allCategories) {
+                viewModel.Add(new AssignedArticleCategory() {
+                    CategoryId = c.Id,
+                    Name = c.LocalName,
+                    Assigned = selectedCategories.Contains(c)
+                });
+            }
+            ViewBag.Categories = viewModel;
         }
 
         [HttpGet]
         public ActionResult Edit(int id) {
-            return View(GetArticle(id));
+            Article article = GetArticle(id);
+            PopulateCategories(article);
+            return View(article);
         }
 
         [HttpGet]
@@ -71,9 +86,22 @@ namespace Hallo.Controllers {
             return RedirectToAction("List");
         }
 
+        private void UpdateCategories(Article article, String[] selectedCategories) {
+            article.Categories = new List<ArticleCategory>();
+
+            if (selectedCategories == null) {
+                return;
+            }
+
+            foreach (string id in selectedCategories) {
+                int categoryId = int.Parse(id);
+                article.Categories.Add(Context.Categories.FirstOrDefault(x => x.Id==categoryId));
+            }
+        }
+
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(Article article) {
+        public ActionResult Edit(Article article, String[] selectedCategories) {
             Article dbArticle = GetArticle(article.Id);
 
             dbArticle.Headline = article.Headline;
@@ -81,7 +109,11 @@ namespace Hallo.Controllers {
             dbArticle.FrontpageText = article.FrontpageText;
             dbArticle.Text = article.Text;
 
+            UpdateCategories(article, selectedCategories);
+
             Context.SaveChanges();
+
+            PopulateCategories(article);
 
             return View(dbArticle);
         }

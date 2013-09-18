@@ -8,6 +8,7 @@ namespace HalloDal.Migrations {
     public sealed class Configuration : DbMigrationsConfiguration<HalloContext> {
         public Configuration() {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(HalloDal.Models.HalloContext context) {

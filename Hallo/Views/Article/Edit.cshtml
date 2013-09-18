@@ -1,4 +1,5 @@
-﻿@model HalloDal.Models.Content.Article
+﻿@using Hallo.ViewModels;
+@model HalloDal.Models.Content.Article
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -34,6 +35,36 @@
             @Html.ValidationMessageFor(model => model.Date)
         </div>
 
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Categories)
+        </div>
+
+        <div class="editor-field">
+            <table>
+                <tr>
+                @{
+    int i = 0;
+    List<AssignedArticleCategory> categories = ViewBag.Categories;
+
+    foreach (AssignedArticleCategory c in categories) {
+        if (i++ % 6 == 0) { 
+                            @: </tr><tr>
+                        }
+                        @: <td style="padding: 5px 5px 5px 5px;">
+                            <input type="checkbox" 
+                                name="selectedCategories" 
+                                value="@c.CategoryId" 
+                                @(Html.Raw(c.Assigned ? "checked=\"checked\"" : "")) />
+                            @c.Name                  
+                        @: </td>
+                    }           
+                }
+                </tr>
+            </table>
+        </div>
+
+
         <div class="editor-label">
             @Html.LabelFor(model => model.FrontpageText)
         </div>
@@ -56,9 +87,10 @@
             &nbsp;&nbsp;&nbsp;
             @Html.ActionLink("Vælg andre billeder", "List", "Image", new { id = @Model.Id }, null)
         </div>
+        <div style="text-align: right;">
         <p>
-            <input type="submit" value="Gem" class="k-button" />
-        </p>
+            <input id="submit" type="submit" value="Gem" class="k-button" />
+        </p></div>
     </fieldset>
 }
 
@@ -82,4 +114,11 @@
         menubar: false,
         statusbar: false
     });
+
+    $("body").keydown(function (e) {
+        if (e.which == 13) {
+            jQuery(this).blur();
+            jQuery('#submit').focus().click();
+        }         
+    });    
 </script>

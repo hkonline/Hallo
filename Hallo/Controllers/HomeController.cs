@@ -21,8 +21,6 @@ namespace Hallo.Controllers {
             // TODO: if not a know kbh-user, show only public articles
             articleList = Context.Articles
                 .Where(x => x.ApprovedByEditor == true)
-                .Where(x => x.Category == null || x.Category.Id != internalSongMission.Id)
-                .Where(x => x.Category2 == null || x.Category2.Id != internalSongMission.Id)
                 .OrderByDescending(x => x.Date)
                 .Include(x => x.FrontpageImage)
                 .Take(12)
