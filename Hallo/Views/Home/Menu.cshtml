@@ -15,7 +15,14 @@
 
 <ul id="panelbar" style="text-align: left; width: 134px; margin: 0px 20px 20px 20px;">
     @foreach (HKMenuItem item in Model) {
-        <li>@item.Text
+        <li class="@item.LiClass">
+            @if (!String.IsNullOrEmpty(item.Url)) { 
+                <a href="@item.Url">
+                    @item.Text
+                </a>
+            } else {
+                @item.Text                
+            }
             @if (item.SubMenu != null) {
                 <ul>
                     @foreach (HKMenuItem subItem in item.SubMenu) { 

@@ -53,7 +53,7 @@ namespace Hallo.Controllers {
 
         public PartialViewResult Menu() {
             MenuBuilder menuBuilder = new MenuBuilder();
-            return PartialView(menuBuilder.FrontpageMenu(Context));
+            return PartialView(menuBuilder.FrontpageMenu(Context, Request));
             //return PartialView(Context.Categories.ToList());
         }
 
