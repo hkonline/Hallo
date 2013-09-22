@@ -14,8 +14,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+
     @Styles.Render("http://widgets.brunstadworld.org/widgets.css")
-    @Styles.Render("~/Content/css")
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
 
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/Hallo.js")
@@ -52,7 +53,8 @@
     <div id="containerDiv">
         <div id="bannerDiv">
             @for (int i = 1; i <= 10; i++) {
-                <a href="/Home"><img src="/Images/banner/@(i).jpg" /></a>             
+                <a href="/Home">
+                    <img src="/Images/banner/@(i).jpg" /></a>             
             }
         </div>
         <script>
@@ -76,8 +78,7 @@
         @if (ViewBag.ShowLeft != false) {
             <div id="frontpageLeft">
                 @*@Html.Partial("_BKMAccount")*@
-                @*@Html.Action("Menu", "Home")*@
-                @Html.Partial("_Links")
+                @Html.Action("Menu", "Home")
                 @Html.Partial("_Contacts")
             </div>
         }
@@ -98,7 +99,7 @@
                 <br />
             </div>
         </div>
-        
+
         @if (ViewBag.ShowRight == true) {
             
             <div id="frontpageRight">

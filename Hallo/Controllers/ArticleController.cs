@@ -109,11 +109,11 @@ namespace Hallo.Controllers {
             dbArticle.FrontpageText = article.FrontpageText;
             dbArticle.Text = article.Text;
 
-            UpdateCategories(article, selectedCategories);
+            UpdateCategories(dbArticle, selectedCategories);
 
             Context.SaveChanges();
 
-            PopulateCategories(article);
+            PopulateCategories(dbArticle);
 
             return View(dbArticle);
         }

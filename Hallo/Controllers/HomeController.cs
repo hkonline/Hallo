@@ -11,15 +11,22 @@ using System.Data.Entity;
 namespace Hallo.Controllers {
     public class HomeController : HalloController {
 
-        public ActionResult Index() {
+        public ActionResult Index(int? id) {
             ViewBag.ShowRight = true;
 
             List<Article> articleList;
 
             ArticleCategory internalSongMission = Context.Categories.FirstOrDefault(x => x.Id == 14);
 
+            var query = Context.Articles.AsQueryable();
+
+            if (id != null) {
+                ArticleCategory category = Context.Categories.Include(c=>c.Articles).FirstOrDefault(c => c.Id == id.Value);
+                query = category.Articles.AsQueryable();
+            }
+
             // TODO: if not a know kbh-user, show only public articles
-            articleList = Context.Articles
+            articleList = query
                 .Where(x => x.ApprovedByEditor == true)
                 .OrderByDescending(x => x.Date)
                 .Include(x => x.FrontpageImage)
@@ -46,7 +53,8 @@ namespace Hallo.Controllers {
 
         public PartialViewResult Menu() {
             MenuBuilder menuBuilder = new MenuBuilder();
-            return PartialView(menuBuilder.FrontpageMenu());
+            return PartialView(menuBuilder.FrontpageMenu(Context));
+            //return PartialView(Context.Categories.ToList());
         }
 
         public ViewResult SignOnTest() {

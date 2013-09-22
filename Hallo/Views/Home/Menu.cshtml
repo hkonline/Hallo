@@ -1,6 +1,7 @@
 ﻿@using Hallo.ViewModels;
 @model List<HKMenuItem>
 
+@*
 <div class="fpBox" style="padding: 0px 0px 0px 0px; width: 134px;">
     
     @foreach (HKMenuItem item in Model) { 
@@ -8,3 +9,26 @@
     }
 
 </div>
+//.HtmlAttributes(new { style = "width: 134px" })    
+*@
+
+
+<ul id="panelbar" style="text-align: left; width: 134px; margin: 0px 20px 20px 20px;">
+    @foreach (HKMenuItem item in Model) {
+        <li>@item.Text
+            @if (item.SubMenu != null) {
+                <ul>
+                    @foreach (HKMenuItem subItem in item.SubMenu) { 
+                        <a class="k-link" href="@subItem.Url">
+                            <li>@(subItem.Text)</li>
+                        </a>
+                    }
+                </ul>
+            }
+        </li>
+    }
+</ul>
+
+<script>
+    var panelbar = $("#panelbar").kendoPanelBar();
+</script>
