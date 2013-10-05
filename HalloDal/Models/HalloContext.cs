@@ -10,5 +10,6 @@ namespace HalloDal.Models {
         public DbSet<ArticleCategory> Categories { get; set; }
         public DbSet<FrontpageLink> FrontpageLinks { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 }

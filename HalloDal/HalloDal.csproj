@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201310051638336_Roles.cs" />
+    <Compile Include="Migrations\201310051638336_Roles.Designer.cs">
+      <DependentUpon>201310051638336_Roles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Content\Article.cs" />
     <Compile Include="Models\Content\ArticleCategory.cs" />
@@ -56,6 +60,7 @@
     <Compile Include="Models\Content\Message.cs" />
     <Compile Include="Models\Content\MessageType.cs" />
     <Compile Include="Models\HalloContext.cs" />
+    <Compile Include="Models\Users\Role.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -67,6 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Init\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201310051638336_Roles.resx">
+      <DependentUpon>201310051638336_Roles.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
