@@ -5,14 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Hallo.Controllers {
-    public class TestController : Controller {
+    public class TestController : HalloController {
 
         public ActionResult Index() {
             ViewBag.ShowLeft = true;
             ViewBag.ShowRight = true;
             ViewBag.ContentWidth = 801;
             ViewBag.ContentPadding = 0;
-            return View();
+            return View(HalloUser);
         }
 
     }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web.Mvc;
 
 namespace Hallo.Controllers {
-    public class InfoBoxController : Controller {
+    public class InfoBoxController : HalloController {
 
         [ChildActionOnly]
         public PartialViewResult CurrentInfo() {

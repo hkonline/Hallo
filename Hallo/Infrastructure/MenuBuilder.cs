@@ -1,6 +1,7 @@
 ﻿using Hallo.ViewModels;
 using HalloDal.Models;
 using HalloDal.Models.Content;
+using HalloDal.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Hallo.Infrastructure {
 
         public MenuBuilder() { }
 
-        public List<HKMenuItem> FrontpageMenu(HalloContext context, HttpRequestBase request) {
+        public List<HKMenuItem> FrontpageMenu(HalloContext context, HttpRequestBase request, User user) {
             List<HKMenuItem> menu = new List<HKMenuItem>();
 
             List<HKMenuItem> categoryLinks = new List<HKMenuItem>();
@@ -25,9 +26,10 @@ namespace Hallo.Infrastructure {
                 SubMenu = categoryLinks , 
                 Active = request.FilePath.Contains("Home/Index/") && request.FilePath.Length>11
             });
-            menu.Add(new HKMenuItem() { Text = "Streaming", Url = "/Meeting/Streaming" });
+            if (user.Authorized)
+                menu.Add(new HKMenuItem() { Text = "Streaming", Url = "/Meeting/Streaming" });
+            
             //menu.Add(new HKMenuItem() { Text = "Kalender", Url = "/Calender/Index" });
-
 
             List<HKMenuItem> externalLinks = new List<HKMenuItem>();
             List<FrontpageLink> fpList = context.FrontpageLinks.ToList();

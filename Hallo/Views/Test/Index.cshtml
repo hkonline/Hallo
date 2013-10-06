@@ -1,4 +1,6 @@
-﻿@{
+﻿@model HalloDal.Models.Users.User
+
+@{
     ViewBag.Title = "Index";
 }
 
@@ -16,6 +18,10 @@
             <td>@Request.Cookies[s].Value</td>
         </tr>
     }
+
+    <tr><td>UserId</td><td>@Model.UserId</td></tr>
+    <tr><td>Username</td><td>@Model.UserName</td></tr>
+
 </table>
 
 @Html.Kendo().Upload().Name("files")

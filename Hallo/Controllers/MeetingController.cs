@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Hallo.Controllers {
-    public class MeetingController : Controller {
+    public class MeetingController : HalloController {
 
         public ActionResult Streaming() {
             ViewBag.ShowLeft = true;

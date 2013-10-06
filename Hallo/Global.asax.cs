@@ -7,6 +7,7 @@ using System.Web.Routing;
 using HalloDal.Models;
 using HalloDal.Migrations;
 using System.Data.Entity;
+using Hallo.Users;
 
 namespace Hallo {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -23,12 +24,14 @@ namespace Hallo {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             HalloContext context = new HalloContext();
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HalloContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<HalloContext, HalloDal.Migrations.Configuration>());
             Application["FrontpageLinks"] = context.FrontpageLinks.OrderBy(x => x.Order).ToList();
         }
 
         public void Session_Start() {
             Session["FrontpageLinks"] = Application["FrontpageLinks"];
         }
+
+
     }
 }

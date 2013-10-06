@@ -3,7 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 
 namespace Hallo.Controllers {
-    public class CalenderController : Controller {
+    public class CalenderController : HalloController {
         public ActionResult Index() {
             ViewBag.ShowLeft = true;
             ViewBag.ShowRight = false;

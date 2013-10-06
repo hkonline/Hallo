@@ -5,13 +5,13 @@ namespace HalloDal.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class Roles : IMigrationMetadata
+    public sealed partial class Test : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Roles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Test));
         
         string IMigrationMetadata.Id
         {
-            get { return "201310051638336_Roles"; }
+            get { return "201310061828511_Test"; }
         }
         
         string IMigrationMetadata.Source
