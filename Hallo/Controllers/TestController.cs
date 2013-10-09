@@ -12,6 +12,9 @@ namespace Hallo.Controllers {
             ViewBag.ShowRight = true;
             ViewBag.ContentWidth = 801;
             ViewBag.ContentPadding = 0;
+
+            ViewBag.Text = "Anders Hansen (15434)";
+
             return View(HalloUser);
         }
 

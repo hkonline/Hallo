@@ -25,8 +25,8 @@ namespace HalloDal.Models.Users {
         public Nullable<bool> WantInfoSms { get; set; }
         public Nullable<bool> WantInfoMail { get; set; }
         public Nullable<System.DateTime> Birthday { get; set; }
-        public Nullable<int> Father { get; set; }
-        public Nullable<int> Mother { get; set; }
+        public Nullable<int> Guardian1 { get; set; }
+        public Nullable<int> Guardian2 { get; set; }
         public Nullable<bool> Approved { get; set; }
 
         [StringLength(20)]
@@ -52,11 +52,10 @@ namespace HalloDal.Models.Users {
 
         public IList<Role> Roles { get; set; }
 
+        public bool IsInPmo { get; set; }
         public bool Authorized { get; set; }
 
         public int NumberOfVisits { get; set; }
-        public DateTime LastVisit { get; set; }
-
-
+        public Nullable<System.DateTime> LastVisit { get; set; }
     }
 }

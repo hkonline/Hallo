@@ -1,4 +1,5 @@
-﻿@model HalloDal.Models.Users.User
+﻿@using System;
+@model HalloDal.Models.Users.User
 
 @{
     ViewBag.Title = "Index";
@@ -23,5 +24,14 @@
     <tr><td>Username</td><td>@Model.UserName</td></tr>
 
 </table>
+
+@{
+    String text = ViewBag.text;
+    text = text.Substring(text.IndexOf('(')+1).Replace(")", "");
+}
+
+<p>@text</p>
+@*<p>@tal</p>*@
+
 
 @Html.Kendo().Upload().Name("files")

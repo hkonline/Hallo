@@ -1,0 +1,22 @@
+﻿@using System.IO;
+@model FileInfo
+
+<h2>PMO Fil-upload</h2>
+<br />
+<br />
+@if (Model != null) {
+    <section>Seneste fil uploadet: @Model.LastWriteTime</section>
+} else {
+    <section>Ingen PMO-fil blev fundet.</section>  
+}
+<br />
+
+@if (ViewBag.Message == null) { 
+    <form enctype="multipart/form-data" method="post">
+        <h4>Upload ny PMO-fil:</h4>
+        <input type="file" name="file" id="file" />
+        <input type="submit" value="Upload" />
+    </form>
+} else {
+    <section>@ViewBag.Message</section>
+}

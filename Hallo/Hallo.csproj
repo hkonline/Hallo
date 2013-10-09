@@ -50,6 +50,12 @@
     <Reference Include="dotless.Core">
       <HintPath>..\packages\dotless.1.3.1.0\lib\dotless.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Excel">
+      <HintPath>..\packages\ExcelDataReader.2.1.1\lib\net20\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\ExcelDataReader.2.1.1\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="Kendo.Mvc">
       <HintPath>..\..\Program Files (x86)\Telerik\Kendo UI for ASP.NET MVC Q2 2013\wrappers\aspnetmvc\Binaries\Mvc3\Kendo.Mvc.dll</HintPath>
     </Reference>
@@ -162,7 +168,9 @@
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\InfoBoxController.cs" />
     <Compile Include="Controllers\MeetingController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -278,7 +286,11 @@
     <Content Include="Images\VFKClogo128.png" />
     <Content Include="Scripts\Hallo.js" />
     <None Include="Properties\PublishProfiles\Arvixe FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\hkonline - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\hkonline - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Holstebro.pubxml" />
+    <None Include="Properties\PublishProfiles\htest - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\htest - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\kobenhavn.brunstad.org - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\smarterasp.net.pubxml" />
@@ -331,6 +343,13 @@
     <Content Include="Views\Image\SlideShow.cshtml" />
     <Content Include="Views\Shared\_WeekCalender.cshtml" />
     <Content Include="Views\Meeting\Streaming.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\User\PmoUpload.cshtml" />
+    <Content Include="Views\User\PmoInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
