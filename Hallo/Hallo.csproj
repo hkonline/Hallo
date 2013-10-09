@@ -162,7 +162,9 @@
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\InfoBoxController.cs" />
     <Compile Include="Controllers\MeetingController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -331,6 +333,13 @@
     <Content Include="Views\Image\SlideShow.cshtml" />
     <Content Include="Views\Shared\_WeekCalender.cshtml" />
     <Content Include="Views\Meeting\Streaming.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\Details.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\Delete.cshtml" />
+    <Content Include="Views\User\PmoUpload.cshtml" />
+    <Content Include="Views\User\PmoInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
