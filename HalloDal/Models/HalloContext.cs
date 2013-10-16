@@ -19,6 +19,10 @@ namespace HalloDal.Models {
         public DbSet<Role> Roles { get; set; }
         public DbSet<LogEntry> LogEntries { get; set; }
 
+        public User GetUserById(int id) {
+            return Users.FirstOrDefault(x => x.UserId == id);
+        }
+
         public void UpdateOrInsertUser(User user) {
             string sql = "insert into Users(";
             

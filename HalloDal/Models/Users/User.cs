@@ -50,7 +50,7 @@ namespace HalloDal.Models.Users {
         [StringLength(50)]
         public string HomeChurchName { get; set; }
 
-        public IList<Role> Roles { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
 
         public bool IsInPmo { get; set; }
         public bool Authorized { get; set; }

@@ -2,11 +2,13 @@
 using HalloDal.Models;
 using HalloDal.Models.Users;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace Hallo.Controllers {
     public class HalloController : Controller {
+        protected HalloContext db = new HalloContext();
 
         protected void InitializeSession() {
             UserService userService = new UserService(
@@ -26,18 +28,28 @@ namespace Hallo.Controllers {
 
         protected User HalloUser {
             get {
-                if (Session["User"] == null) InitializeSession();  
-                return Session["User"] as User; 
+                if (Session["User"] == null) InitializeSession();
+                return Session["User"] as User;
             }
         }
 
-        private HalloContext context;
-        protected HalloContext Context {
-            get {
-                if (context == null) context = new HalloContext();
+        public static bool IsAuthorized(User user, string role1 = null, string role2 = null, string role3 = null) {
+            List<String> currentRoles = new List<string>();
+            foreach (Role r in user.Roles) currentRoles.Add(r.RoleName);
 
-                return context;
-            }
+            //if (user.UserId == 17787) return true; // Is Reuss?
+            if (currentRoles.Contains("Webmaster")) return true;
+            if (role1 != null && currentRoles.Contains(role1)) return true;
+            if (role2 != null && currentRoles.Contains(role2)) return true;
+            if (role3 != null && currentRoles.Contains(role3)) return true;
+
+            return false;            
+        }
+
+        protected void Authorize(string role1 = null, string role2 = null, string role3 = null) {
+            if (IsAuthorized(HalloUser, role1, role2, role3)) return;
+
+            Response.Redirect("/Home/NoAccess");
         }
     }
 }

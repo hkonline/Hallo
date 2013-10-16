@@ -23,7 +23,7 @@ namespace Hallo.Controllers {
         Article CurrentArticle {
             get {
                 if (ArticleId == 0) return null;
-                return Context.Articles.Include(x => x.FrontpageImage).Include(x => x.Images).FirstOrDefault(x => x.Id == ArticleId);
+                return db.Articles.Include(x => x.FrontpageImage).Include(x => x.Images).FirstOrDefault(x => x.Id == ArticleId);
             }
         }
 
@@ -41,7 +41,7 @@ namespace Hallo.Controllers {
                     IsLast = list.IndexOf(i) == list.Count() - 1
                 });
             }
-            Context.SaveChanges();
+            db.SaveChanges();
 
             return View(model);
         }
@@ -55,7 +55,7 @@ namespace Hallo.Controllers {
                 image.OrderNr = m.OrderNr;
                 image.Description = m.Description;
             }
-            Context.SaveChanges();
+            db.SaveChanges();
             ViewBag.ArticleId = ArticleId;
             return View(list);
         }
@@ -65,7 +65,7 @@ namespace Hallo.Controllers {
                 foreach (HttpPostedFileBase file in files) {
                     Image i = new Image();
                     CurrentArticle.Images.Add(i);
-                    Context.SaveChanges();
+                    db.SaveChanges();
                     SaveToDisk(file, i);
                 }
             }
@@ -73,8 +73,8 @@ namespace Hallo.Controllers {
         }
 
         public ActionResult Delete(int id) {
-            Context.Images.Remove(Context.Images.FirstOrDefault(x => x.Id == id));
-            Context.SaveChanges();
+            db.Images.Remove(db.Images.FirstOrDefault(x => x.Id == id));
+            db.SaveChanges();
             int articleId = (int)Session["CurrentArticleId"];
             return RedirectToAction("List", new { id = articleId });
         }
@@ -84,13 +84,13 @@ namespace Hallo.Controllers {
         public ActionResult DeleteFrontpageImage() {
             Article a = CurrentArticle;
             a.FrontpageImage = null;
-            Context.SaveChanges();
+            db.SaveChanges();
             return RedirectToAction("FrontpageImage", new { id = ArticleId });
         }
 
         public ActionResult FrontpageImage(int id) {
             Session["CurrentArticleId"] = id;
-            Image image = Context.Articles.Include(x => x.FrontpageImage).FirstOrDefault(x => x.Id == id).FrontpageImage;
+            Image image = db.Articles.Include(x => x.FrontpageImage).FirstOrDefault(x => x.Id == id).FrontpageImage;
             ImageViewModel model = new ImageViewModel(ArticleId, image);
             return View(model);
         }
@@ -98,7 +98,7 @@ namespace Hallo.Controllers {
         public ActionResult SaveDescription(string description) {
             Article a = CurrentArticle;
             a.FrontpageImage.Description = description;
-            Context.SaveChanges();
+            db.SaveChanges();
             return RedirectToAction("FrontpageImage", new { id = ArticleId });
         }
 
@@ -111,9 +111,9 @@ namespace Hallo.Controllers {
         }
 
         private void SaveFrontpageImage(HttpPostedFileBase file) {
-            Article a = Context.Articles.FirstOrDefault(x => x.Id == ArticleId);
+            Article a = db.Articles.FirstOrDefault(x => x.Id == ArticleId);
             a.FrontpageImage = new Image();
-            Context.SaveChanges();
+            db.SaveChanges();
             SaveToDisk(file, a.FrontpageImage);
         }
         #endregion
@@ -152,13 +152,13 @@ namespace Hallo.Controllers {
 
             image.Height = jpgImage.Height;
             image.Width = jpgImage.Width;
-            Context.SaveChanges();
+            db.SaveChanges();
         }
 
         public List<Image> GetImages(int articleId) {
             Session["CurrentArticleId"] = articleId;
 
-            return Context.Articles.Include(m => m.Images)
+            return db.Articles.Include(m => m.Images)
                 .First(x => x.Id == articleId)
                 .Images
                 .OrderBy(x => x.OrderNr)

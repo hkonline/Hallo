@@ -10,7 +10,7 @@ namespace Hallo.Controllers {
     public class ArticleController : HalloController {
 
         private List<ImageViewModel> GetImages(int articleId) {
-            List<Image> list = Context.Articles.Include(m => m.Images).First(x => x.Id == articleId).Images.OrderBy(x => x.OrderNr).ToList();
+            List<Image> list = db.Articles.Include(m => m.Images).First(x => x.Id == articleId).Images.OrderBy(x => x.OrderNr).ToList();
 
             List<ImageViewModel> imageViewModels = new List<ImageViewModel>();
             foreach (Image i in list) imageViewModels.Add(new ImageViewModel(articleId, i));
@@ -22,7 +22,7 @@ namespace Hallo.Controllers {
             ViewBag.ShowLeft = true;
 
             ArticleViewModel model = new ArticleViewModel() {
-                Article = Context.Articles.Where(x => x.Id == id).Include(x => x.FrontpageImage).SingleOrDefault(),
+                Article = db.Articles.Where(x => x.Id == id).Include(x => x.FrontpageImage).SingleOrDefault(),
                 Images = GetImages(id)
             };
 
@@ -34,11 +34,14 @@ namespace Hallo.Controllers {
         }
 
         public ActionResult List() {
-            return View(Context.Articles.OrderByDescending(x => x.Date).Take(10).ToList());
+            Authorize("Editor", "Journalist");
+            ViewBag.User = HalloUser;
+
+            return View(db.Articles.OrderByDescending(x => x.Date).Take(10).ToList());
         }
 
         private Article GetArticle(int id) {
-            return Context.Articles
+            return db.Articles
                 .Where(x => x.Id == id)
                 .Include(x => x.Images)
                 .Include(x => x.FrontpageImage)
@@ -47,7 +50,7 @@ namespace Hallo.Controllers {
         }
 
         private void PopulateCategories(Article article) {
-            List<ArticleCategory> allCategories = Context.Categories.ToList();
+            List<ArticleCategory> allCategories = db.Categories.ToList();
             List<AssignedArticleCategory> viewModel = new List<AssignedArticleCategory>();
             List<ArticleCategory> selectedCategories = article.Categories.ToList();
             foreach (ArticleCategory c in allCategories) {
@@ -62,6 +65,8 @@ namespace Hallo.Controllers {
 
         [HttpGet]
         public ActionResult Edit(int id) {
+            Authorize("Editor", "Journalist");
+
             Article article = GetArticle(id);
             PopulateCategories(article);
             return View(article);
@@ -69,19 +74,21 @@ namespace Hallo.Controllers {
 
         [HttpGet]
         public ActionResult Create() {
+            Authorize("Editor", "Journalist");
+
             Article newArticle = new Article() {
                 Date = DateTime.Now,
             };
 
-            Context.Articles.Add(newArticle);
-            Context.SaveChanges();
+            db.Articles.Add(newArticle);
+            db.SaveChanges();
 
             return RedirectToAction("Edit", new { id = newArticle.Id });
         }
 
         public ActionResult Delete(int id) {
-            Context.Articles.Remove(GetArticle(id));
-            Context.SaveChanges();
+            db.Articles.Remove(GetArticle(id));
+            db.SaveChanges();
 
             return RedirectToAction("List");
         }
@@ -95,7 +102,7 @@ namespace Hallo.Controllers {
 
             foreach (string id in selectedCategories) {
                 int categoryId = int.Parse(id);
-                article.Categories.Add(Context.Categories.FirstOrDefault(x => x.Id==categoryId));
+                article.Categories.Add(db.Categories.FirstOrDefault(x => x.Id==categoryId));
             }
         }
 
@@ -111,7 +118,7 @@ namespace Hallo.Controllers {
 
             UpdateCategories(dbArticle, selectedCategories);
 
-            Context.SaveChanges();
+            db.SaveChanges();
 
             PopulateCategories(dbArticle);
 
@@ -122,14 +129,14 @@ namespace Hallo.Controllers {
             Article a = GetArticle(id);
             a.ApprovedByEditor = approved;
             a.Date = DateTime.Now;
-            Context.SaveChanges();
+            db.SaveChanges();
             return Json(null);
         }
 
         public JsonResult SetPublic(int id, bool isPublic) {
             Article a = GetArticle(id);
             a.IsPublic = isPublic;
-            Context.SaveChanges();
+            db.SaveChanges();
             return Json(null);
         }
     }

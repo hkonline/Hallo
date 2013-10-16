@@ -10,14 +10,14 @@ namespace HalloDal.Models.Users {
     public class Role {
         public int RoleId { get; set; }
         
-        [DisplayName("Rolle name")]
+        [DisplayName("Rettighed")]
         [StringLength(50)]
         public string RoleName { get; set; }
 
-        [DisplayName("Rolle beskrivelse")]
+        [DisplayName("Beskrivelse")]
         [StringLength(100)]
         public string Description { get; set; }
 
-        public virtual IList<User> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

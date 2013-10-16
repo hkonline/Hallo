@@ -16,12 +16,12 @@ namespace Hallo.Controllers {
 
             List<Article> articleList;
 
-            ArticleCategory internalSongMission = Context.Categories.FirstOrDefault(x => x.Id == 14);
+            ArticleCategory internalSongMission = db.Categories.FirstOrDefault(x => x.Id == 14);
 
-            var query = Context.Articles.AsQueryable();
+            var query = db.Articles.AsQueryable();
 
             if (id != null) {
-                ArticleCategory category = Context.Categories.Include(c=>c.Articles).FirstOrDefault(c => c.Id == id.Value);
+                ArticleCategory category = db.Categories.Include(c=>c.Articles).FirstOrDefault(c => c.Id == id.Value);
                 query = category.Articles.AsQueryable();
             }
 
@@ -53,7 +53,7 @@ namespace Hallo.Controllers {
 
         public PartialViewResult Menu() {
             MenuBuilder menuBuilder = new MenuBuilder();
-            return PartialView(menuBuilder.FrontpageMenu(Context, Request, HalloUser));
+            return PartialView(menuBuilder.FrontpageMenu(db, Request, HalloUser));
             //return PartialView(Context.Categories.ToList());
         }
 
@@ -61,5 +61,10 @@ namespace Hallo.Controllers {
             Session["Hilsen"] = "Hej";
             return View();
         }
+
+        public ViewResult NoAccess() {
+            return View();
+        }
+
     }
 }

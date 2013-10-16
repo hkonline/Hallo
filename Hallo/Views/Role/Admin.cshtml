@@ -1,0 +1,86 @@
+﻿@using System
+@using Hallo.ViewModels;
+@using HalloDal.Models.Users
+@using Hallo.Resources
+
+<h2>Administration af rettigheder</h2>
+<br />
+<br />
+
+<style>
+    body > .k-animation-container {
+        text-align: left;
+    }
+</style>
+
+<div style="text-align: left;">
+
+    @(Html.Kendo().DropDownList()
+        .Name("RoleId").Events(e => e.Change("refreshData"))
+        .BindTo(ViewBag.RoleList)
+        .DataTextField("Value")
+        .DataValueField("Key")
+    )
+    <br />
+    <br />
+
+    @(Html.Kendo().Grid<VMUser>()
+        .Name("RoleUserGrid")
+        .Columns(c => {
+            c.Bound(x => x.Firstname).Title(Labels.Firstname).Width(200);
+            c.Bound(x => x.Lastname).Title(Labels.Lastname).Width(200);
+            c.Bound(x => x.BirthYear).Title(Labels.Birthyear).Width(100);
+            c.Command(cmd => cmd.Destroy());
+        })
+        .Sortable()
+        .Editable()
+        .DataSource(source => source
+            .Ajax()
+            .Model(m => m.Id(p => p.UserId))
+            .PageSize(15)
+            .Read(read => read.Action("GetRoleUsers", "Role").Data("parameter"))
+            .Create(c => c.Action("CreateRoleUser", "Role"))
+            .Destroy(c => c.Action("DeleteRoleUser", "Role").Type(HttpVerbs.Post).Data("parameter"))
+        )
+    )
+    <br />
+
+    @(Html.Kendo().DropDownList().HtmlAttributes(new { style = "width: 300px;" })
+            .Name("UserId")
+            .OptionLabel(Labels.SelectUser)
+            .DataTextField("Label")
+            .DataValueField("UserId")
+            .DataSource(source => {
+                source.Read(read => {
+                    read.Action("GetUserItems", "Role");
+                });
+            })
+    )
+    &nbsp;&nbsp;&nbsp;
+    <input class="k-button" type="button" value="Tildel rettighed" onclick="addUser();" />
+</div>
+
+<div id="emptyReturn"></div>
+
+<script>
+    function addUser() {
+        $.post(
+            "/Role/CreateRoleUser",
+            {
+                roleId: $("#RoleId").val(),
+                userId: $("#UserId").val()
+            },
+            function (data) { $("#emptyReturn").html(data); }
+        );
+        refreshData();
+    }
+    function refreshData() {
+        var ds = $("#RoleUserGrid").data("kendoGrid").dataSource;
+        ds.read();
+    }
+    function parameter() {
+        return {
+            roleId: $("#RoleId").val()
+        };
+    }
+</script>

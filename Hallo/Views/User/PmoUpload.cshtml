@@ -2,20 +2,32 @@
 @model FileInfo
 
 <h2>PMO Fil-upload</h2>
-<br />
-<br />
+<h5>PMO-oplysninger benyttes til at udsende SMS og Email, samt til adgangskontrol.</h5>
 @if (Model != null) {
     <section>Seneste fil uploadet: @Model.LastWriteTime</section>
 } else {
     <section>Ingen PMO-fil blev fundet.</section>  
 }
 <br />
+PMO-fil skal som minumum indeholde følgende kolonner:
+<ul>
+    <li>Person ID (PMO-ID)</li>
+    <li>Birthdate</li>
+    <li>Firstname</li>
+    <li>Middlename</li>
+    <li>Lastname</li>
+    <li>Cell Phone</li>
+    <li>E-Mail</li>
+    <li>Guardian</li>
+    <li>2. Guardian</li>
+</ul>
+
 
 @if (ViewBag.Message == null) { 
     <form enctype="multipart/form-data" method="post">
         <h4>Upload ny PMO-fil:</h4>
         <input type="file" name="file" id="file" />
-        <input type="submit" value="Upload" />
+        <input class="k-button" type="submit" value="Upload" />
     </form>
 } else {
     <section>@ViewBag.Message</section>

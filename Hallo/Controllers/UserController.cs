@@ -27,12 +27,14 @@ namespace Hallo.Controllers {
 
         [HttpPost]
         public ActionResult PmoUpload(HttpPostedFileBase file) {
+            Authorize("PmoAdmin");
+
             if (file.ContentLength > 0) {
                 file.SaveAs(FilePath);
 
                 DataTable dt = ReadPmoInfo();
                 UserService service = new UserService(
-                    Context, int.Parse(ConfigurationManager.AppSettings["ChurchId"]),
+                    db, int.Parse(ConfigurationManager.AppSettings["ChurchId"]),
                     ConfigurationManager.AppSettings["ChurchName"], dt
                 );
                 Thread worker = new Thread(service.SyncUserDatabaseWithPmo);
@@ -59,16 +61,19 @@ namespace Hallo.Controllers {
             dt.AcceptChanges();
             return dt;
         }
-
+        
+        /*
         public ActionResult PmoInfo() {
             DataTable dt = ReadPmoInfo();
             UserService service = new UserService(
-                Context, int.Parse(ConfigurationManager.AppSettings["ChurchId"]),
+                db, int.Parse(ConfigurationManager.AppSettings["ChurchId"]),
                 ConfigurationManager.AppSettings["ChurchName"], dt
             );
             Thread worker = new Thread(service.SyncUserDatabaseWithPmo);
             worker.Start();
             return View();
         }
+        */
+
     }
 }

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "List";
+    bool isEditor = Hallo.Controllers.HalloController.IsAuthorized(ViewBag.User, "Editor");    
 }
 
 <h2>Artikler</h2>
@@ -42,19 +43,25 @@
             </td>
             <td style="text-align: center;">
                 <input type="checkbox" 
-                    id ="Approved_@item.Id" 
+                    id ="Approved_@item.Id"  
+                        @if (!isEditor) {
+                            <text>disabled="disabled"</text>
+                        }
                     onclick="setApproved('@item.Id');" 
                     @(item.ApprovedByEditor ? "checked='checked'" : "")/>
             </td>
             <td style="text-align: center;">
                 <input type="checkbox" 
                     id ="IsPublic_@item.Id" 
+                        @if (!isEditor) {
+                            <text>disabled="disabled"</text>
+                        }
                     onclick="setPublic('@item.Id');" 
                     @(item.IsPublic ? "checked='checked'" : "")/>
             </td>
             <td>
                 @Html.ActionLink("Ret", "Edit", new { id = item.Id })
-                @Html.ActionLink("Slet", "Delete", new { id=item.Id })
+                @Html.ActionLink("Slet", "Delete", new { id = item.Id })
             </td>
         </tr>
     }

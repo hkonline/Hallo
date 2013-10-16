@@ -63,8 +63,9 @@
       <HintPath>..\ExternalLibraries\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.7\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Sherwood.SignOn.Client, Version=1.0.0.0, Culture=neutral, PublicKeyToken=534ba6e98f72066b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -105,8 +106,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Providers">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
@@ -177,9 +179,15 @@
     <Compile Include="Images\ImageFinder.cs" />
     <Compile Include="Infrastructure\MenuBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Labels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Labels.resx</DependentUpon>
+    </Compile>
     <Compile Include="Users\UserService.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="ViewModels\AssignedArticleCategory.cs" />
+    <Compile Include="ViewModels\VMUser.cs" />
     <Compile Include="ViewModels\FrontPageArticle.cs" />
     <Compile Include="ViewModels\HKMenuItem.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
@@ -350,6 +358,8 @@
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\User\PmoUpload.cshtml" />
     <Content Include="Views\User\PmoInfo.cshtml" />
+    <Content Include="Views\Role\Admin.cshtml" />
+    <Content Include="Views\Home\NoAccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -369,6 +379,12 @@
       <Project>{ea933c20-dd05-481f-bfde-19e6ccfaa58c}</Project>
       <Name>HalloDal</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Labels.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Labels.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
