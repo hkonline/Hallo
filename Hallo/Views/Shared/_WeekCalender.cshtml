@@ -1,9 +1,16 @@
 ﻿<div id="weekcalendar"></div>
-
-<script type="text/javascript"
-    src="http://widgets.brunstad.org/calendar/WeekJs?Culture=nb-NO&ContainerId=weekcalendar&Calendars=brunstad_calendar_no,holstebro_calendar&FullCalendarURL=/kalendar.aspx&Days=7&CSSNameSpace=Hallo">
-</script>
-
+@{
+    string churchName = System.Configuration.ConfigurationManager.AppSettings["ChurchUrlName"];
+    string calenderUrl =
+        "http://widgets.brunstad.org/calendar/WeekJs" +
+        "?Culture=nb-NO" +
+        "&ContainerId=weekcalendar" +
+        "&Calendars=brunstad_calendar_no," + churchName + "_calendar" +
+        "&FullCalendarURL=http://portal.brunstad.org/no/Kalender" +
+        "&Days=7" +
+        "&CSSNameSpace=Hallo";    
+}
+<script type="text/javascript" src ="@calenderUrl"></script>
 <script>
     $(".timeend").hide();
     $(".timedash").hide();

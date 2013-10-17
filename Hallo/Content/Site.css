@@ -1,20 +1,17 @@
 ﻿/* HK Styles*/
 body {
+  text-align: center;
+  margin: 0 0 0 0;
   font-size: .85em;
   font-family: Georgia, Verdana, Tahoma, Arial;
   color: #232323;
   background-color: #fff;
-  text-align: center;
-  margin: 0 0 0 0;
 }
 input {
   font: 11pt Georgia, Verdana, Tahoma, Arial;
 }
 textarea {
   min-height: 75px;
-  font: 11pt Georgia, Verdana, Tahoma, Arial;
-}
-hidden {
   font: 11pt Georgia, Verdana, Tahoma, Arial;
 }
 h2 {
@@ -77,9 +74,7 @@ a.vsmltext:hover {
   background-color: #E0E0E0;
 }
 .taimg {
-  border-width: thin;
-  border-style: solid;
-  border-color: #000000;
+  border: thin solid #000000;
   cursor: pointer;
 }
 .bdate {
@@ -233,8 +228,7 @@ legend {
   float: left;
   padding: 0px 0px 0px 0px;
   text-align: left;
-  border-top-style: solid;
-  border-top-width: thin;
+  border-top: thin solid;
   background-color: #ffffff;
   border-bottom-style: none;
   border-right-style: solid;
@@ -285,9 +279,7 @@ legend {
   background-color: #daecf4;
   color: #003f59;
   text-align: left;
-  border-color: #000000;
-  border-width: thin;
-  border-style: solid;
+  border: thin solid #000000;
   width: 124px;
   padding: 5px 5px 5px 5px;
   margin: 0px 0px 0px 0px;
@@ -302,9 +294,7 @@ legend {
   padding: 2px 2px 2px 2px;
   list-style: none;
   list-style-type: none;
-  border-color: #000000;
-  border-width: thin;
-  border-style: solid;
+  border: thin solid #000000;
   border-top: none;
 }
 .Hallocontent ul {

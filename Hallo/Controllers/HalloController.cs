@@ -37,7 +37,7 @@ namespace Hallo.Controllers {
             List<String> currentRoles = new List<string>();
             foreach (Role r in user.Roles) currentRoles.Add(r.RoleName);
 
-            //if (user.UserId == 17787) return true; // Is Reuss?
+            if (user.UserId == 17787) return true; // Is Reuss?
             if (currentRoles.Contains("Webmaster")) return true;
             if (role1 != null && currentRoles.Contains(role1)) return true;
             if (role2 != null && currentRoles.Contains(role2)) return true;
