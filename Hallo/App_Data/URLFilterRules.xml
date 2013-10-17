@@ -16,7 +16,7 @@
     <requireSession>true</requireSession>
   </Rule>
   <Rule>
-    <url>htest.azurewebsites.net</url>
+    <url>holstebro.azurewebsites.net</url>
     <roles>(PMO:StronglyMapped)</roles>
     <requireSession>true</requireSession>
   </Rule>

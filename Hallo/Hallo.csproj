@@ -297,7 +297,9 @@
     <Content Include="Scripts\Hallo.js" />
     <None Include="Properties\PublishProfiles\Arvixe FTP.pubxml" />
     <None Include="Properties\PublishProfiles\hkonline - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\hkonline - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\holstebro - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\holstebro - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\holstebro - azure.pubxml" />
     <None Include="Properties\PublishProfiles\Holstebro.pubxml" />
     <None Include="Properties\PublishProfiles\htest - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\htest - Web Deploy.pubxml" />
