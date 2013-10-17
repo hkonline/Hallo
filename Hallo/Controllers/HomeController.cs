@@ -66,5 +66,11 @@ namespace Hallo.Controllers {
             return View();
         }
 
+        public RssResult Feed() {
+            return new RssResult(db, "Hallo København");
+        }
+
+
+
     }
 }

@@ -52,7 +52,7 @@ namespace Hallo.Controllers {
         private void PopulateCategories(Article article) {
             List<ArticleCategory> allCategories = db.Categories.ToList();
             List<AssignedArticleCategory> viewModel = new List<AssignedArticleCategory>();
-            List<ArticleCategory> selectedCategories = article.Categories.ToList();
+            List<ArticleCategory> selectedCategories = article.Categories.OrderBy(x=>x.LocalName).ToList();
             foreach (ArticleCategory c in allCategories) {
                 viewModel.Add(new AssignedArticleCategory() {
                     CategoryId = c.Id,
