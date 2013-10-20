@@ -37,7 +37,7 @@ namespace Hallo.Controllers {
             Authorize("Editor", "Journalist");
             ViewBag.User = HalloUser;
 
-            return View(db.Articles.OrderByDescending(x => x.Date).Take(10).ToList());
+            return View(db.Articles.OrderByDescending(x => x.Date).Take(15).ToList());
         }
 
         private Article GetArticle(int id) {
@@ -50,9 +50,10 @@ namespace Hallo.Controllers {
         }
 
         private void PopulateCategories(Article article) {
-            List<ArticleCategory> allCategories = db.Categories.ToList();
+            List<ArticleCategory> allCategories = db.Categories.OrderBy(x => x.LocalName).ToList();
             List<AssignedArticleCategory> viewModel = new List<AssignedArticleCategory>();
-            List<ArticleCategory> selectedCategories = article.Categories.OrderBy(x=>x.LocalName).ToList();
+            List<ArticleCategory> selectedCategories = article.Categories.ToList();
+            
             foreach (ArticleCategory c in allCategories) {
                 viewModel.Add(new AssignedArticleCategory() {
                     CategoryId = c.Id,
@@ -60,6 +61,7 @@ namespace Hallo.Controllers {
                     Assigned = selectedCategories.Contains(c)
                 });
             }
+
             ViewBag.Categories = viewModel;
         }
 

@@ -17,7 +17,7 @@ namespace Hallo.Infrastructure {
             List<HKMenuItem> menu = new List<HKMenuItem>();
 
             List<HKMenuItem> categoryLinks = new List<HKMenuItem>();
-            List<ArticleCategory> cList = context.Categories.OrderBy(c => c.LocalName).ToList();
+            List<ArticleCategory> cList = context.Categories.Where(x => x.Articles.Count > 0).OrderBy(c => c.LocalName).ToList();
 
             foreach (ArticleCategory ac in cList)
                 categoryLinks.Add(new HKMenuItem { Text = ac.LocalName, Url = "/Home/Index/" + ac.Id });

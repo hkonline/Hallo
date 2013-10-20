@@ -44,11 +44,11 @@
             <table>
                 <tr>
                 @{
-    int i = 0;
-    List<AssignedArticleCategory> categories = ViewBag.Categories;
+                    int i = 0;
+                    List<AssignedArticleCategory> categories = ViewBag.Categories;
 
-    foreach (AssignedArticleCategory c in categories) {
-        if (i++ % 6 == 0) { 
+                    foreach (AssignedArticleCategory c in categories) {
+                        if (i++ % 6 == 0) { 
                             @: </tr><tr>
                         }
                         @: <td style="padding: 5px 5px 5px 5px;">
@@ -119,6 +119,6 @@
         if (e.which == 13) {
             jQuery(this).blur();
             jQuery('#submit').focus().click();
-        }         
-    });    
+        }
+    });
 </script>
