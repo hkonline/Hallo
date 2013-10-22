@@ -60,18 +60,18 @@
     <input class="k-button" type="button" value="Tildel rettighed" onclick="addUser();" />
 </div>
 
-<div id="emptyReturn"></div>
-
 <script>
     function addUser() {
-        $.post(
-            "/Role/CreateRoleUser",
-            {
+        $.ajax({ 
+            url: "/Role/CreateRoleUser",
+            data: {
                 roleId: $("#RoleId").val(),
                 userId: $("#UserId").val()
             },
-            function (data) { $("#emptyReturn").html(data); }
-        );
+            type: "POST",
+            async: false // We need to wait for this "POST" to be ended before we refresh the Grid.
+        });
+
         refreshData();
     }
     function refreshData() {

@@ -43,6 +43,12 @@ namespace Hallo.Infrastructure {
                         Url = "/Article/List"
                     });
                 }
+                if (HalloController.IsAuthorized(user, "PmoAdmin")) {
+                    adminLinks.Add(new HKMenuItem {
+                        Text = "Upload PMO-info",
+                        Url = "/User/PmoUpload"
+                    });
+                }
 
                 if (adminLinks.Count > 0) {
                     menu.Add(new HKMenuItem {

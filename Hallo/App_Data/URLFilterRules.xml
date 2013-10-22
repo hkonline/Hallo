@@ -20,4 +20,8 @@
     <roles>(PMO:StronglyMapped)</roles>
     <requireSession>true</requireSession>
   </Rule>
+  <Rule alwaysAllow="true">
+    <url>.*</url>
+    <users>^content\.brunstad\.org$</users>
+  </Rule>
 </Rules>

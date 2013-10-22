@@ -153,8 +153,7 @@ namespace Hallo.Controllers {
 
         [HttpPost]
         public JsonResult DeleteRoleUser([DataSourceRequest] DataSourceRequest request, VMUser user, int roleId) {
-            Authorize("Editor");
-            
+            Authorize("Editor");            
             if (user != null && user.UserId > 0) {
                 db.Roles.FirstOrDefault(r => r.RoleId == roleId).Users.Remove(db.Users.FirstOrDefault(x => x.UserId == user.UserId));
                 db.SaveChanges();
@@ -164,8 +163,7 @@ namespace Hallo.Controllers {
 
         [HttpPost]
         public JsonResult CreateRoleUser(int roleId, int userId) {
-            Authorize("Editor");
-            
+            Authorize("Editor");            
             db.Roles.First(x => x.RoleId == roleId).Users.Add(db.GetUserById(userId));
             db.SaveChanges();
             return Json(null);
