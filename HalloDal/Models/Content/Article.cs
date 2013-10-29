@@ -1,36 +1,37 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace HalloDal.Models.Content {
     public partial class Article {
         public int Id { get; set; }
-        
-        [DisplayName("Overskrift")]
+
+        [Display(Name = "Headline", ResourceType = typeof(Resources.DisplayNames))]
         public string Headline { get; set; }
 
-        [DisplayName("Forfatter")]
+        [Display(Name = "Author", ResourceType = typeof(Resources.DisplayNames))]
         public string Author { get; set; }
 
-        [DisplayName("Dato")]
+        [Display(Name = "Date", ResourceType = typeof(Resources.DisplayNames))]
         public System.DateTime Date { get; set; }
 
-        [DisplayName("Forsidetekst")]
+        [Display(Name = "FrontpageText", ResourceType = typeof(Resources.DisplayNames))]
         public string FrontpageText { get; set; }
 
-        [DisplayName("Forsidebillede")]
+        [Display(Name = "FrontpageImage", ResourceType = typeof(Resources.DisplayNames))]
         public virtual Image FrontpageImage { get; set; }
         public string Text { get; set; }
-        
-        [DisplayName("Godkendt")]
+
+        [Display(Name = "ApprovedByEditor", ResourceType = typeof(Resources.DisplayNames))]
         public bool ApprovedByEditor { get; set; }
 
-        [DisplayName("Offentlig")]
+        [Display(Name = "IsPublic", ResourceType = typeof(Resources.DisplayNames))]
         public bool IsPublic { get; set; }
 
         public ArticleTypes ArticleType { get; set; }
 
-        [DisplayName("Artikel-kategorier")]
+        [Display(Name = "Categories", ResourceType = typeof(Resources.DisplayNames))]
         public virtual ICollection<ArticleCategory> Categories { get; set; }
         
         public virtual ICollection<Image> Images { get; set; }

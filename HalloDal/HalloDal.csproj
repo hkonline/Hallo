@@ -63,7 +63,13 @@
     <Compile Include="Models\Users\LogEntry.cs" />
     <Compile Include="Models\Users\Role.cs" />
     <Compile Include="Models\Users\User.cs" />
+    <Compile Include="Models\Users\UserGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\DisplayNames.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DisplayNames.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -77,6 +83,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201310061828511_Test.resx">
       <DependentUpon>201310061828511_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\DisplayNames.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisplayNames.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

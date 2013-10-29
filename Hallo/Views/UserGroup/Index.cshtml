@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HalloDal.Models.Users.UserGroup>
+
+<h2>Bruger grupper</h2>
+
+<p>
+    @Html.ActionLink("Opret ny", "Create")
+</p>
+<table class="EntityTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupName)
+        </th>
+        <th>
+            Type
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupName)
+        </td>
+        <td>
+            @if (String.IsNullOrEmpty(item.Sql)) { 
+                <p>SQL</p>   
+            } else {
+                <p>Udvalgte brugere</p>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Ret", "Edit", new { id=item.UserGroupId }) |
+            @Html.ActionLink("Detaljer", "Details", new { id=item.UserGroupId }) |
+            @Html.ActionLink("Slet", "Delete", new { id=item.UserGroupId })
+        </td>
+    </tr>
+}
+
+</table>

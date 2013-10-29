@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace HalloDal.Models.Users {
     public class Role {
         public int RoleId { get; set; }
-        
-        [DisplayName("Rettighed")]
+
+        [Display(Name = "RoleName", ResourceType = typeof(Resources.DisplayNames))]
         [StringLength(50)]
         public string RoleName { get; set; }
 
-        [DisplayName("Beskrivelse")]
+        [Display(Name = "Description", ResourceType = typeof(Resources.DisplayNames))]
         [StringLength(100)]
         public string Description { get; set; }
 

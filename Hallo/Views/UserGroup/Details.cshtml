@@ -1,0 +1,29 @@
+﻿@model HalloDal.Models.Users.UserGroup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UserGroup</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GroupName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GroupName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Sql)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sql)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.UserGroupId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
