@@ -1,6 +1,7 @@
 ﻿using Hallo.Users;
 using HalloDal.Models;
 using HalloDal.Models.Users;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,10 @@ using System.Web.Mvc;
 namespace Hallo.Controllers {
     public class HalloController : Controller {
         protected HalloContext db = new HalloContext();
+
+        protected JsonSerializerSettings jsonSettings = new JsonSerializerSettings { 
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        };
 
         protected void InitializeSession() {
             UserService userService = new UserService(

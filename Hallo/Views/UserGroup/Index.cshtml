@@ -22,7 +22,7 @@
             @Html.DisplayFor(modelItem => item.GroupName)
         </td>
         <td>
-            @if (String.IsNullOrEmpty(item.Sql)) { 
+            @if (!String.IsNullOrEmpty(item.Sql)) { 
                 <p>SQL</p>   
             } else {
                 <p>Udvalgte brugere</p>

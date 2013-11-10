@@ -1,0 +1,64 @@
+﻿@model Hallo.ViewModels.MailViewModel
+
+<h2>Send Mail/SMS</h2>
+<br />
+<br />
+@using (Html.BeginForm()) {
+        
+    <label class="editor-label">Vælg brugergruppe:</label>
+    @(Html.Kendo()
+        .DropDownListFor(x => x.UserGroupId)
+        .DataTextField("GroupName")
+        .DataValueField("UserGroupId")
+        .DataSource(src => {
+            src.Read(r => {
+                r.Action("GetUserGroups", "Mail");
+            });
+        })
+    )
+    <br />
+    <br />
+    <label class="editor-label">Overskrift: (Bliver kun vist i email IKKE i SMS):</label><br />
+    @Html.TextBoxFor(m => m.Headline, new { style = "width: 450px;" })
+    <input type="checkbox" name="loggedInUserAsSender" /><label>Mit mobilnr. ønskes brugt som afsender.</label>
+    <br />
+    <br />
+    <label class="editor-label">Meddelelse:</label><br />
+    @Html.TextAreaFor(x => x.Text, new { style = "width: 100%; height: 120px;" })
+    <label>Send email</label>
+    @Html.CheckBoxFor(x => x.SendMail)
+    <label>Send SMS</label>
+    @Html.CheckBoxFor(x => x.SendSms)
+    <input type="submit" class="k-button" value="Send besked" />
+}
+
+@if (Model.EmailList.Count > 0) {
+    <table>
+        <tr>
+            <td colspan="3">Mail blev sendt til følgende personer:</td>
+        </tr>
+        @foreach (var user in Model.EmailList) { 
+            <tr>
+                <td>@user.Firstname</td>
+                <td>@user.Lastname</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </table>
+}
+
+@if (Model.SmsList.Count > 0) {
+    <table>
+        <tr>
+            <td colspan="3">SMS blev sendt til følgende personer:</td>
+        </tr>
+        @foreach (var user in Model.SmsList) { 
+            <tr>
+                <td>@user.Firstname</td>
+                <td>@user.Lastname</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </table>
+}
+

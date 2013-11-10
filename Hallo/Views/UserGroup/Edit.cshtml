@@ -1,18 +1,11 @@
 ﻿@model HalloDal.Models.Users.UserGroup
 
-@{
-    ViewBag.Title = "Edit";
-}
-
-<h2>Edit</h2>
-
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>UserGroup</legend>
-
+        <legend>Brugergruppe</legend>
         @Html.HiddenFor(model => model.UserGroupId)
 
         <div class="editor-label">

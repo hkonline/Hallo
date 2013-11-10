@@ -22,6 +22,28 @@ namespace HalloDal.Models {
         public DbSet<LogEntry> LogEntries { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
 
+        public DbSet<SmsLog> SmsLogs { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+            modelBuilder.Entity<UserGroup>()
+                .HasMany(g => g.Administrators)
+                .WithMany(u => u.AdminUserGroups)
+                .Map(x => x.MapLeftKey("UserGroupId")
+                    .MapRightKey("UserId")
+                    .ToTable("UserGroupAdministrators")
+                );
+
+            modelBuilder.Entity<UserGroup>()
+                .HasMany(g => g.Users)
+                .WithMany(u => u.UserGroups)
+                .Map(x => x.MapLeftKey("UserGroupId")
+                    .MapRightKey("UserId")
+                    .ToTable("UserGroupUsers")
+                );
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         public User GetUserById(int id) {
             return Users.FirstOrDefault(x => x.UserId == id);
         }
@@ -47,5 +69,18 @@ namespace HalloDal.Models {
 
             SqlCommand cmd = new SqlCommand("", this.Database.Connection as SqlConnection);
         }
+
+        public List<T> GetList<T>(string sql) {
+            List<T> res = new List<T>();
+            SqlConnection connection = this.Database.Connection as SqlConnection;
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read()) res.Add((T)reader[0]);
+            reader.Close();
+            connection.Close();
+            return res;
+        }
+
     }
 }

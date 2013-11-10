@@ -51,7 +51,9 @@ namespace HalloDal.Models.Users {
         public string HomeChurchName { get; set; }
 
         public virtual ICollection<Role> Roles { get; set; }
+
         public virtual ICollection<UserGroup> UserGroups { get; set; }
+        public virtual ICollection<UserGroup> AdminUserGroups { get; set; }
 
         public bool IsInPmo { get; set; }
         public bool Authorized { get; set; }

@@ -39,7 +39,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +61,7 @@
     <Compile Include="Models\HalloContext.cs" />
     <Compile Include="Models\Users\LogEntry.cs" />
     <Compile Include="Models\Users\Role.cs" />
+    <Compile Include="Models\Users\SmsLog.cs" />
     <Compile Include="Models\Users\User.cs" />
     <Compile Include="Models\Users\UserGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,26 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using HalloDal.Models;
 using HalloDal.Models.Users;
-using HalloDal.Models;
+using System.Data;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Hallo.Controllers {
     public class UserGroupController : Controller {
         private HalloContext db = new HalloContext();
 
-        //
-        // GET: /UserGroup/
-
         public ActionResult Index() {
             return View(db.UserGroups.ToList());
         }
-
-        //
-        // GET: /UserGroup/Details/5
 
         public ActionResult Details(int id = 0) {
             UserGroup usergroup = db.UserGroups.Find(id);
@@ -30,15 +20,9 @@ namespace Hallo.Controllers {
             return View(usergroup);
         }
 
-        //
-        // GET: /UserGroup/Create
-
         public ActionResult Create() {
             return View();
         }
-
-        //
-        // POST: /UserGroup/Create
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -52,9 +36,6 @@ namespace Hallo.Controllers {
             return View(usergroup);
         }
 
-        //
-        // GET: /UserGroup/Edit/5
-
         public ActionResult Edit(int id = 0) {
             UserGroup usergroup = db.UserGroups.Find(id);
             if (usergroup == null) {
@@ -62,9 +43,6 @@ namespace Hallo.Controllers {
             }
             return View(usergroup);
         }
-
-        //
-        // POST: /UserGroup/Edit/5
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -77,9 +55,6 @@ namespace Hallo.Controllers {
             return View(usergroup);
         }
 
-        //
-        // GET: /UserGroup/Delete/5
-
         public ActionResult Delete(int id = 0) {
             UserGroup usergroup = db.UserGroups.Find(id);
             if (usergroup == null) {
@@ -87,9 +62,6 @@ namespace Hallo.Controllers {
             }
             return View(usergroup);
         }
-
-        //
-        // POST: /UserGroup/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

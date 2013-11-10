@@ -16,9 +16,6 @@
             @Html.DisplayNameFor(model => model.Headline)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
@@ -34,9 +31,6 @@
         <tr>
             <td>
                 <a href="@("/Article/Article/" + item.Id)">@Html.DisplayFor(modelItem => item.Headline)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
                 @item.Date.ToShortDateString()
