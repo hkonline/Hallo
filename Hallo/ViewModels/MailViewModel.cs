@@ -11,8 +11,8 @@ namespace Hallo.ViewModels {
             EmailList = new List<User>();
         }
        
-        public List<User> SmsList { get; set; }
-        public List<User> EmailList { get; set; }
+        public IList<User> SmsList { get; set; }
+        public IList<User> EmailList { get; set; }
 
         public int UserGroupId { get; set; }
         public string Text { get; set; }

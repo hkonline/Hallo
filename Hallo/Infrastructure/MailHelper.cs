@@ -32,7 +32,7 @@ namespace Hallo.Infrastructure {
             foreach (User user in smsList) {
                 string tlfnr = user.MobilPhone;
                 if (!String.IsNullOrEmpty(user.MobilPhone)) {
-                    tlfnr = tlfnr.Replace("+45", "");
+                    tlfnr = tlfnr.Replace("+45", "").Replace(" ", "");
                     if (tlfnr.Length == 8) {
                         mail.To.Add("Sms45" + tlfnr + "@coolsmsc.dk");
                         sendUsers.Add(user);

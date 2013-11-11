@@ -115,6 +115,15 @@ namespace HalloDal.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Forsidetekst.
+        /// </summary>
+        public static string FrontpageText {
+            get {
+                return ResourceManager.GetString("FrontpageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gruppenavn.
         /// </summary>
         public static string GroupName {
@@ -147,6 +156,15 @@ namespace HalloDal.Resources {
         public static string RoleName {
             get {
                 return ResourceManager.GetString("RoleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artikeltekst.
+        /// </summary>
+        public static string Text {
+            get {
+                return ResourceManager.GetString("Text", resourceCulture);
             }
         }
     }

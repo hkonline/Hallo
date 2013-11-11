@@ -21,6 +21,8 @@ namespace HalloDal.Models.Content {
 
         [Display(Name = "FrontpageImage", ResourceType = typeof(Resources.DisplayNames))]
         public virtual Image FrontpageImage { get; set; }
+
+        [Display(Name = "Text", ResourceType = typeof(Resources.DisplayNames))]
         public string Text { get; set; }
 
         [Display(Name = "ApprovedByEditor", ResourceType = typeof(Resources.DisplayNames))]

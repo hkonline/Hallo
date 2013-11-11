@@ -33,7 +33,7 @@
 }
 
 @if (Model.EmailList.Count > 0) {
-    <table>
+    <table class="EntityTable">
         <tr>
             <td colspan="3">Mail blev sendt til følgende personer:</td>
         </tr>
@@ -48,7 +48,7 @@
 }
 
 @if (Model.SmsList.Count > 0) {
-    <table>
+    <table class="EntityTable">
         <tr>
             <td colspan="3">SMS blev sendt til følgende personer:</td>
         </tr>
@@ -56,7 +56,7 @@
             <tr>
                 <td>@user.Firstname</td>
                 <td>@user.Lastname</td>
-                <td>@user.Email</td>
+                <td>@user.MobilPhone</td>
             </tr>
         }
     </table>

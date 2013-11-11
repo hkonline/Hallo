@@ -370,6 +370,7 @@
     <Content Include="Views\UserGroup\Details.cshtml" />
     <Content Include="Views\UserGroup\Edit.cshtml" />
     <Content Include="Views\Mail\Index.cshtml" />
+    <Content Include="Views\Mail\SmsLog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

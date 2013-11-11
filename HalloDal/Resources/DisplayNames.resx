@@ -135,6 +135,9 @@
   <data name="FrontpageImage" xml:space="preserve">
     <value>Forsidebillede</value>
   </data>
+  <data name="FrontpageText" xml:space="preserve">
+    <value>Forsidetekst</value>
+  </data>
   <data name="GroupName" xml:space="preserve">
     <value>Gruppenavn</value>
   </data>
@@ -146,5 +149,8 @@
   </data>
   <data name="RoleName" xml:space="preserve">
     <value>Rettighed</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Artikeltekst</value>
   </data>
 </root>

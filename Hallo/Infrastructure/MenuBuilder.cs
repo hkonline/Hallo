@@ -49,6 +49,16 @@ namespace Hallo.Infrastructure {
                         Url = "/User/PmoUpload"
                     });
                 }
+                if (HalloController.IsAuthorized(user, "SmsAdmin")) {
+                    adminLinks.Add(new HKMenuItem {
+                        Text = "Send Mail/SMS",
+                        Url = "/Mail"
+                    }); 
+                    adminLinks.Add(new HKMenuItem {
+                        Text = "Se afsendte SMS'er",
+                        Url = "/Mail/SmsLog"
+                    });
+                }                
                 
                 if (adminLinks.Count > 0) {
                     menu.Add(new HKMenuItem {
@@ -56,6 +66,8 @@ namespace Hallo.Infrastructure {
                         SubMenu = adminLinks
                     });
                 }
+
+
             }
             //menu.Add(new HKMenuItem() { Text = "Kalender", Url = "/Calender/Index" });
 

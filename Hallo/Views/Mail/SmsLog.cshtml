@@ -1,0 +1,22 @@
+﻿@using HalloDal.Models.Users
+@using System.Collections.Generic
+
+@model List<SmsLog>
+
+<h2>SMS Log</h2>
+<table class="EntityTable">
+    <tr>
+        <td>Afsendt:</td>
+        <td>Antal:</td>
+        <td>Afsender:</td>
+        <td>Tekst:</td>
+    </tr>
+    @foreach (var entry in Model) {
+        <tr>
+            <td>@entry.SmsTime</td>
+            <td>@entry.NumberOfSms</td>
+            <td>@entry.SendingUser.Firstname @entry.SendingUser.Lastname</td>
+            <td>@entry.Text</td>
+        </tr>
+    }
+</table>
