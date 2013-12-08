@@ -1,5 +1,7 @@
-﻿using HalloDal.Models;
+﻿using Hallo.Core.Users;
+using HalloDal.Models;
 using HalloDal.Models.Users;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
@@ -14,9 +16,13 @@ namespace Hallo.Controllers {
 
         public ActionResult Details(int id = 0) {
             UserGroup usergroup = db.UserGroups.Find(id);
+
+            ViewBag.Users = new UserGroupService(db).GetUserGroupUsers(id);
+
             if (usergroup == null) {
                 return HttpNotFound();
             }
+
             return View(usergroup);
         }
 

@@ -51,7 +51,7 @@ namespace Hallo.Infrastructure {
             var items = new List<SyndicationItem>();
 
             foreach (Article article in articles) {
-                var item = new SyndicationItem(article.Headline, null, new Uri("http://" + currentUrl.Host + "/Article/" + article.Id)) {
+                var item = new SyndicationItem(article.Headline, null, new Uri("http://" + currentUrl.Host + "/Article/Article/" + article.Id)) {
                     Summary = new TextSyndicationContent(article.FrontpageText)
                 };
                 item.Categories.Add(new SyndicationCategory("News"));

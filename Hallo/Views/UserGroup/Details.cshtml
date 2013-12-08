@@ -1,5 +1,5 @@
-﻿@model HalloDal.Models.Users.UserGroup
-
+﻿@using HalloDal.Models.Users
+@model UserGroup
 
 <h2>Brugergruppe</h2>
 
@@ -11,13 +11,26 @@
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Sql)
+        <table class="EntityTable">
+            @{int i = 0;}
+            @foreach (User user in ViewBag.Users) {
+                string color = "#FFFFFF";
+                if (i / 5 % 2 == 0) { color = "#AAAAAA"; }                
+                <tr style="background-color: @color">
+                    <td>@user.Firstname</td>
+                    <td>@user.Lastname</td>
+                    <td>@user.Birthday</td>
+                </tr>
+                i++;
+            }
+        </table>
     </div>
     <div class="display-label">
         @Html.DisplayNameFor(model => model.Users):
     </div>
     <div class="display-field">
         @foreach (var user in Model.Users) { 
-            @Html.DisplayFor(model => model.Sql)
+            @user.Firstname @user.Lastname
         }
     </div>
 </fieldset>

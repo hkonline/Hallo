@@ -55,7 +55,7 @@ namespace Hallo.Infrastructure {
                         Url = "/Mail"
                     }); 
                     adminLinks.Add(new HKMenuItem {
-                        Text = "Se afsendte SMS'er",
+                        Text = "Se afsendte SMS",
                         Url = "/Mail/SmsLog"
                     });
                 }                
