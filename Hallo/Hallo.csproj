@@ -192,6 +192,7 @@
     <Compile Include="Users\UserService.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="ViewModels\AssignedArticleCategory.cs" />
+    <Compile Include="ViewModels\BirthdaysViewModel.cs" />
     <Compile Include="ViewModels\MailViewModel.cs" />
     <Compile Include="ViewModels\VMUser.cs" />
     <Compile Include="ViewModels\FrontPageArticle.cs" />
@@ -341,7 +342,7 @@
     <Content Include="Views\Shared\_Contacts.cshtml" />
     <Content Include="Views\InfoBox\CurrentInfo.cshtml" />
     <Content Include="Views\Home\Menu.cshtml" />
-    <Content Include="Views\Calender\Index.cshtml" />
+    <Content Include="Views\Role\Calender\Index.cshtml" />
     <Content Include="Views\Home\SignOnTest.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Article\Article.cshtml" />
@@ -371,6 +372,7 @@
     <Content Include="Views\UserGroup\Edit.cshtml" />
     <Content Include="Views\Mail\Index.cshtml" />
     <Content Include="Views\Mail\SmsLog.cshtml" />
+    <Content Include="Views\User\Birthdays.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

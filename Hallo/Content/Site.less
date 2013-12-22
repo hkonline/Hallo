@@ -1,7 +1,8 @@
 ﻿/* HK Styles*/
 @HalloFont: Georgia, Verdana, Tahoma, Arial;
 @NormalFontSize: 11pt;
-
+@BackgroundColor: #daecf4;
+    
 
 body {
     text-align: left;
@@ -160,16 +161,13 @@ a.note {
 
 /*adtext*/
 .fpBox {
-    background-color: #A3DEFE;
-    font: 8pt @HalloFont;
-    color: #FFFFFF;
+    background-color: @BackgroundColor;
+    font: 10pt @HalloFont;
+    color: #000000;
     text-align: left;
     border: thin solid #000000;
     border-width: thin;
-    border-style: solid;
-    width: 124px;
-    padding: 5px 5px 5px 5px;
-    margin: 20px 20px 20px 20px;
+    border-style: solid;    
 }
 
 .menupkt {
@@ -310,7 +308,7 @@ legend {
 /* Week calender*/
 
 #weekcalendar {
-     margin: 0px 20px 0px 20px;
+    margin: 0px 20px 0px 20px;
     width: 134px;
     text-align: left;
     padding: 0px;
@@ -343,7 +341,7 @@ legend {
 }
 
 .brunstad_title {
-    background-color: #daecf4;
+    background-color: @BackgroundColor;
     color: #003f59;
     text-align: left;
     border: thin solid #000000;

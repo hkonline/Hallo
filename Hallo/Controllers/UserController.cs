@@ -4,11 +4,15 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using Hallo.Users;
 using System.Threading;
+using Hallo.ViewModels;
+using System.Collections.Generic;
+using HalloDal.Models.Users;
 
 namespace Hallo.Controllers {
     public class UserController : HalloController {
@@ -39,7 +43,7 @@ namespace Hallo.Controllers {
                 );
                 Thread worker = new Thread(service.SyncUserDatabaseWithPmo);
                 worker.Start();
-                
+
                 //TODO: Lad worker processen logge evt. fejl.
                 ViewBag.Message = "Opdatering af brugerdatabase startet.  Det kan tage nogle minutter før alle ændringer er læst ind.";
             }
@@ -61,7 +65,30 @@ namespace Hallo.Controllers {
             dt.AcceptChanges();
             return dt;
         }
-        
+
+        private List<User> GetBirthdayUsers(DateTime day) {
+            return db.Users
+                .Where(x => ((DateTime)x.Birthday).Day == day.Day && ((DateTime)x.Birthday).Month == day.Month)
+                .OrderByDescending(x => x.Birthday)
+                .ToList();
+        }
+
+        public ActionResult Birthdays() {
+            List<BirthdaysViewModel> m = new List<BirthdaysViewModel>();
+
+            m.Add(new BirthdaysViewModel {
+                DayString = Resources.Labels.Today,
+                Users = GetBirthdayUsers(DateTime.Today)
+            });
+
+            for (int i = 1; i < 3; i++) {
+                DateTime day = DateTime.Today.AddDays(i);
+                m.Add(new BirthdaysViewModel { Day = day, Users = GetBirthdayUsers(day) });
+            }
+
+            return PartialView(m);
+        }
+
         /*
         public ActionResult PmoInfo() {
             DataTable dt = ReadPmoInfo();

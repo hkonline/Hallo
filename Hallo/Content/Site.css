@@ -121,16 +121,13 @@ a.note:hover {
 }
 /*adtext*/
 .fpBox {
-  background-color: #A3DEFE;
-  font: 8pt Georgia, Verdana, Tahoma, Arial;
-  color: #FFFFFF;
+  background-color: #daecf4;
+  font: 10pt Georgia, Verdana, Tahoma, Arial;
+  color: #000000;
   text-align: left;
   border: thin solid #000000;
   border-width: thin;
   border-style: solid;
-  width: 124px;
-  padding: 5px 5px 5px 5px;
-  margin: 20px 20px 20px 20px;
 }
 .menupkt {
   cursor: pointer;

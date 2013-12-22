@@ -1,0 +1,28 @@
+﻿@using Hallo.ViewModels
+@using System.Collections.Generic
+@using Hallo.Resources
+@model List<BirthdaysViewModel>
+
+
+
+<div class="fpBox" style="width: 134px; margin: 20px;">
+    <div style="padding: 5px 5px 5px 5px;">
+        <span class="icon-birthday"></span>@Labels.Birthdays
+    </div>
+    <div style="background-color: white; border-top-style: solid; border-top-color: black; border-top-width: thin; font-size: 0.8em;">
+        <table>
+            @foreach (var bvm in Model) {
+                if (bvm.Users.Count > 0) {
+                    <tr>
+                        <td><b>@bvm.DayString</b></td>
+                    </tr>
+                    foreach (var user in bvm.Users) {
+                        <tr>
+                            <td>@(user.Firstname + " " + user.Lastname + " " + (DateTime.Today.Year - ((DateTime)user.Birthday).Year))</td>
+                        </tr>
+                    }
+                }
+            }
+        </table>
+    </div>
+</div>
