@@ -1,0 +1,67 @@
+﻿@using Hallo.ViewModels;
+@model HalloDal.Models.Content.Article
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Ret familie-præsentation</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Headline)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Headline, new { style = "width: 720px;" })
+            @Html.ValidationMessageFor(model => model.Headline)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Text)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Text, new { style = "width: 720px;" })
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+
+        <div>
+            <br />
+            @Html.ActionLink("Vælg billeder", "List", "Image", new { id = @Model.Id }, null)
+        </div>
+        <div style="text-align: right;">
+        <p>
+            <input id="submit" type="submit" value="Gem" class="k-button" />
+        </p></div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Tilbage til listen", "List")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    tinymce.init({
+        selector: '#Text',
+        menubar: false,
+        statusbar: false
+    });
+
+    tinymce.init({
+        selector: '#FrontpageText',
+        menubar: false,
+        statusbar: false
+    });
+
+    $("body").keydown(function (e) {
+        if (e.which == 13) {
+            jQuery(this).blur();
+            jQuery('#submit').focus().click();
+        }
+    });
+</script>

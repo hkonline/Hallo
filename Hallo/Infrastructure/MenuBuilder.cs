@@ -42,6 +42,10 @@ namespace Hallo.Infrastructure {
                         Text = "Artikler",
                         Url = "/Article/List"
                     });
+                    adminLinks.Add(new HKMenuItem { 
+                        Text = "Familier",
+                        Url = "/FamilyPresentation/List"
+                    });
                 }
                 if (HalloController.IsAuthorized(user, "PmoAdmin")) {
                     adminLinks.Add(new HKMenuItem {

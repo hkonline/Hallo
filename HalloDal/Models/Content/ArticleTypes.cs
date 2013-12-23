@@ -3,6 +3,7 @@ namespace HalloDal.Models.Content {
         News,
         Information,
         Edification,
+        FamilyPresentation,
         ActivityClub
     }
 }

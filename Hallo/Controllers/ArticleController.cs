@@ -70,6 +70,9 @@ namespace Hallo.Controllers {
             Authorize("Editor", "Journalist");
 
             Article article = GetArticle(id);
+            if (article.ArticleType == ArticleTypes.FamilyPresentation)
+                return RedirectToAction("Edit", "FamilyPresentation", new { id = id });
+            
             PopulateCategories(article);
             return View(article);
         }
@@ -79,7 +82,7 @@ namespace Hallo.Controllers {
             Authorize("Editor", "Journalist");
 
             Article newArticle = new Article() {
-                Date = DateTime.Now,
+                Date = DateTime.Now, ArticleType = ArticleTypes.News
             };
 
             db.Articles.Add(newArticle);

@@ -1,0 +1,23 @@
+﻿@using Hallo.ViewModels;
+@model ArticleViewModel
+
+<h2>&nbsp;&nbsp;&nbsp;@Model.Article.Headline</h2>
+<br />
+
+@foreach (ImageViewModel i in Model.Images) {
+    <table style="text-align: left; margin: 0 auto;">
+        <tr>
+            <td class="btext" style="width: 720px; text-align: left;">
+                <img class="taimg" src="@i.GetImageUrl()"/><br />
+                @i.Description
+            </td>
+        </tr>
+    </table>
+}
+
+<div class="bigtext">
+    <div>
+        @Html.Raw(Model.Article.Text)
+    </div>
+</div>
+

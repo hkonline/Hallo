@@ -1,0 +1,90 @@
+﻿@model IEnumerable<HalloDal.Models.Content.Article>
+
+@{
+    ViewBag.Title = "List";
+    bool isEditor = Hallo.Controllers.HalloController.IsAuthorized(ViewBag.User, "Editor");    
+}
+
+<h2>Familie-præsentation</h2>
+
+<p>
+    @Html.ActionLink("Ny familie-præsentation", "Create")
+</p>
+<table class="listTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Headline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApprovedByEditor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPublic)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                <a href="@("/FamilyPresentation/Article/" + item.Id)">@Html.DisplayFor(modelItem => item.Headline)</a>
+            </td>
+            <td>
+                @item.Date.ToShortDateString()
+            </td>
+            <td style="text-align: center;">
+                <input type="checkbox" 
+                    id ="Approved_@item.Id"  
+                        @if (!isEditor) {
+                            <text>disabled="disabled"</text>
+                        }
+                    onclick="setApproved('@item.Id');" 
+                    @(item.ApprovedByEditor ? "checked='checked'" : "")/>
+            </td>
+            <td style="text-align: center;">
+                <input type="checkbox" 
+                    id ="IsPublic_@item.Id" 
+                        @if (!isEditor) {
+                            <text>disabled="disabled"</text>
+                        }
+                    onclick="setPublic('@item.Id');" 
+                    @(item.IsPublic ? "checked='checked'" : "")/>
+            </td>
+            <td>
+                @Html.ActionLink("Ret", "Edit", new { id = item.Id })
+                @Html.ActionLink("Slet", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+<div id="empty"></div>
+
+<style>
+    .listTable td {
+        padding: 5px;
+    }
+
+    .listTable th {
+        padding: 5px;
+    }
+</style>
+<script>
+    function setApproved(id) {
+        $.post(
+            "/Article/SetApproved/" + id,
+            { approved: $("#Approved_"+id).is(':checked') },
+            function (data) { $("#empty").html(data); }
+        );        
+    }
+
+    function setPublic(id) {
+        $.post(
+            "/Article/SetPublic/" + id,
+            { isPublic: $("#IsPublic_"+id).is(':checked') },
+            function (data) { $("#empty").html(data); }
+        );        
+    }
+</script>
