@@ -56,8 +56,10 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\ExcelDataReader.2.1.1\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Kendo.Mvc">
-      <HintPath>..\..\Program Files (x86)\Telerik\Kendo UI for ASP.NET MVC Q2 2013\wrappers\aspnetmvc\Binaries\Mvc3\Kendo.Mvc.dll</HintPath>
+    <Reference Include="Kendo.Mvc, Version=2013.3.1119.340, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\KENDOUIMVC\2013.3.1119.340\Kendo.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\ExternalLibraries\log4net.dll</HintPath>
@@ -195,6 +197,7 @@
     <Compile Include="ViewModels\AssignedArticleCategory.cs" />
     <Compile Include="ViewModels\BirthdaysViewModel.cs" />
     <Compile Include="ViewModels\MailViewModel.cs" />
+    <Compile Include="ViewModels\UserGroupViewModel.cs" />
     <Compile Include="ViewModels\VMUser.cs" />
     <Compile Include="ViewModels\FrontPageArticle.cs" />
     <Compile Include="ViewModels\HKMenuItem.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using HalloDal.Models.Content;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HalloDal.Models.Users {
@@ -11,6 +12,9 @@ namespace HalloDal.Models.Users {
 
         [StringLength(2000)]
         public string Sql { get; set; }
+
+        public Image GroupImage { get; set; }
+        public GroupType GroupType { get; set; }
 
         public virtual ICollection<User> Administrators { get; set; }
         public virtual ICollection<User> Users { get; set; }

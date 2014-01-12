@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Globalization;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -8,6 +9,7 @@ using HalloDal.Models;
 using HalloDal.Migrations;
 using System.Data.Entity;
 using Hallo.Users;
+using System.Threading;
 
 namespace Hallo {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -32,6 +34,9 @@ namespace Hallo {
             Session["FrontpageLinks"] = Application["FrontpageLinks"];
         }
 
+        public void Request_Start() {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("da-DK");
+        }
 
     }
 }

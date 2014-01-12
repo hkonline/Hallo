@@ -1,10 +1,13 @@
 ﻿using Hallo.Core.Users;
 using HalloDal.Models;
 using HalloDal.Models.Users;
+using Kendo.Mvc.UI;
+using Kendo.Mvc.Extensions;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
+using Hallo.ViewModels;
 
 namespace Hallo.Controllers {
     public class UserGroupController : Controller {
@@ -47,7 +50,7 @@ namespace Hallo.Controllers {
             if (usergroup == null) {
                 return HttpNotFound();
             }
-            return View(usergroup);
+            return View(new UserGroupViewModel(usergroup));
         }
 
         [HttpPost]
@@ -58,7 +61,7 @@ namespace Hallo.Controllers {
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(usergroup);
+            return View(new UserGroupViewModel(usergroup));
         }
 
         public ActionResult Delete(int id = 0) {
@@ -81,6 +84,14 @@ namespace Hallo.Controllers {
         protected override void Dispose(bool disposing) {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        public ActionResult GetUsers([DataSourceRequest] DataSourceRequest request, int groupId) {
+            List<VMUser> list = new List<VMUser>();
+            
+            db.UserGroups.Find(groupId).Users.Each(x=>list.Add(new VMUser(x))); 
+            
+            return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
     }
 }

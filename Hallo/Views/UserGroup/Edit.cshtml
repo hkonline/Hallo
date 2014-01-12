@@ -1,4 +1,5 @@
-﻿@model HalloDal.Models.Users.UserGroup
+﻿@using Hallo.Resources
+@model Hallo.ViewModels.UserGroupViewModel
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -20,10 +21,37 @@
             @Html.LabelFor(model => model.Sql)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Sql)
+            @Html.TextAreaFor(model => model.Sql, new { style = "width: 100%;" })
             @Html.ValidationMessageFor(model => model.Sql)
         </div>
 
+
+        <div class="editor-label">
+            Brugere/Modtagere
+        </div>
+        <div class="editor-field">
+            @(Html.Kendo().Grid<Hallo.ViewModels.VMUser>()
+                .Name("userGrid")
+                .Columns(columns => {
+                    columns.Bound(p => p.Lastname).Title(Labels.Lastname);
+                    columns.Bound(p => p.Firstname).Title(Labels.Firstname);
+                    columns.Bound(p => p.BirthYear).Title(Labels.Birthyear);
+                    columns.Command(command => { command.Destroy(); });
+                })
+                .Pageable()
+                .Sortable()
+                .Scrollable(scr => scr.Height(430))
+                .Filterable()
+                .DataSource(
+                    dataSource => dataSource
+                        .Ajax()
+                        .Model(model => model.Id(u=>u.UserId))
+                        .PageSize(20)
+                        .Read(read => read.Action("GetUsers", "UserGroup", new { groupId = Model.UserGroupId }))
+                        .Destroy(delete => delete.Action("RemoveUser", "UserGroup", new { groupId = Model.UserGroupId }))
+                )
+            )
+        </div>
         <p>
             <input type="submit" value="Save" />
         </p>
@@ -37,3 +65,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

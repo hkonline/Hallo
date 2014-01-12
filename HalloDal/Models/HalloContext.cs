@@ -1,11 +1,9 @@
-using System;
-using System.Linq;
-using System.Data.Entity;
 using HalloDal.Models.Content;
 using HalloDal.Models.Users;
-using System.Data.SqlClient;
 using System.Collections.Generic;
-using System.Data.Common;
+using System.Data.Entity;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace HalloDal.Models {
     public partial class HalloContext : DbContext {

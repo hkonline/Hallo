@@ -43,7 +43,7 @@ namespace Hallo.Controllers {
         }
 
         public JsonResult GetUserGroups() {
-            var list = db.UserGroups.Select(o => new { o.GroupName, o.Sql, o.UserGroupId }).ToList();
+            var list = db.UserGroups.Where(g=>g.GroupType==GroupType.SmsGroup).Select(o => new { o.GroupName, o.Sql, o.UserGroupId }).ToList();
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }

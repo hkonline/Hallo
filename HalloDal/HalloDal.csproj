@@ -59,6 +59,7 @@
     <Compile Include="Models\Content\Message.cs" />
     <Compile Include="Models\Content\MessageType.cs" />
     <Compile Include="Models\HalloContext.cs" />
+    <Compile Include="Models\Users\GroupType.cs" />
     <Compile Include="Models\Users\LogEntry.cs" />
     <Compile Include="Models\Users\Role.cs" />
     <Compile Include="Models\Users\SmsLog.cs" />
