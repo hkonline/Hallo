@@ -62,6 +62,14 @@ namespace Hallo.Infrastructure {
                         Text = "Se afsendte SMS",
                         Url = "/Mail/SmsLog"
                     });
+                    adminLinks.Add(new HKMenuItem { 
+                        Text = "SMS-grupper",
+                        Url = "/UserGroup"
+                    });
+                    adminLinks.Add(new HKMenuItem {
+                        Text = "AK hold",
+                        Url = "/UserGroup/ACIndex"
+                    });
                 }                
                 
                 if (adminLinks.Count > 0) {
