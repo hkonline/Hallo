@@ -1,14 +1,17 @@
-﻿using HalloDal.Models.Content;
-using HalloDal.Models.Users;
+﻿using HalloDal.Models.Users;
 using System.ComponentModel.DataAnnotations;
 
 namespace Hallo.ViewModels {
     public class UserGroupViewModel {
 
+        public UserGroupViewModel() {}
+
         public UserGroupViewModel(UserGroup usrGroup) {
             UserGroupId = usrGroup.UserGroupId;
             GroupName = usrGroup.GroupName;
             Sql = usrGroup.Sql;
+            GroupType = usrGroup.GroupType;            
+            GroupImage = new ImageViewModel(usrGroup.UserGroupId, usrGroup.GroupImage);
         }
 
         public int UserGroupId { get; set; }
@@ -20,7 +23,9 @@ namespace Hallo.ViewModels {
         [StringLength(2000)]
         public string Sql { get; set; }
 
-        public Image GroupImage { get; set; }        
+        public GroupType GroupType {get;set;}
+
+        public ImageViewModel GroupImage { get; set; }        
 
     }
 }

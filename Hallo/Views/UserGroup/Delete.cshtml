@@ -1,33 +1,19 @@
-﻿@model HalloDal.Models.Users.UserGroup
+﻿@using HalloDal.Models.Users
+
+@model HalloDal.Models.Users.UserGroup
 
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Slet @(Model.GroupType == GroupType.SmsGroup ? "SMS-gruppe":"AK Hold")</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>UserGroup</legend>
+<h3>Er du sikker på at du vil slette @Model.GroupName ?</h3>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.GroupName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.GroupName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Sql)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Sql)
-    </div>
-</fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input class="k-button" type="submit" value="Slet" /> <br /><br />
+        @Html.ActionLink("Tilbage til listen", Model.GroupType == GroupType.SmsGroup ? "Index" : "ACIndex")
     </p>
 }

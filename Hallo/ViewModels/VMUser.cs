@@ -1,10 +1,17 @@
 ﻿using HalloDal.Models.Users;
 using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
+
 
 namespace Hallo.ViewModels {
     public class VMUser {
 
         private readonly User user;
+        private readonly UserGroup group = null;
 
         public VMUser() {
             user = new User();
@@ -12,6 +19,31 @@ namespace Hallo.ViewModels {
 
         public VMUser(User user) {
             this.user = user;
+        }
+
+        public VMUser(User user, UserGroup group) {
+            this.user = user;
+            this.group = group;
+        }
+
+        public string CompositeGroupUserId { 
+            get {
+                if (group != null) 
+                    return group.UserGroupId + "_" + user.UserId;
+                return user.UserId.ToString();
+            }
+        }
+
+        public static int GetUserIdPart(string compositeKey) { 
+            string[] parts = compositeKey.Split('_');
+            if (parts.Length > 1) return int.Parse(parts[1]);
+            return int.Parse(parts[0]);
+        }
+
+        public static int GetGroupIdPart(string compositeKey) {
+            string[] parts = compositeKey.Split('_');
+            if (parts.Length > 1) return int.Parse(parts[0]);
+            return -1;
         }
 
         public int UserId { 

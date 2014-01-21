@@ -1,0 +1,31 @@
+﻿@model IEnumerable<HalloDal.Models.Users.UserGroup>
+
+<h2>AK Hold</h2>
+
+<p>
+    @Html.ActionLink("Opret nyt", "CreateAC")
+</p>
+<table class="EntityTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupName)
+        </th>
+        <th>
+            Type
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupName)
+        </td>
+        <td>
+            @Html.ActionLink("Ret", "Edit", new { id=item.UserGroupId }) |
+            @Html.ActionLink("Slet", "Delete", new { id=item.UserGroupId })
+        </td>
+    </tr>
+}
+
+</table>

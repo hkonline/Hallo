@@ -370,7 +370,6 @@
     <Content Include="Views\Role\Admin.cshtml" />
     <Content Include="Views\Home\NoAccess.cshtml" />
     <Content Include="Views\UserGroup\Index.cshtml" />
-    <Content Include="Views\UserGroup\Create.cshtml" />
     <Content Include="Views\UserGroup\Delete.cshtml" />
     <Content Include="Views\UserGroup\Details.cshtml" />
     <Content Include="Views\UserGroup\Edit.cshtml" />
@@ -380,6 +379,7 @@
     <Content Include="Views\FamilyPresentation\List.cshtml" />
     <Content Include="Views\FamilyPresentation\Edit.cshtml" />
     <Content Include="Views\FamilyPresentation\Article.cshtml" />
+    <Content Include="Views\UserGroup\ACIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

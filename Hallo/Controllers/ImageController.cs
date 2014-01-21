@@ -6,9 +6,6 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using Hallo.ViewModels;
 using System.Web;
-using Hallo.Core;
-using System.Configuration;
-using System.IO;
 
 namespace Hallo.Controllers {
     public class ImageController : HalloController {
@@ -66,7 +63,7 @@ namespace Hallo.Controllers {
                     Image i = new Image();
                     CurrentArticle.Images.Add(i);
                     db.SaveChanges();
-                    SaveToDisk(file, i);
+                    SaveImageToDisk(file, i);
                 }
             }
             return RedirectToAction("List", new { id = ArticleId });
@@ -114,46 +111,9 @@ namespace Hallo.Controllers {
             Article a = db.Articles.FirstOrDefault(x => x.Id == ArticleId);
             a.FrontpageImage = new Image();
             db.SaveChanges();
-            SaveToDisk(file, a.FrontpageImage);
+            SaveImageToDisk(file, a.FrontpageImage);
         }
         #endregion
-
-        private void SaveToDisk(HttpPostedFileBase file, Image image) {
-            ImageHelper helper = new ImageHelper(file.InputStream);
-
-            System.Drawing.Image thumb = helper.GetResizedImage(200);
-
-            MemoryStream ms = new MemoryStream();
-            thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-            System.IO.File.WriteAllBytes(
-                Server.MapPath("~/") +
-                ConfigurationManager.AppSettings["ImageDirectoryUrl"].Substring(1) +
-                "/thumbnails/img" + image.Id + ".jpg",
-                ms.ToArray()
-            );
-
-            System.Drawing.Image jpgImage;
-            if (thumb.Width > thumb.Height) {
-                jpgImage = helper.GetResizedImage(720);
-            } else {
-                jpgImage = helper.GetResizedImage(480);
-            }
-
-            ms = new MemoryStream();
-            jpgImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-
-            System.IO.File.WriteAllBytes(
-                Server.MapPath("~/") +
-                ConfigurationManager.AppSettings["ImageDirectoryUrl"].Substring(1) +
-                "/images/img" + image.Id + ".jpg",
-                ms.ToArray()
-            );
-
-            image.Height = jpgImage.Height;
-            image.Width = jpgImage.Width;
-            db.SaveChanges();
-        }
 
         public List<Image> GetImages(int articleId) {
             Session["CurrentArticleId"] = articleId;

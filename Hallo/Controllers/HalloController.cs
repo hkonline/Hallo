@@ -1,10 +1,15 @@
-﻿using Hallo.Users;
+﻿using Hallo.Core;
+using Hallo.Users;
 using HalloDal.Models;
+using HalloDal.Models.Content;
 using HalloDal.Models.Users;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Hallo.Controllers {
@@ -56,5 +61,43 @@ namespace Hallo.Controllers {
 
             Response.Redirect("/Home/NoAccess");
         }
+
+        protected void SaveImageToDisk(HttpPostedFileBase file, Image image) {
+            ImageHelper helper = new ImageHelper(file.InputStream);
+
+            System.Drawing.Image thumb = helper.GetResizedImage(200);
+
+            MemoryStream ms = new MemoryStream();
+            thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            System.IO.File.WriteAllBytes(
+                Server.MapPath("~/") +
+                ConfigurationManager.AppSettings["ImageDirectoryUrl"].Substring(1) +
+                "/thumbnails/img" + image.Id + ".jpg",
+                ms.ToArray()
+            );
+
+            System.Drawing.Image jpgImage;
+            if (thumb.Width > thumb.Height) {
+                jpgImage = helper.GetResizedImage(720);
+            } else {
+                jpgImage = helper.GetResizedImage(480);
+            }
+
+            ms = new MemoryStream();
+            jpgImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            System.IO.File.WriteAllBytes(
+                Server.MapPath("~/") +
+                ConfigurationManager.AppSettings["ImageDirectoryUrl"].Substring(1) +
+                "/images/img" + image.Id + ".jpg",
+                ms.ToArray()
+            );
+
+            image.Height = jpgImage.Height;
+            image.Width = jpgImage.Width;
+            db.SaveChanges();
+        }
+
     }
 }

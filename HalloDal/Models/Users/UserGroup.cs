@@ -13,7 +13,7 @@ namespace HalloDal.Models.Users {
         [StringLength(2000)]
         public string Sql { get; set; }
 
-        public Image GroupImage { get; set; }
+        public virtual Image GroupImage { get; set; }
         public GroupType GroupType { get; set; }
 
         public virtual ICollection<User> Administrators { get; set; }
