@@ -112,6 +112,21 @@ namespace Hallo.Controllers {
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetUserItemsLimit6() {
+            List<VMUser> list = new List<VMUser>();
+            DateTime ageLimit = DateTime.Now.AddYears(-6);
+
+            var userList = db.Users
+                .Where(x => x.Birthday < ageLimit)
+                .Where(x => x.Authorized == true)
+                .OrderBy(x => x.Firstname)
+                .ThenBy(x => x.Lastname).ToList();
+
+            userList.ForEach(x => list.Add(new VMUser(x)));
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetRoleItems() {
             var list = new List<KeyValuePair<int, string>>();
             foreach (Role r in db.Roles) list.Add(new KeyValuePair<int, string>(r.RoleId, r.RoleName));

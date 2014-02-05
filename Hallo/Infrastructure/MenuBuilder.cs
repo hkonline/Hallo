@@ -65,12 +65,16 @@ namespace Hallo.Infrastructure {
                     adminLinks.Add(new HKMenuItem { 
                         Text = "SMS-grupper",
                         Url = "/UserGroup"
-                    });
+                    });                    
+                }
+                if (HalloController.IsAuthorized(user, "AcAdmin")) {
                     adminLinks.Add(new HKMenuItem {
                         Text = "AK hold",
                         Url = "/UserGroup/ACIndex"
                     });
-                }                
+                }
+                
+
                 
                 if (adminLinks.Count > 0) {
                     menu.Add(new HKMenuItem {

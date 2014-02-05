@@ -3,7 +3,6 @@
 
 @model Hallo.ViewModels.UserGroupViewModel
 
-
 @{
     ViewBag.AdminText = Model.GroupType == GroupType.ACTeam ? "AK Leder" : "SMS Afsender";
     ViewBag.AdminTextPl = Model.GroupType == GroupType.ACTeam ? "AK Ledere" : "SMS Afsendere";
@@ -22,21 +21,25 @@
     <input type="hidden" id="groupId" value="@Model.UserGroupId" />
 
     <legend>@(Model.GroupType == GroupType.SmsGroup ? "SMS Gruppe" : "AK Hold")</legend>
-    @Html.HiddenFor(model => model.UserGroupId)
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.UserGroupId)
+        @Html.HiddenFor(model => model.GroupType)
 
         <table>
             <tr>
                 <td class="editor-label">@Html.LabelFor(model => model.GroupName):</td>
-                <td class="editor-field">@Html.EditorFor(model => model.GroupName)
-                    @Html.ValidationMessageFor(model => model.GroupName)</td>
-                <td>
-                    <input class="k-button" type="submit" value="Gem" /></td>
-            </tr>
-        </table>
+                <td class="editor-field">
+                    @Html.EditorFor(model => model.GroupName)
+                @Html.ValidationMessageFor(model => model.GroupName)
+            </td>
+            <td>
+                <input class="k-button" type="submit" value="Gem" />
+            </td>
+        </tr>
+    </table>
     }
 
     @if (Model.GroupType == GroupType.SmsGroup) {
@@ -52,22 +55,22 @@
     @if (Model.GroupType == GroupType.ACTeam) {
         if (Model.GroupImage.Image != null) {
             using (Html.BeginForm("DeleteGroupImage", "UserGroup", new { GroupId = Model.UserGroupId })) {
-        <table id="ImageTable">
-            <tr>
-                <td style="padding: 10px 10px 10px 10px;">
-                    <img src="@Model.GroupImage.GetThumbUrl()" />
-                </td>
-                <td style="padding: 10px 10px 10px 10px;">
-                    <input class="k-button" type="submit" value="Slet billede" />
-                </td>
-            </tr>
-        </table>
+                <table id="ImageTable">
+                    <tr>
+                        <td style="padding: 10px 10px 10px 10px;">
+                            <img src="@Model.GroupImage.GetThumbUrl()" />
+                        </td>
+                        <td style="padding: 10px 10px 10px 10px;">
+                            <input class="k-button" type="submit" value="Slet billede" />
+                        </td>
+                    </tr>
+                </table>
             }
         } else {
-        <form enctype="multipart/form-data" method="post" action="/UserGroup/SaveGroupImage/@Model.UserGroupId">
-            <input class="k-input" type="file" id="imageFile" name="imageFile" />
-            <input type="submit" value="Upload" class="k-button" />
-        </form>
+            <form enctype="multipart/form-data" method="post" action="/UserGroup/SaveGroupImage/@Model.UserGroupId">
+                <input class="k-input" type="file" id="imageFile" name="imageFile" />
+                <input type="submit" value="Upload" class="k-button" />
+            </form>
         }
     }
 
@@ -76,20 +79,20 @@
     </div>
     <div class="editor-field">
         @(Html.Kendo().DropDownList().HtmlAttributes(new { style = "width: 300px;" })
-                .Name("UserId")
-                .OptionLabel(Labels.SelectUser)
-                .DataTextField("Label")
-                .DataValueField("UserId")
-                .DataSource(source => {
-                    source.Read(read => {
-                        read.Action("GetUserItems", "Role");
-                    });
-                })
-            )
+            .Name("UserId")
+            .OptionLabel(Labels.SelectUser)
+            .DataTextField("Label")
+            .DataValueField("UserId")
+            .DataSource(source => {
+                source.Read(read => {
+                    read.Action("GetUserItemsLimit6", "Role");
+                });
+            })
+        )
         &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="button" class="k-button" value="Tilføj som @ViewBag.UserText" onclick="AddUser();" />
+        <input type="button" class="k-button" value="Tilføj som @ViewBag.UserText" onclick="AddUser();" />
         &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="button" class="k-button" value="Tilføj som @ViewBag.AdminText" onclick="AddAdministrator();" />
+        <input type="button" class="k-button" value="Tilføj som @ViewBag.AdminText" onclick="AddAdministrator();" />
 
         <script>
             function AddUser() {
@@ -143,25 +146,25 @@
     </div>
     <div class="editor-field">
         @(Html.Kendo().Grid<Hallo.ViewModels.VMUser>()
-                .Name("administratorGrid")
-                .Columns(columns => {
-                    columns.Bound(p => p.Lastname).Title(Labels.Lastname);
-                    columns.Bound(p => p.Firstname).Title(Labels.Firstname);
-                    columns.Bound(p => p.BirthYear).Title(Labels.Birthyear);
-                    columns.Command(command => { command.Destroy(); });
-                })
-                .Pageable()
-                .Sortable()
-                .Filterable()
-                .Editable(e => e.DisplayDeleteConfirmation(false))
-                .DataSource(
-                    dataSource => dataSource
-                        .Ajax()
-                        .Model(model => model.Id(u => u.CompositeGroupUserId))
-                        .PageSize(3)
-                        .Read(read => read.Action("GetAdministrators", "UserGroup", new { groupId = Model.UserGroupId }))
-                        .Destroy(delete => delete.Action("RemoveAdmin", "UserGroup", new { groupId = Model.UserGroupId })))
-                )
+            .Name("administratorGrid")
+            .Columns(columns => {
+                columns.Bound(p => p.Lastname).Title(Labels.Lastname);
+                columns.Bound(p => p.Firstname).Title(Labels.Firstname);
+                columns.Bound(p => p.BirthYear).Title(Labels.Birthyear);
+                columns.Command(command => { command.Destroy(); });
+            })
+            .Pageable()
+            .Sortable()
+            .Filterable()
+            .Editable(e => e.DisplayDeleteConfirmation(false))
+            .DataSource(
+                dataSource => dataSource
+                    .Ajax()
+                    .Model(model => model.Id(u => u.CompositeGroupUserId))
+                    .PageSize(3)
+                    .Read(read => read.Action("GetAdministrators", "UserGroup", new { groupId = Model.UserGroupId }))
+                    .Destroy(delete => delete.Action("RemoveAdmin", "UserGroup", new { groupId = Model.UserGroupId })))
+        )
 
     </div>
 
@@ -170,32 +173,31 @@
     </div>
     <div class="editor-field">
         @(Html.Kendo().Grid<Hallo.ViewModels.VMUser>()
-                .Name("userGrid")
-                .Columns(columns => {
-                    columns.Bound(p => p.Lastname).Title(Labels.Lastname);
-                    columns.Bound(p => p.Firstname).Title(Labels.Firstname);
-                    columns.Bound(p => p.BirthYear).Title(Labels.Birthyear);
-                    columns.Command(command => { command.Destroy(); });
-                })
-                .Pageable()
-                .Sortable()
-                .Filterable()
-                .Editable(e => e.DisplayDeleteConfirmation(false))
-                .DataSource(
-                    dataSource => dataSource
-                        .Ajax()
-                        .Model(model => model.Id(u => u.CompositeGroupUserId))
-                        .PageSize(10)
-                        .Read(read => read.Action("GetUsers", "UserGroup", new { groupId = Model.UserGroupId }))
-                        .Destroy(delete => delete.Action("RemoveUser", "UserGroup", new { groupId = Model.UserGroupId }))
-                )
+            .Name("userGrid")
+            .Columns(columns => {
+                columns.Bound(p => p.Lastname).Title(Labels.Lastname);
+                columns.Bound(p => p.Firstname).Title(Labels.Firstname);
+                columns.Bound(p => p.BirthYear).Title(Labels.Birthyear);
+                columns.Command(command => { command.Destroy(); });
+            })
+            .Pageable()
+            .Sortable()
+            .Filterable()
+            .Editable(e => e.DisplayDeleteConfirmation(false))
+            .DataSource(
+                dataSource => dataSource
+                    .Ajax()
+                    .Model(model => model.Id(u => u.CompositeGroupUserId))
+                    .PageSize(10)
+                    .Read(read => read.Action("GetUsers", "UserGroup", new { groupId = Model.UserGroupId }))
+                    .Destroy(delete => delete.Action("RemoveUser", "UserGroup", new { groupId = Model.UserGroupId }))
             )
+        )
     </div>
 </fieldset>
 
-
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", Model.GroupType == GroupType.SmsGroup ? "Index" : "ACIndex")
 </div>
 
 @section Scripts {
