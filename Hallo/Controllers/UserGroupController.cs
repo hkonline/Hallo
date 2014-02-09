@@ -1,14 +1,14 @@
 ﻿using Hallo.Core.Users;
-using HalloDal.Models.Users;
-using Kendo.Mvc.UI;
-using Kendo.Mvc.Extensions;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 using Hallo.ViewModels;
-using System.Web;
 using HalloDal.Models.Content;
-using System.Data;
+using HalloDal.Models.Users;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Hallo.Controllers {
     public class UserGroupController : HalloController {

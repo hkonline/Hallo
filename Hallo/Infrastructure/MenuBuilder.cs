@@ -72,6 +72,10 @@ namespace Hallo.Infrastructure {
                         Text = "AK hold",
                         Url = "/UserGroup/ACIndex"
                     });
+                    adminLinks.Add(new HKMenuItem { 
+                        Text = "AK datoer",
+                        Url = "/AcDate"
+                    });
                 }
                 
 

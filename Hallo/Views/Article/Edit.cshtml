@@ -105,18 +105,28 @@
 <script>
     tinymce.init({
         selector: '#Text',
+        plugins: "paste",
         menubar: false,
-        statusbar: false
+        statusbar: false,
+        paste_remove_spans: true,
+        paste_remove_styles: true,        
     });
 
     tinymce.init({
         selector: '#FrontpageText',
+        plugins: "paste",
         menubar: false,
-        statusbar: false
+        statusbar: false,
+        paste_preprocess: function (plugin, args) {
+            console.log(args.content);
+            args.content += ' preprocess';
+        },
+        paste_remove_spans: true,
+        paste_remove_styles: true,
     });
 
     $("body").keydown(function (e) {
-        if (e.which == 13) {
+        if (e.which === 13) {
             jQuery(this).blur();
             jQuery('#submit').focus().click();
         }

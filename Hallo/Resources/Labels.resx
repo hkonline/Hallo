@@ -123,6 +123,9 @@
   <data name="Birthyear" xml:space="preserve">
     <value>Årgang</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Dato</value>
+  </data>
   <data name="Firstname" xml:space="preserve">
     <value>Fornavn</value>
   </data>

@@ -1,6 +1,4 @@
-﻿@using System
-@using Hallo.ViewModels;
-@using HalloDal.Models.Users
+﻿@using Hallo.ViewModels;
 @using Hallo.Resources
 
 <h2>Administration af rettigheder</h2>
@@ -45,16 +43,17 @@
     )
     <br />
 
-    @(Html.Kendo().DropDownList().HtmlAttributes(new { style = "width: 300px;" })
-            .Name("UserId")
-            .OptionLabel(Labels.SelectUser)
-            .DataTextField("Label")
-            .DataValueField("UserId")
-            .DataSource(source => {
-                source.Read(read => {
-                    read.Action("GetUserItems", "Role");
-                });
-            })
+    @(Html.Kendo().DropDownList()
+        .HtmlAttributes(new { style = "width: 300px;" })
+        .Name("UserId")
+        .OptionLabel(Labels.SelectUser)
+        .DataTextField("Label")
+        .DataValueField("UserId")
+        .DataSource(source => {
+            source.Read(read => {
+                read.Action("GetUserItems", "Role");
+            });
+        })
     )
     &nbsp;&nbsp;&nbsp;
     <input class="k-button" type="button" value="Tildel rettighed" onclick="addUser();" />
