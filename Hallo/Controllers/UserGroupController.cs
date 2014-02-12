@@ -62,6 +62,15 @@ namespace Hallo.Controllers {
         }
 
         [HttpPost]
+        public JsonResult SaveGroupNameAndSql(int groupId, string groupName, string sql) {
+            UserGroup group = db.UserGroups.Find(groupId);
+            group.GroupName = groupName;
+            group.Sql = sql;
+            db.SaveChanges();        
+            return Json(new { success = true });
+        }
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserGroupViewModel usergroup) {
             UserGroup group = db.UserGroups.Find(usergroup.UserGroupId);

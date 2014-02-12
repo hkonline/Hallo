@@ -14,7 +14,7 @@
 <style>
     td {
         padding: 10px;
-    }    
+    }
 </style>
 
 <fieldset>
@@ -27,7 +27,6 @@
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.UserGroupId)
         @Html.HiddenFor(model => model.GroupType)
-
         <table>
             <tr>
                 <td class="editor-label">@Html.LabelFor(model => model.GroupName):</td>
@@ -36,24 +35,39 @@
                     @Html.ValidationMessageFor(model => model.GroupName)
                 </td>
                 <td>
-                    <input class="k-button" type="submit" value="Gem" />
+                    <input class="k-button" type="button" 
+                           value="Gem @(Model.GroupType == GroupType.ACTeam ? "gruppenavn" : "gruppenavn og sql")" 
+                           onclick="saveGroupAndSql();"/>
                 </td>
                 <td>
                     <a href="/AcPlan/Plan?id=@Model.UserGroupId">AK-Plan</a>
                 </td>
             </tr>
         </table>
+        if (Model.GroupType == GroupType.SmsGroup) {
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Sql)
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Sql, new { style = "width: 100%;" })
+                @Html.ValidationMessageFor(model => model.Sql)
+            </div>
+        }
     }
-
-    @if (Model.GroupType == GroupType.SmsGroup) {
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Sql)
-        </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.Sql, new { style = "width: 100%;" })
-            @Html.ValidationMessageFor(model => model.Sql)
-        </div>
-    }
+    <script>
+        function saveGroupAndSql() {
+            $.ajax({
+                type: "POST",
+                url: "/UserGroup/SaveGroupNameAndSql",
+                data: {
+                    groupId: $("#UserGroupId").val(),
+                    groupName: $("#GroupName").val(),
+                    sql: $("#Sql").val()
+                },
+                success: null
+            });
+        }
+    </script>
 
     @if (Model.GroupType == GroupType.ACTeam) {
         if (Model.GroupImage.Image != null) {

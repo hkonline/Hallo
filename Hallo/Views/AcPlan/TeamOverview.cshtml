@@ -53,34 +53,37 @@
             </tr>
         </tbody>
     </table>
-    <table class="AcTeamTable">
-        <colgroup>
-            <col style="width: 110px;" />
-            <col style="width: 400px;" />
-            <col style="width: 200px;" />
-        </colgroup>
-        <thead>
-            <tr>
-                <th>Næste AK:</th>
-                <th>Aktivitet:</th>
-                <th>Husk:</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    @ug.NextActivity.Date.ToShortDateString()<br />
-                    <a href="/AcPlan/Plan?id=@ug.UserGroupId">Se AK-Plan</a>
-                </td>
-                <td>
-                    @ug.NextActivity.Activity
-                </td>
-                <td>
-                    @ug.NextActivity.Remember
-                </td>
-            </tr>
-        </tbody>
-    </table><br /><br />
+    if (ug.NextActivity != null) {
+        <table class="AcTeamTable">
+            <colgroup>
+                <col style="width: 110px;" />
+                <col style="width: 400px;" />
+                <col style="width: 200px;" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Næste AK:</th>
+                    <th>Aktivitet:</th>
+                    <th>Husk:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @ug.NextActivity.Date.ToShortDateString()<br />
+                        <a href="/AcPlan/Plan?id=@ug.UserGroupId">Se AK-Plan</a>
+                    </td>
+                    <td>
+                        @ug.NextActivity.Activity
+                    </td>
+                    <td>
+                        @ug.NextActivity.Remember
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    }
+    <br /><br />
 }
 
 @if (Request["all"] == "true") {
