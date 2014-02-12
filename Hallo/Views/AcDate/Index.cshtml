@@ -1,10 +1,5 @@
 ﻿@using HalloDal.Models.AC
 @using Hallo.Resources
-@using System.Linq
-
-@{
-    ViewBag.Title = ViewBag.Headline;
-}
 
 @(Html.Kendo().Grid<AcDate>()
     .Name("DateGrid")
@@ -27,22 +22,4 @@
         .Create(c => c.Action("CreateDate", "AcDate"))
         .Destroy(c => c.Action("DeleteDate", "AcDate"))
     )
-) 
-
-<script>
-    function db(e) {
-        var grid = this;
-        $(".templateCell").each(function () {
-            eval($(this).children("script").last().html());
-            var tr = $(this).closest('tr');
-            var item = grid.dataItem(tr);
-            kendo.bind($(this), item);
-        });
-    }
-
-    function parameter() {
-        return {
-            date: $("#NewDate").val()
-        };
-    }
-</script>
+)

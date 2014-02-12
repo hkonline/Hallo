@@ -14,7 +14,7 @@
 <style>
     td {
         padding: 10px;
-    }
+    }    
 </style>
 
 <fieldset>
@@ -32,14 +32,17 @@
             <tr>
                 <td class="editor-label">@Html.LabelFor(model => model.GroupName):</td>
                 <td class="editor-field">
-                    @Html.EditorFor(model => model.GroupName)
-                @Html.ValidationMessageFor(model => model.GroupName)
-            </td>
-            <td>
-                <input class="k-button" type="submit" value="Gem" />
-            </td>
-        </tr>
-    </table>
+                    @Html.TextBoxFor(model => model.GroupName, new { @class = "k-input" })
+                    @Html.ValidationMessageFor(model => model.GroupName)
+                </td>
+                <td>
+                    <input class="k-button" type="submit" value="Gem" />
+                </td>
+                <td>
+                    <a href="/AcPlan/Plan?id=@Model.UserGroupId">AK-Plan</a>
+                </td>
+            </tr>
+        </table>
     }
 
     @if (Model.GroupType == GroupType.SmsGroup) {

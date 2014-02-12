@@ -38,6 +38,7 @@ namespace Hallo.Users {
             };
             context.LogEntries.Add(entry);
 
+            //User user = context.Users.FirstOrDefault(x => x.UserId == 21782 );
             User user = context.Users.FirstOrDefault(x => x.UserId == entry.PmoId);
 
             if (user != null) {

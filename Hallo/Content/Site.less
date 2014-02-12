@@ -2,7 +2,6 @@
 @HalloFont: Georgia, Verdana, Tahoma, Arial;
 @NormalFontSize: 11pt;
 @BackgroundColor: #daecf4;
-    
 
 body {
     text-align: left;
@@ -167,7 +166,7 @@ a.note {
     text-align: left;
     border: thin solid #000000;
     border-width: thin;
-    border-style: solid;    
+    border-style: solid;
 }
 
 .menupkt {
@@ -187,6 +186,10 @@ a.note {
 table {
     border-collapse: collapse;
     border-spacing: 0;
+}
+
+th {
+    background-color: @BackgroundColor;
 }
 
 td {
@@ -329,7 +332,8 @@ legend {
     }
 
     li {
-        font: 8pt @HalloFont;    }
+        font: 8pt @HalloFont;
+    }
 
         li:last-child {
             border: none;
@@ -348,7 +352,8 @@ legend {
     width: 124px;
     padding: 5px 5px 5px 5px;
     margin: 0px 0px 0px 0px;
-     a {
+
+    a {
         font: 10pt @HalloFont;
         color: #003f59;
         text-decoration: none;
@@ -362,15 +367,17 @@ legend {
     list-style-type: none;
     border: thin solid #000000;
     border-top: none;
+
     ul {
         list-style: none;
         list-style-type: none;
     }
+
     li {
         list-style-type: none;
     }
 }
-    
+
 .icon-calendar {
     background-image: url('/images/icon-calendar.png');
     background-repeat: no-repeat;
@@ -384,4 +391,16 @@ legend {
 .timestart {
     font-weight: bold;
     padding-right: 5px;
+}
+
+.AcTable {
+    padding: 5px 5px 5px 5px;
+
+    th {
+        background-color: @BackgroundColor;
+    }
+
+    td {
+        padding: 5px 5px 5px 5px;
+    }
 }

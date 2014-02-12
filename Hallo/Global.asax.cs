@@ -1,15 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using HalloDal.Models;
+using System.Data.Entity;
 using System.Globalization;
+using System.Linq;
+using System.Threading;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using HalloDal.Models;
-using HalloDal.Migrations;
-using System.Data.Entity;
-using Hallo.Users;
-using System.Threading;
 
 namespace Hallo {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 

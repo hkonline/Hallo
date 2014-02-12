@@ -61,6 +61,15 @@ namespace Hallo.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Aktivitet.
+        /// </summary>
+        public static string Activity {
+            get {
+                return ResourceManager.GetString("Activity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fødselsdage.
         /// </summary>
         public static string Birthdays {
@@ -102,6 +111,15 @@ namespace Hallo.Resources {
         public static string Lastname {
             get {
                 return ResourceManager.GetString("Lastname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Husk!.
+        /// </summary>
+        public static string Remember {
+            get {
+                return ResourceManager.GetString("Remember", resourceCulture);
             }
         }
         

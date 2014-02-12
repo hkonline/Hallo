@@ -27,6 +27,10 @@ namespace Hallo.Infrastructure {
                 SubMenu = categoryLinks,
                 Active = request.FilePath.Contains("Home/Index/") && request.FilePath.Length > 11
             });
+            menu.Add(new HKMenuItem() {
+                Text = "Aktivitetsklub",
+                Url = "/AcPlan/TeamOverview?all=false"
+            });
             if (user.Authorized) {
                 menu.Add(new HKMenuItem { Text = "Streaming", Url = "/Meeting/Streaming" });
 

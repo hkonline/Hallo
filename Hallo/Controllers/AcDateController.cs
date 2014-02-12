@@ -39,7 +39,7 @@ namespace Hallo.Controllers {
         }
 
         public JsonResult GetDates([DataSourceRequest] DataSourceRequest request) {
-            List<AcDate> list = db.AcDates.Where(x => x.Date >= DateTime.Today).OrderByDescending(x=>x.Date).ToList();
+            List<AcDate> list = db.AcDates.Where(x => x.Date >= DateTime.Today).OrderBy(x=>x.Date).ToList();
             return Json(list.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
     }

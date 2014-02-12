@@ -1,0 +1,98 @@
+﻿@using Hallo.ViewModels
+@using HalloDal.Models.Users
+
+@model List<UserGroupViewModel>
+
+@functions{
+    public bool IsInFamily(User u) {
+        return ((List<int>)ViewBag.Family).Contains(u.UserId);
+    }
+}
+
+<style>
+    .k-grid td {
+        vertical-align: top;
+    }
+</style>
+
+@foreach (UserGroupViewModel ug in Model) {
+    <table class="AcTeamTable">
+        <colgroup>
+            <col style="width: 295px;" />
+            <col style="width: 295px;" />
+            <col style="width: 120px;" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>@ug.GroupName</th>
+                <th>Ledere:</th>
+                <th>Mobil:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @foreach (User u in ug.Users) {
+                        <span style="@(IsInFamily(u) ? "font-weight: bolder;" : "")">
+                            @(u.Firstname + " " + u.Lastname)
+                        </span><br />
+                    }
+                </td>
+                <td>
+                    @foreach (User u in ug.Administrators) {
+                        <span style="@(IsInFamily(u) ? "font-weight: bolder;" : "")">
+                            <a href='mailto:@u.Email'>@u.Firstname&nbsp;@u.Lastname</a>
+                        </span><br />
+                    }
+                </td>
+                <td>
+                    @foreach (User u in ug.Administrators) {
+                        @u.MobilPhone<br />
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="AcTeamTable">
+        <colgroup>
+            <col style="width: 110px;" />
+            <col style="width: 400px;" />
+            <col style="width: 200px;" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Næste AK:</th>
+                <th>Aktivitet:</th>
+                <th>Husk:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @ug.NextActivity.Date.ToShortDateString()<br />
+                    <a href="/AcPlan/Plan?id=@ug.UserGroupId">Se AK-Plan</a>
+                </td>
+                <td>
+                    @ug.NextActivity.Activity
+                </td>
+                <td>
+                    @ug.NextActivity.Remember
+                </td>
+            </tr>
+        </tbody>
+    </table><br /><br />
+}
+
+@if (Request["all"] == "true") {
+    <a href="/AcPlan/TeamOverview?all=false">Se familiens hold</a>
+} else {
+    <a href="/AcPlan/TeamOverview?all=true">Se alle hold</a>
+}
+
+<script>
+    $(document).ready(function () {
+        $(".AcTeamTable").kendoGrid({
+            scrollable: false
+        });
+    });
+</script>
