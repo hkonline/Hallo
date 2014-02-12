@@ -13,7 +13,7 @@
 *@
 
 
-<ul id="panelbar" style="text-align: left; width: 134px; margin: 0px 20px 20px 20px;">
+<ul id="panelbar" style="text-align: left; width: @(ViewBag.LeftWidth)px; margin: 0px 20px 20px 20px;">
     @foreach (HKMenuItem item in Model) {
         <li class="@item.LiClass">
             @if (!String.IsNullOrEmpty(item.Url)) { 

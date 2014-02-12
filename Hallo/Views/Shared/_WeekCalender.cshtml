@@ -1,4 +1,4 @@
-﻿<div id="weekcalendar"></div>
+﻿<div id="weekcalendar" style="width: @(ViewBag.RightWidth)px;"></div>
 @{
     string churchName = System.Configuration.ConfigurationManager.AppSettings["ChurchUrlName"];
     string calenderUrl =
@@ -8,11 +8,13 @@
         "&Calendars=brunstad_calendar_no," + churchName + "_calendar" +
         "&FullCalendarURL=http://portal.brunstad.org/no/Kalender" +
         "&Days=7" +
-        "&CSSNameSpace=Hallo";    
+        "&CSSNameSpace=Hallo";
 }
-<script type="text/javascript" src ="@calenderUrl"></script>
+<script type="text/javascript" src="@calenderUrl"></script>
 <script>
     $(".timeend").hide();
     $(".timedash").hide();
     $(".Hallobutton").hide();
+    $(".brunstad_title").css("width", "@(ViewBag.LeftWidth-10)");
+    $(".Hallocontent").css("width", "@(ViewBag.LeftWidth-4)")
 </script>
