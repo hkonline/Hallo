@@ -168,6 +168,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CalenderController.cs" />
     <Compile Include="Controllers\FamilyPresentationController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HalloController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="ViewModels\AssignedArticleCategory.cs" />
     <Compile Include="ViewModels\BirthdaysViewModel.cs" />
+    <Compile Include="ViewModels\FileViewModel.cs" />
     <Compile Include="ViewModels\MailViewModel.cs" />
     <Compile Include="ViewModels\UserGroupViewModel.cs" />
     <Compile Include="ViewModels\VMUser.cs" />
@@ -386,6 +388,8 @@
     <Content Include="Views\AcPlan\Plan.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TextArea.cshtml" />
     <Content Include="Views\AcPlan\TeamOverview.cshtml" />
+    <Content Include="Views\File\List.cshtml" />
+    <Content Include="Views\File\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -393,6 +397,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Files\" />
     <Folder Include="Images\articleImages\images\" />
     <Folder Include="Images\articleImages\thumbnails\" />
   </ItemGroup>

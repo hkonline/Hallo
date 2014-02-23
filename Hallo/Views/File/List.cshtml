@@ -1,0 +1,43 @@
+﻿@using HalloDal.Models.Content
+@using Hallo.ViewModels
+@model List<HalloFile>
+
+For at indsætte en fil i en artikel: indsæt f.eks. &lt;file45&gt; i artikel-teksten.  (Hvor 45 er Id for filen.)<br /><br />
+
+@(Html.Kendo().Grid<HalloFile>()
+    .Name("FileGrid")
+    .Columns(col => {
+        col.Bound(f => f.Id).Title("Id");
+        col.Bound(f => f.Description).Title("Beskrivelse");
+        col.Bound(f => f.Extension).Title("Fil-type");
+        //col.Bound(f => Html.Raw((new FileViewModel(f)).Url)).Title("Link");
+        col.Bound(f => (new FileViewModel(f)).Url)
+            .ClientTemplate(@Html.Raw("#=Url#").ToHtmlString()).Title("Link");
+        col.Command(cmd => { cmd.Destroy(); cmd.Custom("Ret").Click("editFile"); }).Width(250);
+    })
+    .Editable(editable => editable.Mode(GridEditMode.InLine))
+        //.HtmlAttributes(new { style = "width: 550px;" })
+    .Sortable()
+    .Editable()
+    .DataSource(source => source
+    .Ajax()
+    .Model(m => m.Id(f => f.Id))
+    .Read(read => read.Action("GetFiles", "File"))
+    .Update(c => c.Action("Edit", "File"))
+    .Destroy(c => c.Action("DeleteFile", "File"))
+    )
+)
+
+<br /><a href="/File/AddFile">Tilføj ny fil</a>
+
+<script>
+    function editFile(e) {
+        e.preventDefault();
+
+        var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+
+        if (dataItem != null) {
+            window.location.href = "/File/Edit/" + dataItem.Id;
+        }
+    }
+</script>

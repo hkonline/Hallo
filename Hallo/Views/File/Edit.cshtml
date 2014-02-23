@@ -1,0 +1,21 @@
+﻿@using HalloDal.Models.Content
+@using Hallo.ViewModels
+@model HalloFile
+
+@if (Model.Description != null) {
+    <label>Uploaded fil:&nbsp;&nbsp;</label>@Html.Raw((new FileViewModel(Model)).Url)
+} else {
+    <label>Der er endnu ikke uploadet en fil</label>
+}
+<br /><br />
+<form enctype="multipart/form-data" method="post" action="/File/SaveFile/@Model.Id">
+    <input class="k-input" type="file" id="file" name="file" />
+    <input type="submit" value="Upload fil" class="k-button" />
+</form>
+<br />
+@using (Html.BeginForm()) {
+    @Html.HiddenFor(m => m.Id)
+    <label>Beskrivelse:&nbsp;&nbsp;</label>@Html.TextBoxFor(m => m.Description)
+    <input type="submit" value="Gem beskrivelse" class="k-button" />
+}
+<br /><a href="/File/List">Tilbage til listen</a>

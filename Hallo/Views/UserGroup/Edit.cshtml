@@ -35,9 +35,11 @@
                     @Html.ValidationMessageFor(model => model.GroupName)
                 </td>
                 <td>
-                    <input class="k-button" type="button" 
-                           value="Gem @(Model.GroupType == GroupType.ACTeam ? "gruppenavn" : "gruppenavn og sql")" 
-                           onclick="saveGroupAndSql();"/>
+                    <input 
+                        class="k-button" type="button" 
+                        value="Gem @(Model.GroupType == GroupType.ACTeam ? "gruppenavn" : "gruppenavn og sql")" 
+                        onclick="saveGroupAndSql();"
+                    />
                 </td>
                 <td>
                     <a href="/AcPlan/Plan?id=@Model.UserGroupId">AK-Plan</a>

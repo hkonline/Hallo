@@ -47,6 +47,10 @@ namespace Hallo.Infrastructure {
                         Url = "/Article/List"
                     });
                     adminLinks.Add(new HKMenuItem { 
+                        Text = "Filer",
+                        Url = "/File/List"
+                    });
+                    adminLinks.Add(new HKMenuItem { 
                         Text = "Familier",
                         Url = "/FamilyPresentation/List"
                     });

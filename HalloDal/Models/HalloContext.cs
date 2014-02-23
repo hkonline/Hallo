@@ -15,6 +15,7 @@ namespace HalloDal.Models {
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleCategory> Categories { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<HalloFile> Files { get; set; }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
