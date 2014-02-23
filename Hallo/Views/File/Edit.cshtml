@@ -2,7 +2,7 @@
 @using Hallo.ViewModels
 @model HalloFile
 
-@if (Model.Description != null) {
+@if (Model.Extension != null) {
     <label>Uploaded fil:&nbsp;&nbsp;</label>@Html.Raw((new FileViewModel(Model)).Url)
 } else {
     <label>Der er endnu ikke uploadet en fil</label>
