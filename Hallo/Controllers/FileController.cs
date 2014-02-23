@@ -64,6 +64,8 @@ namespace Hallo.Controllers {
         [HttpPost]
         public ActionResult SaveFile(int id, HttpPostedFileBase file) {
             HalloFile dbFile = db.Files.Find(id);
+            if (dbFile.Extension != null)
+                System.IO.File.Delete(GetFilePath(dbFile));
 
             if (file != null) {
                 dbFile.Extension = file.FileName.Substring(file.FileName.LastIndexOf('.') + 1);
