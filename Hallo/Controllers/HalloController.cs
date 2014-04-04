@@ -16,7 +16,7 @@ namespace Hallo.Controllers {
     public class HalloController : Controller {
         protected HalloContext db = new HalloContext();
 
-        protected JsonSerializerSettings jsonSettings = new JsonSerializerSettings { 
+        protected JsonSerializerSettings jsonSettings = new JsonSerializerSettings {
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
         };
 
@@ -43,6 +43,23 @@ namespace Hallo.Controllers {
             }
         }
 
+        protected List<User> Family() {
+            List<User> family = new List<User>();
+
+            // Add Family 
+            family.AddRange(
+                db.Users
+                    .Where(x => x.Guardian1 == HalloUser.UserId || x.Guardian2 == HalloUser.UserId)
+                    .ToList()
+            );
+            
+            if (family.Count == 0)
+                // Add user self
+                family.Add(HalloUser);
+                        
+            return family;
+        }
+
         public static bool IsAuthorized(User user, string role1 = null, string role2 = null, string role3 = null) {
             List<String> currentRoles = new List<string>();
             foreach (Role r in user.Roles) currentRoles.Add(r.RoleName);
@@ -53,7 +70,7 @@ namespace Hallo.Controllers {
             if (role2 != null && currentRoles.Contains(role2)) return true;
             if (role3 != null && currentRoles.Contains(role3)) return true;
 
-            return false;            
+            return false;
         }
 
         protected void Authorize(string role1 = null, string role2 = null, string role3 = null) {

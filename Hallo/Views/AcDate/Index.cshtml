@@ -1,0 +1,30 @@
+﻿@using HalloDal.Models.AC
+@using Hallo.Resources
+
+@(Html.Kendo().Grid<AcDate>()
+    .Name("DateGrid")
+    .Columns(c => {
+        c.Bound(x => x.Date).Title(Labels.Date).Width(200).EditorTemplateName("DateTime").Format("{0:dd-MM-yyyy}"); 
+        c.Command(cmd => { cmd.Destroy(); cmd.Edit(); }).Width(250);
+    })
+    .ToolBar(toolbar => {
+        toolbar.Create();
+    })
+    .Editable(editable => editable.Mode(GridEditMode.InLine))
+    .HtmlAttributes(new { style = "width: 350px;" })
+    .Sortable()
+    .Editable()
+    .DataSource(source => source
+        .Ajax()
+        .Model(m => m.Id(date => date.Id))
+        .Read(read => read.Action("GetDates", "AcDate"))
+        .Update(c => c.Action("UpdateDate", "AcDate"))
+        .Create(c => c.Action("CreateDate", "AcDate"))
+        .Destroy(c => c.Action("DeleteDate", "AcDate"))
+    )
+)
+<br /><br />
+<b>Bemærk!</b><br /><br/>
+Datoer kan ikke slettes, når der er oprettet én eller flere Aktiviteter på den pågældende dato.<br /><br />
+I stedet kan man evt. ændre datoen.  Bemærk at hvis man retter datoen til en dato, som allerede er passeret vil man ikke længere kunne se den, og Aktiviteter som er oprettet på denne dato vil også forsvinde. <br /><br />
+Hvis man ved en fejl skulle komme til at flytte datoen, så den er forsvundet vil Reuss kunne hjælpe med at få den frem igen.<br /><br />

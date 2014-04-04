@@ -7,7 +7,7 @@ using System.Linq;
 namespace Hallo.Core.Users {
     public class UserGroupService {
 
-        HalloContext db;
+        readonly HalloContext db;
 
         public UserGroupService(HalloContext context) {
             db = context;

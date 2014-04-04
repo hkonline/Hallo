@@ -117,17 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Activity" xml:space="preserve">
+    <value>Aktivitet</value>
+  </data>
   <data name="Birthdays" xml:space="preserve">
     <value>Fødselsdage</value>
   </data>
   <data name="Birthyear" xml:space="preserve">
     <value>Årgang</value>
   </data>
+  <data name="Date" xml:space="preserve">
+    <value>Dato</value>
+  </data>
   <data name="Firstname" xml:space="preserve">
     <value>Fornavn</value>
   </data>
   <data name="Lastname" xml:space="preserve">
     <value>Efternavn</value>
+  </data>
+  <data name="Remember" xml:space="preserve">
+    <value>Husk!</value>
   </data>
   <data name="SelectUser" xml:space="preserve">
     <value>Vælg bruger:</value>

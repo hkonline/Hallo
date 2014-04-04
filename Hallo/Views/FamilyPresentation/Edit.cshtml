@@ -1,5 +1,4 @@
-﻿@using Hallo.ViewModels;
-@model HalloDal.Models.Content.Article
+﻿@model HalloDal.Models.Content.Article
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -59,7 +58,7 @@
     });
 
     $("body").keydown(function (e) {
-        if (e.which == 13) {
+        if (e.which === 13) {
             jQuery(this).blur();
             jQuery('#submit').focus().click();
         }

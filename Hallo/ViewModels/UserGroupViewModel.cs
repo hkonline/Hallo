@@ -1,4 +1,5 @@
 ﻿using HalloDal.Models.Users;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Hallo.ViewModels {
@@ -12,6 +13,8 @@ namespace Hallo.ViewModels {
             Sql = usrGroup.Sql;
             GroupType = usrGroup.GroupType;            
             GroupImage = new ImageViewModel(usrGroup.UserGroupId, usrGroup.GroupImage);
+            Users = usrGroup.Users;
+            Administrators = usrGroup.Administrators;
         }
 
         public int UserGroupId { get; set; }
@@ -25,7 +28,11 @@ namespace Hallo.ViewModels {
 
         public GroupType GroupType {get;set;}
 
-        public ImageViewModel GroupImage { get; set; }        
+        public ImageViewModel GroupImage { get; set; }
 
+        public ICollection<User> Users { get; set; }
+        public ICollection<User> Administrators { get; set; }
+
+        public AcPlanViewModel NextActivity { get; set; }
     }
 }

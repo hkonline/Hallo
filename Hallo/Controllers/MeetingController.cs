@@ -9,6 +9,7 @@ namespace Hallo.Controllers {
 
         public ActionResult Streaming() {
             ViewBag.ShowLeft = true;
+
             return View();
         }
 

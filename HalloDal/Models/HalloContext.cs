@@ -1,3 +1,4 @@
+using HalloDal.Models.AC;
 using HalloDal.Models.Content;
 using HalloDal.Models.Users;
 using System.Collections.Generic;
@@ -21,6 +22,9 @@ namespace HalloDal.Models {
         public DbSet<UserGroup> UserGroups { get; set; }
 
         public DbSet<SmsLog> SmsLogs { get; set; }
+
+        public DbSet<AcDate> AcDates { get; set; }
+        public DbSet<AcPlanEntry> AcPlanEntries { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
             modelBuilder.Entity<UserGroup>()

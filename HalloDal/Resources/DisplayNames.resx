@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcActivity" xml:space="preserve">
+    <value>Aktivitet</value>
+  </data>
+  <data name="AcDate" xml:space="preserve">
+    <value>AK dato</value>
+  </data>
   <data name="ApprovedByEditor" xml:space="preserve">
     <value>Godkendt</value>
   </data>
@@ -146,6 +152,9 @@
   </data>
   <data name="IsPublic" xml:space="preserve">
     <value>Offentlig</value>
+  </data>
+  <data name="Remember" xml:space="preserve">
+    <value>Husk</value>
   </data>
   <data name="RoleName" xml:space="preserve">
     <value>Rettighed</value>

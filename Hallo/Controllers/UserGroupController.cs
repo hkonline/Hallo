@@ -1,14 +1,14 @@
 ﻿using Hallo.Core.Users;
-using HalloDal.Models.Users;
-using Kendo.Mvc.UI;
-using Kendo.Mvc.Extensions;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
 using Hallo.ViewModels;
-using System.Web;
 using HalloDal.Models.Content;
-using System.Data;
+using HalloDal.Models.Users;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Hallo.Controllers {
     public class UserGroupController : HalloController {
@@ -59,6 +59,15 @@ namespace Hallo.Controllers {
                 return HttpNotFound();
             }
             return View(new UserGroupViewModel(usergroup));
+        }
+
+        [HttpPost]
+        public JsonResult SaveGroupNameAndSql(int groupId, string groupName, string sql) {
+            UserGroup group = db.UserGroups.Find(groupId);
+            group.GroupName = groupName;
+            group.Sql = sql;
+            db.SaveChanges();        
+            return Json(new { success = true });
         }
 
         [HttpPost]

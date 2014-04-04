@@ -18,6 +18,5 @@ namespace HalloDal.Models.Users {
 
         public virtual ICollection<User> Administrators { get; set; }
         public virtual ICollection<User> Users { get; set; }
-
     }
 }

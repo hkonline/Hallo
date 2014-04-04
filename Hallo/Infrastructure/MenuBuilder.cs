@@ -27,6 +27,10 @@ namespace Hallo.Infrastructure {
                 SubMenu = categoryLinks,
                 Active = request.FilePath.Contains("Home/Index/") && request.FilePath.Length > 11
             });
+            menu.Add(new HKMenuItem() {
+                Text = "Aktivitetsklub",
+                Url = "/AcPlan/TeamOverview?all=false"
+            });
             if (user.Authorized) {
                 menu.Add(new HKMenuItem { Text = "Streaming", Url = "/Meeting/Streaming" });
 
@@ -65,12 +69,20 @@ namespace Hallo.Infrastructure {
                     adminLinks.Add(new HKMenuItem { 
                         Text = "SMS-grupper",
                         Url = "/UserGroup"
-                    });
+                    });                    
+                }
+                if (HalloController.IsAuthorized(user, "AcAdmin")) {
                     adminLinks.Add(new HKMenuItem {
                         Text = "AK hold",
                         Url = "/UserGroup/ACIndex"
                     });
-                }                
+                    adminLinks.Add(new HKMenuItem { 
+                        Text = "AK datoer",
+                        Url = "/AcDate"
+                    });
+                }
+                
+
                 
                 if (adminLinks.Count > 0) {
                     menu.Add(new HKMenuItem {
