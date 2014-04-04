@@ -2,8 +2,7 @@
 @using System.Collections.Generic
 @using Hallo.Resources
 @model List<BirthdaysViewModel>
-
-<div class="fpBox" style="width: @(ViewBag.RightWidth)px; margin: 20px;">
+<div class="fpBox" style="width: @((int)Session["RightWidth"])px; margin: 20px;">
     <div style="padding: 5px 5px 5px 5px;">
         <span class="icon-birthday"></span>@Labels.Birthdays
     </div>

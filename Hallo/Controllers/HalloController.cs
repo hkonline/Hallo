@@ -116,5 +116,17 @@ namespace Hallo.Controllers {
             db.SaveChanges();
         }
 
+        /*
+        private static string InsertFile(string s) {
+            int p1 = s.ToLower().IndexOf("&lt;file");
+            if (p1 < 0)
+                return s;
+            int p2 = s.Substring(p1).IndexOf("&gt;");
+            string id = s.Substring(p1 + 8, p2 - 8);
+            string s2 = s.Substring(0, p1) + SessionFunctions.getFileURL(id) + s.Substring(p1 + p2 + 4);
+            return InsertFile(s2);
+        }
+        */
+
     }
 }

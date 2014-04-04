@@ -1,0 +1,29 @@
+﻿@using Hallo.ViewModels;
+@using Hallo.Resources
+
+@model int
+
+@(Html.Kendo().Grid<AcPlanViewModel>()
+    .Name("DateGrid")
+    .Columns(c => {
+        c.Bound(x => x.Date).Title(Labels.Date).Width(70).Format("{0:dd-MM-yyyy}").HtmlAttributes(new { style = "vertical-align: top;" });
+        c.Bound(x => x.Activity).Title(Labels.Activity).EditorTemplateName("TextArea").Width(250);
+        c.Bound(x => x.Remember).Title(Labels.Remember).EditorTemplateName("TextArea").Width(150);
+        if (ViewBag.IsAdmin)
+            c.Command(cmd => { cmd.Edit(); }).Width(50).HtmlAttributes(new { style = "vertical-align: bottom;" });
+    })
+    .Editable(editable => editable.Mode(GridEditMode.InLine))
+    .Sortable()
+    .Editable()
+    .DataSource(source => source
+        .Ajax()
+        .Model(m => {
+            m.Id(x => x.DateId);
+            m.Field(x => x.Date).Editable(false);
+            m.Field(x => x.Activity).Editable(ViewBag.IsAdmin);
+            m.Field(x => x.Remember).Editable(ViewBag.IsAdmin);
+        })
+        .Read(read => read.Action("GetAcPlan", "AcPlan", new { teamId = Model }))
+        .Update(c => c.Action("UpdatePlan", "AcPlan"))
+    )
+)

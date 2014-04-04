@@ -9,12 +9,17 @@ declare userCursor
 		
 open userCursor	FETCH next from userCursor INTO @lastname, @firstname, @age, @pmoId, @mobile, @email, @guardian, @birthdate
 
+update kobenhavn.kobenhavn.HK_USER SET AttendsMeetings = 0, LiveInCPH = 0
+
+
 while @@FETCH_STATUS=0
 begin	
+	
 	select @antal = count(*) from kobenhavn.kobenhavn.hk_user where pmopersonid = @pmoId
-	print 'Hej'
-	update kobenhavn.kobenhavn.hk_user set mobil = @mobile, email = @email where pmopersonid = @pmoID
 
+	update kobenhavn.kobenhavn.hk_user set mobil = @mobile, email = @email, AttendsMeetings = 1, LiveInCPH = 1 
+	where pmopersonid = @pmoID
+	
 	if @antal = 0 
 	begin
 		print 'New record!'

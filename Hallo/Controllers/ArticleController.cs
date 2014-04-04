@@ -18,6 +18,23 @@ namespace Hallo.Controllers {
             return imageViewModels;
         }
 
+        // Recursive function replaceing <file> tags with file-links
+        private string InsertFiles(string s) {
+            int p1 = s.ToLower().IndexOf("&lt;file");
+            if (p1 < 0) return s;
+            int p2 = s.Substring(p1).IndexOf("&gt;");
+            int id;
+            if (Int32.TryParse(s.Substring(p1 + 8, p2 - 8), out id)) {
+                string s2 = s.Substring(0, p1) + GetFileUrl(id) + s.Substring(p1 + p2 + 4);
+                return InsertFiles(s2);
+            } else return s;
+        }
+
+        private string GetFileUrl(int id) {
+            HalloFile dbFile = db.Files.Find(id);
+            return (new FileViewModel(dbFile)).Url;        
+        }
+
         public ActionResult Article(int id) {
             ViewBag.ShowLeft = true;
 
@@ -25,6 +42,8 @@ namespace Hallo.Controllers {
                 Article = db.Articles.Where(x => x.Id == id).Include(x => x.FrontpageImage).SingleOrDefault(),
                 Images = GetImages(id)
             };
+
+            model.Article.Text = InsertFiles(model.Article.Text);
 
             Session["CurrentArticleViewModel"] = model;
 
