@@ -19,8 +19,8 @@ namespace Hallo.ViewModels {
             get {
                 if (imageDirectoryUrl == null)
                     imageDirectoryUrl =
-                        HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
-                        HttpRuntime.AppDomainAppVirtualPath +
+                        //HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
+                        //HttpRuntime.AppDomainAppVirtualPath +
                         ConfigurationManager.AppSettings["ImageDirectoryUrl"].Substring(1);
 
                 return imageDirectoryUrl;
