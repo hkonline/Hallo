@@ -8,7 +8,7 @@
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1A34820D-A714-460A-939C-594270352845}</ProjectGuid>
-    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Hallo</RootNamespace>
@@ -63,8 +63,10 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\ExcelDataReader.2.1.1\lib\net20\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Kendo.Mvc">
-      <HintPath>C:\Program Files (x86)\Telerik\UI for ASP.NET MVC Q3 2013\wrappers\aspnetmvc\Binaries\Mvc4\Kendo.Mvc.dll</HintPath>
+    <Reference Include="Kendo.Mvc, Version=2014.1.318.545, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Telerik\UI for ASP.NET MVC Q1 2014\wrappers\aspnetmvc\Binaries\Mvc5\Kendo.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\ExternalLibraries\log4net.dll</HintPath>
@@ -212,6 +214,10 @@
     <Content Include="App_Data\URLFilterRules.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css">
       <DependentUpon>Site.less</DependentUpon>
     </Content>
@@ -280,7 +286,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Content\Site.less" />
     <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Context.tt" />
     <Content Include="CodeTemplates\ReverseEngineerCodeFirst\Entity.tt" />
@@ -305,7 +314,12 @@
     <Content Include="Images\previous.jpg" />
     <Content Include="Images\spacer.gif" />
     <Content Include="Images\VFKClogo128.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Hallo.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Properties\PublishProfiles\Arvixe FTP.pubxml" />
     <None Include="Properties\PublishProfiles\hkonline - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\holstebro - azure.pubxml" />
@@ -390,6 +404,7 @@
     <Content Include="Views\AcPlan\TeamOverview.cshtml" />
     <Content Include="Views\File\List.cshtml" />
     <Content Include="Views\File\Edit.cshtml" />
+    <Content Include="Views\Shared\_LayoutOld.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

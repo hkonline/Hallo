@@ -17,22 +17,21 @@
     <title>@ViewBag.Title</title>
 
     @Styles.Render("http://widgets.brunstadworld.org/widgets.css")
+    <link href="~/Content/Site.css" type="text/css" rel="stylesheet" />
+
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/Scripts/Hallo.js")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/plugins")
 
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.common-bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
     <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.blueopal.min.css" rel="stylesheet" type="text/css" />
     <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.dataviz.blueopal.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/Site.css?version=1" type="text/css" rel="stylesheet" />
 
     <script src="http://cdn.kendostatic.com/2014.1.318/js/kendo.web.min.js"></script>
     <script src="http://cdn.kendostatic.com/2014.1.318/js/kendo.aspnetmvc.min.js"></script>
     <script src="http://cdn.kendostatic.com/2014.1.318/js/cultures/kendo.culture.da-DK.min.js"></script>
     <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
     <script type="text/javascript">
         kendo.culture("da-DK");
     </script>
@@ -57,45 +56,42 @@
 <body>
     <script src="http://widgets.brunstad.org/TopBar/js?mode=public" type="text/javascript"></script>
     <a id="top"></a>
-
-    <div class="container">
-        <div class="row">
-            <div id="bannerDiv" class="col-md-12">
-                @for (int i = 1; i <= 10; i++) {
-                    <a href="/Home">
-                        <img src="/Images/banner/@(i).jpg" />
-                    </a>
-                }
-            </div>
-            <script>
-                $(function () {
-                    $("#bannerDiv").slidesjs({
-                        width: 998,
-                        height: 190,
-                        play: {
-                            auto: true,
-                            interval: 5000,
-                            effect: "fade"
-                        },
-                        effect: {
-                            fade: {
-                                speed: 2000
-                            }
-                        }
-                    });
-                });
-            </script>
+    <div id="containerDiv">
+        <div id="bannerDiv">
+            @for (int i = 1; i <= 10; i++) {
+                <a href="/Home">
+                    <img src="/Images/banner/@(i).jpg" />
+                </a>
+            }
         </div>
-
-        <div class="row">
+        <script>
+            $(function () {
+                $("#bannerDiv").slidesjs({
+                    width: 998,
+                    height: 190,
+                    play: {
+                        auto: true,
+                        interval: 5000,
+                        effect: "fade"
+                    },
+                    effect: {
+                        fade: {
+                            speed: 2000
+                        }
+                    }
+                });
+            });
+        </script>
+        <div>
             @if (ViewBag.ShowLeft != false) {
-                <div class="col-md-2">
+                <div id="frontpageLeft">
+                    @*@Html.Partial("_BKMAccount")*@
                     @Html.Action("Menu", "Home")
                     @Html.Partial("_Contacts")
                 </div>
             }
 
-            <div class="col-md-8">
+            <div id="Content" style="width: @(ViewBag.ContentWidth)px; @(ViewBag.ShowRight != true ? "border-right-style: none;" : "")">
                 <div style="text-align: center;">
                     <p class="htitel">@ViewBag.Headline</p>
                 </div>
@@ -114,22 +110,33 @@
             </div>
 
             @if (ViewBag.ShowRight == true) {
-                <div class="col-md-2">
+
+                <div id="frontpageRight">
                     @Html.Partial("_WeekCalender")
                     @Html.Action("Birthdays", "User")
+                    <!--@*@Html.Action("CurrentInfo", "InfoBox")*@
+
+                    <div class="fpBox">
+                        Ugeprogram
+                    </div>
+
+                    <div class="fpBox">
+                        Næste fest
+                    </div>-->
                 </div>
             }
-            <a id="bottom"></a>
         </div>
-    </div>
-    @RenderSection("scripts", required: false)
 
-    @if (ViewBag.ContentPadding == null) {
-        <script>
-            $(document).ready(function () {
-                $("#Content").css("padding", "20px");
-            });
-        </script>
-    }
+        <a id="bottom"></a>
+
+        @RenderSection("scripts", required: false)
+
+        @if (ViewBag.ContentPadding == null) {
+            <script>
+                $(document).ready(function () {
+                    $("#Content").css("padding", "20px");
+                });
+            </script>
+        }
 </body>
 </html>

@@ -2,30 +2,30 @@
 @model List<HKMenuItem>
 
 @*
-<div class="fpBox" style="padding: 0px 0px 0px 0px; width: 134px;">
-    
-    @foreach (HKMenuItem item in Model) { 
-        <a href="@item.Url">@item.Text</a>
-    }
+    <div class="fpBox" style="padding: 0px 0px 0px 0px; width: 134px;">
 
-</div>
-//.HtmlAttributes(new { style = "width: 134px" })    
+        @foreach (HKMenuItem item in Model) {
+            <a href="@item.Url">@item.Text</a>
+        }
+
+    </div>
+    //.HtmlAttributes(new { style = "width: 134px" })
 *@
 
 
-<ul id="panelbar" style="text-align: left; width: @(ViewBag.LeftWidth)px; margin: 0px 20px 20px 20px;">
+<ul id="panelbar" style="text-align: left; width: 100%;">
     @foreach (HKMenuItem item in Model) {
         <li class="@item.LiClass">
-            @if (!String.IsNullOrEmpty(item.Url)) { 
+            @if (!String.IsNullOrEmpty(item.Url)) {
                 <a href="@item.Url">
                     @item.Text
                 </a>
             } else {
-                @item.Text                
+                @item.Text
             }
             @if (item.SubMenu != null) {
                 <ul>
-                    @foreach (HKMenuItem subItem in item.SubMenu) { 
+                    @foreach (HKMenuItem subItem in item.SubMenu) {
                         <a class="k-link" href="@subItem.Url">
                             <li>@(subItem.Text)</li>
                         </a>
