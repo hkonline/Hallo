@@ -1,43 +1,23 @@
 ﻿@model Hallo.ViewModels.FrontPageArticle
-<a href="@Html.Raw(Model.ArticleLink)">
-    <div class="row">
-        @if (Model.HasFrontPageImage) {
-            @Html.Raw(Model.ImageLink)
-        }
-        @Html.Raw(Model.FrontpageHeadline)
-        <i>@Html.Raw(Model.DatoString)</i>
-        @Html.Raw(Model.Article.FrontpageText)
-    </div>
-</a>
 <div class="row">
+    @if (Model.HasFrontPageImage) {
+        <a href='@Html.Raw(Model.ArticleLink)'>
+            <img class='img-thumbnail pull-right' src='@Html.Raw(Model.ImageDirectoryUrl)/thumbnails/img@(Model.ImageId).jpg'>
+        </a>
+    }
+    <a href='@Html.Raw(Model.ArticleLink)'>
+        @if (Model.Newest) {
+            <h2 style='margin-top: 0px;'>@Model.Article.Headline</h2>
+        } else {
+            <h3>@Model.Article.Headline</h3>
+        }
+        @if (Model.Article.IsPublic == false) {
+            <div class='text-info'>(Vises kun for venner med login)</div>
+        }
+    </a>
+    <i>@Html.Raw(Model.DatoString)</i>
+    @Html.Raw(Model.Article.FrontpageText)
+</div>
+<div class="row" style="padding: 0px;">
     <img src="~/images/bluespc.gif" height="1" style="width: 100%;" alt="">
 </div>
-<!--
-<tr>
-    <td colspan="2" style="vertical-align: middle; padding-left: 20px;">@Html.Raw(Model.FrontpageHeadline)</td>
-    @*@if (Model.HasFrontPageImage) {
-        <td rowspan="2" style="padding-right: 20px;">
-            <a href="@Html.Raw(Model.ArticleLink)">
-                @Html.Raw(Model.ImageLink)
-            </a>
-        </td>
-    }*@
-</tr>
-<tr>
-    <td style="width: 10px; padding-left: 20px;">
-        <img src="~/images/spacer.gif" style="width: 10px; height: 1px;" alt="">
-    </td>
-    <td class="text" style="vertical-align: top; width: 100%; padding-right: 20px;">
-        <span class="date">@*@Html.Raw(Model.DatoString):</span>&nbsp; 
-                @Html.Raw(Model.Article.FrontpageText)
-        <a href="@Html.Raw(Model.ArticleLink)*@" class="link">L&aelig;s&nbsp;mere...</a>
-    </td>
-</tr>
-
-<tr>
-    <td colspan="3" style="height: 25px; vertical-align: middle;">
-        <img src="~/images/bluespc.gif" height="1" style="width: 100%;" alt="">
-    </td>
-</tr>
--->
-

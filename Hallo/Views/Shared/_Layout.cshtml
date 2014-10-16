@@ -58,7 +58,6 @@
     <div class="container">
         @if (ViewBag.ShowLeft != false) {
             <section id="frontpageLeft" class="col-md-2" style="padding-left: 0px;">
-                @*@Html.Partial("_BKMAccount")*@
                 @Html.Action("Menu", "Home")
                 @Html.Partial("_Contacts")
             </section>
@@ -79,8 +78,6 @@
                 style="padding-right: 0px; padding-top: 20px;">
                 @Html.Partial("_WeekCalender")
                 @Html.Partial("_Birthdays")
-                @*@Html.Action("Birthdays", "User")
-                 @*Html.Action("CurrentInfo", "InfoBox")*@
             </section>
         }
     </div>

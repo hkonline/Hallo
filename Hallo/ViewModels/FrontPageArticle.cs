@@ -8,6 +8,8 @@ namespace Hallo.ViewModels {
     public class FrontPageArticle {
 
         public readonly Article Article;
+
+        // Returns the frontpage image id
         public int ImageId {
             get {
                 if (Article.FrontpageImage == null) return 0;
@@ -15,17 +17,9 @@ namespace Hallo.ViewModels {
             }
         }
 
-
-        private static string imageDirectoryUrl;
-        public static string ImageDirectoryUrl {
+        public string ImageDirectoryUrl {
             get {
-                if (imageDirectoryUrl == null)
-                    imageDirectoryUrl = 
-                        //HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
-                        //HttpRuntime.AppDomainAppVirtualPath +
-                        ConfigurationManager.AppSettings["ImageDirectoryUrl"].Substring(1);
-
-                return imageDirectoryUrl;
+                return Constant.ImageDirectoryUrl;
             }
         }
 
@@ -49,30 +43,7 @@ namespace Hallo.ViewModels {
                     Constant.Months[Article.Date.Month - 1].Substring(0, 3) + " " + Article.Date.Year;
             }
         }
-
-        private string imageUrl;
-        public string ImageUrl {
-            get {
-                if (imageUrl != null && imageUrl.Length > 0) return imageUrl;
-
-                if (Article.FrontpageImage == null) return "";
-
-                return ImageDirectoryUrl + "/thumbnails/img" + ImageId + ".jpg";
-            }
-            set { imageUrl = value; }
-        }
-
-        public string ImageLink {
-            get {
-                if (Article.FrontpageImage == null)
-                    if (String.IsNullOrEmpty(ImageUrl))
-                        return "";
-                    else
-                        return "<img class='img-thumbnail pull-right' src='" + ImageUrl + "'>";
-
-                return "<img class='img-thumbnail pull-right' src=\"" + ImageDirectoryUrl + "/thumbnails/img" + ImageId + ".jpg\">";
-            }
-        }
+               
         public string ArticleLink {
             get {
                 return "/Article/Article/" + Article.Id;
@@ -83,28 +54,6 @@ namespace Hallo.ViewModels {
             get {
                 return "'Article.aspx?articleID=" + Article.Id + "'";
             }
-        }
-
-        public string FrontpageHeadline {
-            get {
-                int headerNum = 3;
-                if (Newest) headerNum = 2;
-
-                string headline = "<a href=" + ArticleLink + "><h" + (Newest ? (headerNum.ToString() + " style='margin-top: 0px;'") : headerNum.ToString()) + ">" + 
-                    Article.Headline + "</h" + headerNum + "></a>";
-                if (Article.IsPublic == false) headline += "<div class='text-info'>(Vises kun for venner med login)</div>";
-                return headline;
-            }
-        }
-
-        public string FrontpageHeadlineMobile {
-            get {
-                string headline = "<a href=";
-                headline += ArticleLinkMobile + ">" + Article.Headline + "</a>";
-                if (Article.IsPublic == false)
-                    headline += "<br /><div class='text-info'>(Vises kun for venner med login)</div>";
-                return headline;
-            }
-        }
+        }        
     }
 }
