@@ -1,0 +1,408 @@
+﻿/* HK Styles*/
+@HalloFont: Georgia, Verdana, Tahoma, Arial;
+@NormalFontSize: 11pt;
+@BackgroundColor: #daecf4;
+
+body {
+    text-align: left;
+    margin: 0 0 0 0;
+    font-size: .85em;
+    font-family: @HalloFont;
+    color: #232323;
+    background-color: #fff;
+}
+
+input {
+    font: @NormalFontSize @HalloFont;
+}
+
+textarea {
+    min-height: 75px;
+    font: @NormalFontSize @HalloFont;
+}
+
+h2 {
+    font: 18pt @HalloFont;
+    font-weight: bold;
+    display: inline;
+    vertical-align: top;
+}
+
+h3 {
+    font: 16pt @HalloFont;
+    font-weight: bold;
+    display: inline;
+    vertical-align: top;
+}
+
+a {
+    color: #0040B0;
+}
+
+    a.link {
+        font: @NormalFontSize @HalloFont;
+        text-decoration: underline;
+    }
+
+        a.link:hover {
+            text-decoration: underline;
+        }
+
+.EntityTable {
+    td {
+        padding: 5px 5px 5px 5px;
+    }
+}
+
+.boxColor {
+    background-color: #A3DEFE;
+}
+
+.text {
+    font: @NormalFontSize @HalloFont;
+}
+
+.textred {
+    font: @NormalFontSize @HalloFont;
+    color: #E92D0C;
+}
+
+.bigtext {
+    font: 14pt @HalloFont;
+}
+
+.smalltext {
+    font: 8pt @HalloFont;
+}
+
+a.smalltext {
+    text-decoration: none;
+}
+
+    a.smalltext:hover {
+        text-decoration: underline;
+    }
+
+.vsmltext {
+    font: 7pt @HalloFont;
+}
+
+a.vsmltext {
+    text-decoration: none;
+}
+
+    a.vsmltext:hover {
+        text-decoration: underline;
+    }
+
+.date {
+    font: italic 8pt @HalloFont;
+}
+
+.btext {
+    border-spacing: 3px;
+    color: #000000;
+    vertical-align: top;
+    margin: 2pt;
+    padding: 2pt;
+    font: italic 8pt @HalloFont;
+    background-color: #E0E0E0;
+}
+
+.taimg {
+    border: thin solid #000000;
+    cursor: pointer;
+}
+
+.bdate {
+    font: italic @HalloFont;
+    font-size: 7pt;
+    color: #7A7A7A;
+}
+
+.htitel {
+    font: 18pt Arial Black,Impact;
+    color: #000000;
+}
+
+a.htitel {
+    text-decoration: none;
+}
+
+    a.htitel:hover {
+        text-decoration: underline;
+    }
+
+.titel {
+    font: 14pt Arial Black,Impact;
+    color: #000000;
+}
+
+a.titel {
+    text-decoration: none;
+}
+
+    a.titel:hover {
+        text-decoration: underline;
+    }
+
+.utitel {
+    font: bold @NormalFontSize @HalloFont;
+    color: #000000;
+}
+
+.note {
+    font: bold @NormalFontSize @HalloFont;
+    color: #0040B0;
+}
+
+a.note {
+    text-decoration: none;
+}
+
+    a.note:hover {
+        text-decoration: underline;
+    }
+
+
+/*adtext*/
+.fpBox {
+    background-color: @BackgroundColor;
+    font: 10pt @HalloFont;
+    color: #000000;
+    text-align: left;
+    border: thin solid #000000;
+    border-width: thin;
+    border-style: solid;
+}
+
+.menupkt {
+    cursor: pointer;
+    font: 7pt @HalloFont;
+    color: #000000;
+    text-decoration: none;
+    background-color: White;
+    text-align: left;
+    border-left: solid thin;
+    border-right: solid thin;
+    padding: 5px 5px 5px 5px;
+    margin: 0px 20px 0px 20px;    
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+    background-color: @BackgroundColor;
+}
+
+td {
+    padding: 0px;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Styles for div's
+-----------------------------------------------------------*/
+#containerDiv {
+    width: 998px;
+    margin: 0 auto;
+    vertical-align: top;
+    background-color: #ffffff;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-top-style: none;
+    border-bottom-style: none;
+    overflow: hidden;
+}
+
+#bannerDiv ul {
+    visibility: hidden; 
+}
+    #bannerDiv {
+    width: 100%;
+    height: 190px;
+    border-style: none;
+    border-width: thin;
+    border-top-style: none;
+}
+#frontpageLeft {
+    margin-right: 20px;
+    margin-top: 20px;
+    float: left;
+    border-style: none;
+}
+
+#frontpageRight {
+    margin-top: 20px;
+    float: right;
+    border-style: none;
+    height: 100%;
+}
+
+#Content {
+    margin-top: 20px;
+    float: left;
+    padding: 0px 0px 0px 0px;
+    text-align: left;
+    border-top: thin solid;
+    background-color: #ffffff;
+    border-bottom-style: none;
+    border-right-style: solid;
+    border-right-width: thin;
+    border-left-style: solid;
+    border-left-width: thin;
+}
+
+#contentDiv {
+    text-align: left;
+    border-style: solid;
+    border-width: thin;
+    background-color: White;
+    border-bottom-style: none;
+}
+
+/* Week calender*/
+#weekcalendar {
+    margin: 20px 0px 0px 0px;
+    text-align: left;
+    padding: 0px;
+    border-spacing: 0px;
+
+    h4 {
+        font: 8pt @HalloFont;
+        font-weight: bold;
+        -webkit-margin-before: 1em;
+        -webkit-margin-after: 0.0em;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        border-spacing: 0;
+    }
+
+    li {
+        font: 8pt @HalloFont;
+    }
+
+        li:last-child {
+            border: none;
+        }
+
+    ul li ul li:last-child {
+        -webkit-margin-after: 1em;
+    }
+}
+
+.brunstad_title {
+    background-color: @BackgroundColor;
+    color: #003f59;
+    text-align: left;
+    border: thin solid #000000;
+    padding: 5px 5px 5px 5px;
+    margin: 0px 0px 0px 0px;
+
+    a {
+        font: 10pt @HalloFont;
+        color: #003f59;
+        text-decoration: none;
+    }
+}
+
+.Hallocontent {
+    padding: 2px 2px 2px 2px;
+    list-style: none;
+    list-style-type: none;
+    border: thin solid #000000;
+    border-top: none;
+
+    ul {
+        list-style: none;
+        list-style-type: none;
+    }
+
+    li {
+        list-style-type: none;
+    }
+}
+
+.icon-calendar {
+    background-image: url('/images/icon-calendar.png');
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 15px;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 16px;
+}
+
+.timestart {
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+.AcTable {
+    padding: 5px 5px 5px 5px;
+
+    th {
+        background-color: @BackgroundColor;
+    }
+
+    td {
+        padding: 5px 5px 5px 5px;
+    }
+}

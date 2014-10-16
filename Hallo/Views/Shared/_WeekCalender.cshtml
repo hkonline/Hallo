@@ -7,14 +7,16 @@
         "&ContainerId=weekcalendar" +
         "&Calendars=brunstad_calendar_no," + churchName + "_calendar" +
         "&FullCalendarURL=http://portal.brunstad.org/no/Kalender" +
-        "&Days=7" +
-        "&CSSNameSpace=Hallo";
+        "&Days=7";
+        //"&CSSNameSpace=Hallo";
 }
 <script type="text/javascript" src="@calenderUrl"></script>
 <script>
     $(".timeend").hide();
     $(".timedash").hide();
     $(".Hallobutton").hide();
-    $(".brunstad_title").css("width", "@(ViewBag.LeftWidth-10)");
-    $(".Hallocontent").css("width", "@(ViewBag.LeftWidth-4)")
+    @*
+    //$(".brunstad_title").css("width", "@(ViewBag.LeftWidth-10)");
+    //$(".Hallocontent").css("width", "@(ViewBag.LeftWidth-4)")
+    *@
 </script>

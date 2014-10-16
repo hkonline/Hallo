@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>    
+    <title>Calender</title>
+    @Styles.Render("http://widgets.brunstadworld.org/widgets.css")
+
+    <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.blueopal.min.css" rel="stylesheet" type="text/css" />
+    <link href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.dataviz.blueopal.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="http://cdn.kendostatic.com/2014.1.318/js/kendo.web.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2014.1.318/js/kendo.aspnetmvc.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2014.1.318/js/cultures/kendo.culture.da-DK.min.js"></script>
+</head>
+<body>
+    <script src="http://widgets.brunstad.org/TopBar/js?mode=public" type="text/javascript"></script>
+    <div id="birthdaysDIV"></div>
+    @{
+        string churchId = System.Configuration.ConfigurationManager.AppSettings["ChurchId"];
+        string birthdayUrl =
+            "http://widgets.brunstad.org/birthday/Js" +
+            "?Culture=nb-NO" +
+            "&ContainerId=birthdaysDIV" +
+            "&NumberOfDays=10" +
+            "&CID=51";// +churchId;
+    }
+    <script type="text/javascript" src="@(Html.Raw(birthdayUrl))"></script>
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script>
+        $(function () {
+            var title = $("#brunstad-birthday-container")[0].childNodes[1].childNodes[1];
+            title.innerText = 'Fødselsdage';
+            $(".brunstad_title").css('background-image', 'none');
+            $(".brunstad_title").addClass("k-widget k-reset k-header k-panelbar");
+            $(".brunstad_title").css('color', 'black');
+        });
+    </script>
+</body>
+</html>

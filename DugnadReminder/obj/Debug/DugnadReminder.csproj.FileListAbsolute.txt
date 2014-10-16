@@ -1,0 +1,12 @@
+c:\users\reuss\documents\visual studio 2013\Projects\DugnadReminder\DugnadReminder\bin\Debug\DugnadReminder.exe.config
+c:\users\reuss\documents\visual studio 2013\Projects\DugnadReminder\DugnadReminder\bin\Debug\DugnadReminder.exe
+c:\users\reuss\documents\visual studio 2013\Projects\DugnadReminder\DugnadReminder\bin\Debug\DugnadReminder.pdb
+c:\users\reuss\documents\visual studio 2013\Projects\DugnadReminder\DugnadReminder\obj\Debug\DugnadReminder.csprojResolveAssemblyReference.cache
+c:\users\reuss\documents\visual studio 2013\Projects\DugnadReminder\DugnadReminder\obj\Debug\DugnadReminder.exe
+c:\users\reuss\documents\visual studio 2013\Projects\DugnadReminder\DugnadReminder\obj\Debug\DugnadReminder.pdb
+D:\Hallo\DugnadReminder\bin\Debug\DugnadReminder.exe.config
+D:\Hallo\DugnadReminder\bin\Debug\DugnadReminder.exe
+D:\Hallo\DugnadReminder\bin\Debug\DugnadReminder.pdb
+D:\Hallo\DugnadReminder\obj\Debug\DugnadReminder.csprojResolveAssemblyReference.cache
+D:\Hallo\DugnadReminder\obj\Debug\DugnadReminder.exe
+D:\Hallo\DugnadReminder\obj\Debug\DugnadReminder.pdb

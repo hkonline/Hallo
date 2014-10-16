@@ -59,7 +59,7 @@ namespace Hallo.Controllers {
 
         public ViewResult SignOnTest() {
             Session["Hilsen"] = "Hej";
-            return View();
+            return View(db.Database.Connection.ConnectionString);
         }
 
         public ViewResult NoAccess() {
@@ -70,7 +70,9 @@ namespace Hallo.Controllers {
             return new RssResult(db, "Hallo København");
         }
 
-
+        public ViewResult Calender() {
+            return View();
+        }
 
     }
 }

@@ -1,0 +1,31 @@
+﻿<style>
+    .brunstad_title {
+        color: black;
+    }
+    .brunstad_title a {
+        color: black !important;
+    }
+</style>
+
+<div id="birthdaysDIV" style="width: 100%;"></div>
+@{
+    string churchId = System.Configuration.ConfigurationManager.AppSettings["ChurchId"];
+    string birthdayUrl =
+        "http://widgets.brunstad.org/birthday/Js" +
+        "?Culture=nb-NO" +
+        "&ContainerId=birthdaysDIV" +
+        "&CID=" + churchId;
+}
+<script type="text/javascript" src="@Html.Raw(birthdayUrl)"></script>
+<script>
+    $(function () {
+        var title = $("#brunstad-birthday-container")[0].childNodes[1].childNodes[1];
+        title.innerText = 'Fødselsdage';
+
+        $(".brunstad_title").css('background-image', 'none');
+        $(".brunstad_content").css('background-image', 'none');
+        $(".brunstad_content").css('background-color', 'white');
+        $(".brunstad_title").addClass("k-widget k-reset k-header k-panelbar");
+        $(".brunstad_title").css('color', 'black');
+    });
+</script>

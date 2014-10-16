@@ -1,0 +1,31 @@
+﻿<a href="/Home">
+    <div id="bannerDiv">
+        @for (int i = 1; i <= 10; i++) {
+            <img src="/Images/banner/@(i).jpg"/>
+        }
+    </div>
+</a>
+<script>
+    $(function () {
+        $("#bannerDiv").slidesjs({
+            width: 998,
+            height: 190,
+            play: {
+                auto: true,
+                interval: 5000,
+                effect: "fade"
+            },
+            effect: {
+                fade: {
+                    speed: 2000
+                }
+            },
+            navigation: {
+                active: false
+            },
+            pagination: {
+                active: false
+            }
+        });
+    });
+</script>

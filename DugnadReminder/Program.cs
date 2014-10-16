@@ -12,6 +12,10 @@ using System.Threading.Tasks;
 namespace DugnadReminder {
     class Program {
         String connectionString = ConfigurationManager.ConnectionStrings["HalloDB"].ConnectionString;
+        DateTime now = TimeZoneInfo.ConvertTimeFromUtc(DateTime.Now.ToUniversalTime(), TimeZoneInfo.FindSystemTimeZoneById("W. Europe Standard Time"));
+
+        DateTime Now { get { return now; } }
+        DateTime Today { get { return now.Date; } }
 
         static String qGetDugnadsForReminder1 = "select dugnadId from hk_dugnader where reminder1 < @date and (reminder1Sent is null or reminder1Sent = 0)";
         static String qGetDugnadsForReminder2 = "select dugnadId from hk_dugnader where reminder2 < @date and (reminder2Sent is null or reminder2Sent = 0)";
@@ -41,7 +45,7 @@ namespace DugnadReminder {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["HalloDB"].ConnectionString)) {
                 SqlCommand cmd = new SqlCommand(query, connection);
                 connection.Open();
-                if (query.Contains("@date")) cmd.Parameters.Add("@date", DateTime.Now);
+                if (query.Contains("@date")) cmd.Parameters.Add("@date", Now);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read()) list.Add(reader[0].ToString());
                 reader.Close();
@@ -59,32 +63,36 @@ namespace DugnadReminder {
             }
         }
 
-        static void Main(string[] args) {
-            Program p = new Program();
+        private void sendReminder() {
 
             CultureInfo danish = new CultureInfo("da-DK");
             Thread.CurrentThread.CurrentCulture = danish;
             Thread.CurrentThread.CurrentUICulture = danish;
 
-            foreach (string s in p.GetList(qGetDugnadsForReminder1)) {
-                Dugnad dugnad = p.GetDetails(s);
-                String dateString = DateTime.Today.ToLongDateString();
-                if (DateTime.Today == dugnad.Start.Date) dateString = "i dag";
-                if (DateTime.Today.AddDays(1) == dugnad.Start.Date) dateString = "i morgen";
-                String text = "Husk at du er tilmeldt følgende dugnad: Badevagt " + dateString + " kl. " + DateTime.Now.ToShortTimeString();
-                p.SendSMS(text, p.GetList(qMobilNumbersForDugnad + s));
-                p.ExecuteNonQuery(qUpdateDugnadReminder1Sent + s);
+            foreach (string s in GetList(qGetDugnadsForReminder1)) {
+                Dugnad dugnad = GetDetails(s);
+                String dateString = " " + Today.ToLongDateString();
+                if (Today == dugnad.Start.Date) dateString = " i dag ";
+                if (Today.AddDays(1) == dugnad.Start.Date) dateString = " i morgen ";
+                String text = "Husk at du er tilmeldt følgende dugnad: " + dugnad.Description + dateString + " kl. " + dugnad.Start.ToShortTimeString();
+                SendSMS(text, GetList(qMobilNumbersForDugnad + s));
+                ExecuteNonQuery(qUpdateDugnadReminder1Sent + s);
             }
 
-            foreach (string s in p.GetList(qGetDugnadsForReminder2)) {
-                Dugnad dugnad = p.GetDetails(s);
-                String dateString = DateTime.Today.ToLongDateString();
-                if (DateTime.Today == dugnad.Start.Date) dateString = "i dag";
-                if (DateTime.Today.AddDays(1) == dugnad.Start.Date) dateString = "i morgen";
-                String text = "Husk at du er tilmeldt følgende dugnad: Badevagt " + dateString + " " + dugnad.Start.ToShortTimeString();
-                p.SendSMS(text, p.GetList(qMobilNumbersForDugnad + s));
-                p.ExecuteNonQuery(qUpdateDugnadReminder2Sent + s);
+            foreach (string s in GetList(qGetDugnadsForReminder2)) {
+                Dugnad dugnad = GetDetails(s);
+                String dateString = Today.ToLongDateString();
+                if (Today == dugnad.Start.Date) dateString = " i dag ";
+                if (Today.AddDays(1) == dugnad.Start.Date) dateString = " i morgen ";
+                String text = "Husk at du er tilmeldt følgende dugnad: " + dugnad.Description + dateString + " kl. " + dugnad.Start.ToShortTimeString();
+                SendSMS(text, GetList(qMobilNumbersForDugnad + s));
+                ExecuteNonQuery(qUpdateDugnadReminder2Sent + s);
             }
+        }
+
+        static void Main(string[] args) {
+            Program p = new Program();
+            p.sendReminder();
         }
 
         public void SendSMS(String text, IList<string> smsList) {
@@ -117,7 +125,7 @@ namespace DugnadReminder {
                 cmd.Parameters.AddWithValue("@userID", 0);
                 cmd.Parameters.AddWithValue("@Text", text);
                 cmd.Parameters.AddWithValue("@NumberOfSMS", smsList.Count);
-                cmd.Parameters.AddWithValue("@SMSTime", DateTime.Now);
+                cmd.Parameters.AddWithValue("@SMSTime", Now);
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }

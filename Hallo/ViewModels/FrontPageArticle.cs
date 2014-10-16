@@ -8,17 +8,19 @@ namespace Hallo.ViewModels {
     public class FrontPageArticle {
 
         public readonly Article Article;
-        public int ImageId { get {
-            if (Article.FrontpageImage == null) return 0;
-            return (int)(Article.FrontpageImage.OldId == null ? Article.FrontpageImage.Id : Article.FrontpageImage.OldId);
-        } }
+        public int ImageId {
+            get {
+                if (Article.FrontpageImage == null) return 0;
+                return (int)(Article.FrontpageImage.OldId == null ? Article.FrontpageImage.Id : Article.FrontpageImage.OldId);
+            }
+        }
 
 
         private static string imageDirectoryUrl;
         public static string ImageDirectoryUrl {
             get {
                 if (imageDirectoryUrl == null)
-                    imageDirectoryUrl =
+                    imageDirectoryUrl = 
                         //HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority) +
                         //HttpRuntime.AppDomainAppVirtualPath +
                         ConfigurationManager.AppSettings["ImageDirectoryUrl"].Substring(1);
@@ -66,9 +68,9 @@ namespace Hallo.ViewModels {
                     if (String.IsNullOrEmpty(ImageUrl))
                         return "";
                     else
-                        return "<img class=aimg src='" + ImageUrl + "' hspace=3 width=200>";
+                        return "<img class='img-thumbnail pull-right' src='" + ImageUrl + "'>";
 
-                return "<img class=aimg src=\"" + ImageDirectoryUrl + "/thumbnails/img" + ImageId + ".jpg\" hspace=3 width=200>";
+                return "<img class='img-thumbnail pull-right' src=\"" + ImageDirectoryUrl + "/thumbnails/img" + ImageId + ".jpg\">";
             }
         }
         public string ArticleLink {
@@ -85,10 +87,12 @@ namespace Hallo.ViewModels {
 
         public string FrontpageHeadline {
             get {
-                string headline = "<a class=titel href=";
-                if (Newest) headline = "<a class=htitel href=";
-                headline += ArticleLink + ">" + Article.Headline + "</a>";
-                if (Article.IsPublic == false) headline += "<br /><div style=color:#FF0000; class=text>(Vises kun for venner med login)</div>";
+                int headerNum = 3;
+                if (Newest) headerNum = 2;
+
+                string headline = "<a href=" + ArticleLink + "><h" + (Newest ? (headerNum.ToString() + " style='margin-top: 0px;'") : headerNum.ToString()) + ">" + 
+                    Article.Headline + "</h" + headerNum + "></a>";
+                if (Article.IsPublic == false) headline += "<div class='text-info'>(Vises kun for venner med login)</div>";
                 return headline;
             }
         }
@@ -98,7 +102,7 @@ namespace Hallo.ViewModels {
                 string headline = "<a href=";
                 headline += ArticleLinkMobile + ">" + Article.Headline + "</a>";
                 if (Article.IsPublic == false)
-                    headline += "<br /><div style=color:#FF0000; class=text>(Vises kun for venner med login)</div>";
+                    headline += "<br /><div class='text-info'>(Vises kun for venner med login)</div>";
                 return headline;
             }
         }

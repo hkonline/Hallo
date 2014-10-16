@@ -2,7 +2,7 @@
 @using System.Collections.Generic
 @using Hallo.Resources
 @model List<BirthdaysViewModel>
-<div class="fpBox" style="width: @((int)Session["RightWidth"])px; margin: 20px;">
+<div class="fpBox" style="width: 100%; margin-top: 20px;">
     <div style="padding: 5px 5px 5px 5px;">
         <span class="icon-birthday"></span>@Labels.Birthdays
     </div>
@@ -23,3 +23,20 @@
         </table>
     </div>
 </div>
+
+<div id="birthdaysDIV" style="width: 100%; padding-top: 20px;"></div>
+@{
+    string churchId = System.Configuration.ConfigurationManager.AppSettings["ChurchId"];
+    string birthdayUrl =
+        "http://widgets.brunstad.org/birthday/Js" +
+        "?Culture=nb-NO" +
+        "&ContainerId=birthdaysDIV" +
+        "&CID=" +churchId;
+}
+<script type="text/javascript" src="@Html.Raw(birthdayUrl)"></script>
+<script>
+    $(function () {
+        var title = $("#brunstad-birthday-container")[0].childNodes[1].childNodes[1];
+        title.innerText = 'Fødselsdage';
+    });
+</script>
