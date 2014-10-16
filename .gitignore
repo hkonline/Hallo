@@ -1,5 +1,6 @@
 # git ignore file
 Hallo/Images/articleImages/
+Hallo/Files
 Hallo/bin
 Hallo/Content/kendo
 Hallo/Content/themes
