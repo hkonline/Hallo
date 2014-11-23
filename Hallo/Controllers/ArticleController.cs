@@ -42,7 +42,9 @@ namespace Hallo.Controllers {
                 Article = db.Articles.Where(x => x.Id == id).Include(x => x.FrontpageImage).SingleOrDefault(),
                 Images = GetImages(id)
             };
-
+            
+            if (model.Article.Text == null) model.Article.Text = "";
+            
             model.Article.Text = InsertFiles(model.Article.Text);
 
             Session["CurrentArticleViewModel"] = model;
