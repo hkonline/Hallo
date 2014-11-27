@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hallo", "Hallo\Hallo.csproj", "{1A34820D-A714-460A-939C-594270352845}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -23,6 +23,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hallo.Core", "Hallo.Core\Hallo.Core.csproj", "{0D505019-0934-4334-BD11-7972C353D115}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DugnadReminder", "DugnadReminder\DugnadReminder.csproj", "{5A564E1D-BA8C-4D72-A6D2-414A34FE3885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender", "MailSender\MailSender.csproj", "{A726082C-4105-45BC-87B8-1B4B315D893A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{5A564E1D-BA8C-4D72-A6D2-414A34FE3885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A564E1D-BA8C-4D72-A6D2-414A34FE3885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A564E1D-BA8C-4D72-A6D2-414A34FE3885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A726082C-4105-45BC-87B8-1B4B315D893A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A726082C-4105-45BC-87B8-1B4B315D893A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A726082C-4105-45BC-87B8-1B4B315D893A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A726082C-4105-45BC-87B8-1B4B315D893A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

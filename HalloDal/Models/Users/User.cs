@@ -8,7 +8,7 @@ namespace HalloDal.Models.Users {
         [Required, Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int UserId { get; set; }
 
-        [StringLength(20)]
+        [StringLength(50)]
         public string UserName { get; set; }
 
         [StringLength(40)]
