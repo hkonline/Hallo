@@ -1,6 +1,7 @@
-﻿@model Hallo.ViewModels.ImageViewModel
+﻿@using Hallo
+@model Hallo.ViewModels.ImageViewModel
 
-<td class="btext" style="width: 200px; text-align: left;">
+<td class="btext" style="width: @(Constant.ThumbnailWidth.ToString())px; text-align: left;">
     <img class="taimg" src="@Model.GetThumbUrl()" id="img@(Model.OrderNr)" /><br />
     <div style="vertical-align: bottom;">
         Billedtekst:

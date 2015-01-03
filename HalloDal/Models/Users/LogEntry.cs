@@ -12,7 +12,7 @@ namespace HalloDal.Models.Users {
         
         public int PmoId { get; set; }
         
-        [StringLength(20)]
+        [StringLength(50)]
         public string UserName { get; set; }
 
         [StringLength(40)]

@@ -1,10 +1,11 @@
 ﻿@using HalloDal.Models.AC
 @using Hallo.Resources
+@using Hallo
 
 @(Html.Kendo().Grid<AcDate>()
     .Name("DateGrid")
     .Columns(c => {
-        c.Bound(x => x.Date).Title(Labels.Date).Width(200).EditorTemplateName("DateTime").Format("{0:dd-MM-yyyy}"); 
+        c.Bound(x => x.Date).Title(Labels.Date).Width(Constant.ThumbnailWidth).EditorTemplateName("DateTime").Format("{0:dd-MM-yyyy}"); 
         c.Command(cmd => { cmd.Destroy(); cmd.Edit(); }).Width(250);
     })
     .ToolBar(toolbar => {

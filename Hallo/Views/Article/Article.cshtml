@@ -2,28 +2,37 @@
 @model ArticleViewModel
 @{
     ViewBag.Title = "Article";
+    int count = 0;
 }
 <h2>@Model.Article.Headline</h2>
 <img src="~/images/bluespc.gif" style="height: 1px; width: 95%;" /><br />
 <span class="bigtext" style="font-style: italic;">Af @Model.Article.Author</span><br />
 <span class="smalltext">@Model.Article.Date.ToShortDateString()</span><br />
-<div class="bigtext">
-    @if (Model.Article.FrontpageImage != null) {
-        <div class="pull-right">
-            <img class="taimg" src="@Model.FrontPageImage.GetThumbUrl()" onclick="imgbyid(@Model.Article.Id, -1)" /><br />
-            @Model.Article.FrontpageImage.Description
+<div class="row">
+    <div class="bigtext col-md-12">
+        @if (Model.Article.FrontpageImage != null) {
+            <div class="pull-right">
+                <img class="taimg" src="@Model.FrontPageImage.GetThumbUrl()" onclick="imgbyid(@Model.Article.Id, -1)" /><br />
+                @Model.Article.FrontpageImage.Description
+            </div>
+        }
+        <div>
+            @Html.Raw(Model.Article.Text)
         </div>
-    }
-    <div>
-        @Html.Raw(Model.Article.Text)
     </div>
 </div>
-@foreach (ImageViewModel i in Model.Images) {
-    <div class="pull-right col-md-3">
-        <img class="taimg" src="@i.GetThumbUrl()" id="img@(i.OrderNr)" onclick="imgbyid(@Model.Article.Id, @i.OrderNr)" /><br />
-        @i.Description
-    </div>
-}
+<div class="row">
+    @foreach (ImageViewModel i in Model.Images) {
+        count++;
+        <div class="pull-right col-md-4">
+            <img class="taimg" src="@i.GetThumbUrl()" id="img@(i.OrderNr)" onclick="imgbyid(@Model.Article.Id, @i.OrderNr)" /><br />
+            @i.Description
+        </div>
+        if (count % 3 == 0) { 
+            @Html.Raw("</div><div class='row'>")
+        }
+    }
+</div>
 <script>
     function imgbyid(ID, ordernr) {
         popup_win = window.open(

@@ -20,5 +20,15 @@ namespace Hallo {
                 return imageDirectoryUrl;
             }
         }
+
+        // We save the URL in this static variable just to save a little performance.
+        private static int thumbnailWidth;
+        public static int ThumbnailWidth {
+            get {
+                if (thumbnailWidth == 0)
+                    thumbnailWidth = int.Parse(ConfigurationManager.AppSettings["ThumbnailWidth"]);
+                return thumbnailWidth;
+            }
+        }
     }
 }

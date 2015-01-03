@@ -82,7 +82,7 @@ namespace Hallo.Controllers {
         protected void SaveImageToDisk(HttpPostedFileBase file, Image image) {
             ImageHelper helper = new ImageHelper(file.InputStream);
 
-            System.Drawing.Image thumb = helper.GetResizedImage(200);
+            System.Drawing.Image thumb = helper.GetResizedImage(Constant.ThumbnailWidth);
 
             MemoryStream ms = new MemoryStream();
             thumb.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
