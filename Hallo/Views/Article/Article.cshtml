@@ -12,7 +12,7 @@
     <div class="bigtext col-md-12">
         @if (Model.Article.FrontpageImage != null) {
             <div class="pull-right">
-                <img class="taimg" src="@Model.FrontPageImage.GetThumbUrl()" onclick="imgbyid(@Model.Article.Id, -1)" /><br />
+                <img class="img-responsive" src="@Model.FrontPageImage.GetThumbUrl()" onclick="imgbyid(@Model.Article.Id, -1)" /><br />
                 @Model.Article.FrontpageImage.Description
             </div>
         }
@@ -20,27 +20,56 @@
             @Html.Raw(Model.Article.Text)
         </div>
     </div>
-</div>
-<div class="row">
-    @foreach (ImageViewModel i in Model.Images) {
-        count++;
-        <div class="pull-right col-md-4">
-            <img class="taimg" src="@i.GetThumbUrl()" id="img@(i.OrderNr)" onclick="imgbyid(@Model.Article.Id, @i.OrderNr)" /><br />
-            @i.Description
+
+    @*@if (Model.Images.Count > 0) {
+        <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
+                @for (int i = 1; i < Model.Images.Count; i++) {
+                    <li data-target="#carousel-example-captions" data-slide-to="@i"></li>
+                }
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @foreach (ImageViewModel i in Model.Images) {
+                    <div class="item active">
+                        <img data-src="@i.GetThumbUrl()" alt="First slide image">
+                        <div class="carousel-caption">
+                            <p>@i.Description</p>
+                        </div>
+                    </div>
+                }
+                <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
         </div>
-        if (count % 3 == 0) { 
-            @Html.Raw("</div><div class='row'>")
+    }*@
+    
+    <div class="row">
+        @foreach (ImageViewModel i in Model.Images) {
+            count++;
+            <div class="pull-left col-md-4" style="vertical-align: top;">
+                <img class="img-responsive" src="@i.GetThumbUrl()" id="img@(i.OrderNr)" onclick="imgbyid(@Model.Article.Id, @i.OrderNr)" />
+                @i.Description
+            </div>
+            if (count % 3 == 0) {
+                @Html.Raw("</div><div class='row'>")
+            }
         }
-    }
-</div>
-<script>
-    function imgbyid(ID, ordernr) {
-        popup_win = window.open(
-            '/image/Slideshow/?Id=' + ID + "&OrderNr=" + ordernr,
-            'imgwin',
-            'status=no,scrollbars=yes,width=200,height=40,left,100,top=10,resizable=yes'
-        );
-        popup_win.opener.name = 'opener';
-        popup_win.focus();
-    }
-</script>
+    </div>
+    <script>
+        function imgbyid(ID, ordernr) {
+            popup_win = window.open(
+                '/image/Slideshow/?Id=' + ID + "&OrderNr=" + ordernr,
+                'imgwin',
+                'status=no,scrollbars=yes,width=200,height=40,left,100,top=10,resizable=yes'
+            );
+            popup_win.opener.name = 'opener';
+            popup_win.focus();
+        }
+    </script>

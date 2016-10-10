@@ -64,15 +64,14 @@ namespace HalloDal.Models {
         }
 
         public void UpdateOrInsertUser(User user) {
-            string sql = "insert into Users(";
+            //string sql = "insert into Users(";
 
             if (this.Users.Where(x => x.UserId == user.UserId).Count() > 0) {
 
             }
-
             SqlCommand cmd = new SqlCommand("", this.Database.Connection as SqlConnection);
         }
-
+                
         public List<T> GetList<T>(string sql) {
             List<T> res = new List<T>();
             SqlConnection connection = this.Database.Connection as SqlConnection;
