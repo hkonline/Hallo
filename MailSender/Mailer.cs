@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MailSender {
     class Mailer {
-        const int numberOfMailsPrBatch = 10;
+        const int numberOfMailsPrBatch = 50;
         String connectionString = ConfigurationManager.ConnectionStrings["HalloDB"].ConnectionString;
         private int messageID;
         Message message;

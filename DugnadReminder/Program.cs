@@ -45,7 +45,7 @@ namespace DugnadReminder {
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["HalloDB"].ConnectionString)) {
                 SqlCommand cmd = new SqlCommand(query, connection);
                 connection.Open();
-                if (query.Contains("@date")) cmd.Parameters.Add("@date", Now);
+                if (query.Contains("@date")) cmd.Parameters.AddWithValue("@date", Now);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read()) list.Add(reader[0].ToString());
                 reader.Close();

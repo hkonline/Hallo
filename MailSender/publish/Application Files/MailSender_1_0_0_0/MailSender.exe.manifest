@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="MailSender.exe" version="1.0.0.0" publicKeyToken="6f85af6f819ebb9c" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="MailSender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="MailSender.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MailSender.exe" size="8704">
+      <assemblyIdentity name="MailSender" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>eJwu3ox+a7jcw4oCYecVODh1AoPjF3uoJQij11sG5YI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="MailSender.exe.config" size="735">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>oDsEI0Mv6PwEtq/4Or0GBjEe0HHKhZljSxjb9TIr4+s=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=REUSS-PC\Reuss" issuerKeyHash="5db149f27030c6d480f91e28e73fedf514f7f978" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>Ncd9Opli1rkGOGUYWgcgP9TPbft1mGxJJGgLi7H8XIw=</DigestValue></Reference></SignedInfo><SignatureValue>x4DBD+nexq9eS/DIB1Ri1xO8kPi+BGfdQXw+Hj71toswwgb9UrRFv7VbP581fKEug7CdaHBas+UrRW0U0FoyaMT3YqMgK8aat+vQCGwfl9T0ljE7nlHCTCb5MK/lQmEq/mlabsyZ5m4ysuopYZy+XVad/vLe/Dhxinen/c/stBg=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>z8AD2ZNHVjlcAX0tEkIYAUbpYDyaivTGZwC61EKhvXJTNemoOhnvzdS15gGGXlh9okTUkY+rhtKiejafvIzmnwo6uopHVxfwmEWZED4U5AvziURSEt1UEg4/5acx2K5WhBwx5R5oJXbc7iMYcEN76uDqTUd1HJU3G9mtnrOcIuk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="8c5cfcb18b0b6824496c9875fb6dcfd43f20075a18653806b9d662993a7dc735" Description="" Url=""><as:assemblyIdentity name="MailSender.exe" version="1.0.0.0" publicKeyToken="6f85af6f819ebb9c" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=REUSS-PC\Reuss</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>fkh10wdJnsahv3AIJkfVwH5BaWjEvhavZsYEBjOxsZo=</DigestValue></Reference></SignedInfo><SignatureValue>LfrgWPSiZeIPjCW7+BYmpapKtJ8ylktecMJ7aPaCpOWO4h1ZmDb+Hl8B/XKkPt/ZK3SLWTm7DnQ4U1+S/XbbmJO35gNxtv8DShylc+rQfbecdqjn3TwbkPb95o4D8bfkOxQzQPqJumH2yrLN1V2CniIogGPSMw0/WqvipvMIVpY=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>z8AD2ZNHVjlcAX0tEkIYAUbpYDyaivTGZwC61EKhvXJTNemoOhnvzdS15gGGXlh9okTUkY+rhtKiejafvIzmnwo6uopHVxfwmEWZED4U5AvziURSEt1UEg4/5acx2K5WhBwx5R5oJXbc7iMYcEN76uDqTUd1HJU3G9mtnrOcIuk=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB0TCCATqgAwIBAgIQceixOiasibtOTLbX0TNTxDANBgkqhkiG9w0BAQsFADAnMSUwIwYDVQQDHhwAUgBFAFUAUwBTAC0AUABDAFwAUgBlAHUAcwBzMB4XDTE1MDcwNTA0NDIyM1oXDTE2MDcwNDEwNDIyM1owJzElMCMGA1UEAx4cAFIARQBVAFMAUwAtAFAAQwBcAFIAZQB1AHMAczCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAz8AD2ZNHVjlcAX0tEkIYAUbpYDyaivTGZwC61EKhvXJTNemoOhnvzdS15gGGXlh9okTUkY+rhtKiejafvIzmnwo6uopHVxfwmEWZED4U5AvziURSEt1UEg4/5acx2K5WhBwx5R5oJXbc7iMYcEN76uDqTUd1HJU3G9mtnrOcIukCAwEAATANBgkqhkiG9w0BAQsFAAOBgQAHPzMPTBNeF+ao9dHDwUxmlZKtwfFvFb402tlIU5Oxx3W0fGFmlxTpBzk4M8v9Iwl1nVArpNamTR5/5x/2lA4XW2NQ4N2VERhHLstE1uSA5JkHej8JErMbeuXrohSiOtSms10sPUExq9IveTpRzkCXj1Cz9dPI3ouus4PpSn3lMw==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

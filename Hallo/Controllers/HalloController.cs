@@ -14,6 +14,7 @@ using System.Web.Mvc;
 
 namespace Hallo.Controllers {
     public class HalloController : Controller {
+
         protected HalloContext db = new HalloContext();
 
         protected JsonSerializerSettings jsonSettings = new JsonSerializerSettings {

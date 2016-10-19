@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <connectionStrings>
+    <add name="HalloDB" connectionString="Data Source=camellia.arvixe.com;Initial Catalog=kobenhavn;Persist Security Info=True;User ID=kobenhavn;Password=zxcvbnm;MultipleActiveResultSets=True;Encrypt=True" providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+  <system.net>
+    <mailSettings>
+      <smtp deliveryMethod="Network" from="webmaster@hkonline.dk">
+        <network host="send.one.com" userName="webmaster@hkonline.dk" password="brunstad20"/>
+      </smtp>
+    </mailSettings>
+  </system.net>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
+  </startup>
+</configuration>

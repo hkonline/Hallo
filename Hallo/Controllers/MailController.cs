@@ -13,7 +13,7 @@ using System.Web.Mvc;
 namespace Hallo.Controllers {
     public class MailController : HalloController {
 
-        private HalloContext db = new HalloContext();
+        //private HalloContext db = new HalloContext();
 
         public ActionResult Index() {
             return View(new MailViewModel());

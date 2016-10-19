@@ -1,0 +1,10 @@
+D:\Hallo\MailSender\bin\Debug\MailSender.exe.config
+D:\Hallo\MailSender\bin\Debug\MailSender.exe
+D:\Hallo\MailSender\bin\Debug\MailSender.pdb
+D:\Hallo\MailSender\obj\Debug\MailSender.exe
+D:\Hallo\MailSender\obj\Debug\MailSender.pdb
+D:\Hallo\MailSender\bin\Debug\MailSender.exe.manifest
+D:\Hallo\MailSender\bin\Debug\MailSender.application
+D:\Hallo\MailSender\obj\Debug\MailSender.exe.manifest
+D:\Hallo\MailSender\obj\Debug\MailSender.application
+D:\Hallo\MailSender\obj\Debug\MailSender.csprojResolveAssemblyReference.cache

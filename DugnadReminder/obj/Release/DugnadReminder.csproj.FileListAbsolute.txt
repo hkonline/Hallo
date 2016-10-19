@@ -1,0 +1,14 @@
+D:\Hallo\DugnadReminder\bin\Release\DugnadReminder.exe.config
+D:\Hallo\DugnadReminder\bin\Release\DugnadReminder.exe
+D:\Hallo\DugnadReminder\bin\Release\DugnadReminder.pdb
+D:\Hallo\DugnadReminder\obj\Release\DugnadReminder.csprojResolveAssemblyReference.cache
+D:\Hallo\DugnadReminder\obj\Release\DugnadReminder.exe
+D:\Hallo\DugnadReminder\obj\Release\DugnadReminder.pdb
+D:\Hallo\DugnadReminder\bin\Release\DugnadReminder.exe.manifest
+D:\Hallo\DugnadReminder\bin\Release\DugnadReminder.application
+D:\Hallo\DugnadReminder\obj\Release\DugnadReminder.exe.manifest
+D:\Hallo\DugnadReminder\obj\Release\DugnadReminder.application
+C:\code\Hallo\DugnadReminder\bin\Release\DugnadReminder.exe.config
+C:\code\Hallo\DugnadReminder\obj\Release\DugnadReminder.exe
+C:\code\Hallo\DugnadReminder\obj\Release\DugnadReminder.pdb
+C:\code\Hallo\DugnadReminder\obj\Release\DugnadReminder.csprojResolveAssemblyReference.cache

@@ -1,0 +1,6 @@
+C:\code\Hallo\CPRReminder\bin\Release\CPRReminder.exe.config
+C:\code\Hallo\CPRReminder\bin\Release\CPRReminder.exe
+C:\code\Hallo\CPRReminder\bin\Release\CPRReminder.pdb
+C:\code\Hallo\CPRReminder\obj\Release\CPRReminder.exe
+C:\code\Hallo\CPRReminder\obj\Release\CPRReminder.pdb
+C:\code\Hallo\CPRReminder\obj\Release\CPRReminder.csprojResolveAssemblyReference.cache

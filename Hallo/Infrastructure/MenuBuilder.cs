@@ -86,8 +86,6 @@ namespace Hallo.Infrastructure {
                     });
                 }
                 
-
-                
                 if (adminLinks.Count > 0) {
                     menu.Add(new HKMenuItem {
                         Text = "Administration",
